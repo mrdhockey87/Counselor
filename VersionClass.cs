@@ -22,7 +22,7 @@ namespace CounselQuickPlatinum
 /*
 * 
 * 
-* 
+ * v5.3.7.57 - Rehome tp Github mdail 7-15-2025 
  * v5.3.7.56 - Fix to make it compile and run since windows obsoleted the old target framework and the old version of Dotfuscator was not working 
  *             with the new version of Visual Studio. mdail 7-14-2025
  * v4.3.7.55 - Fix crashing with null pointer exception when doing a search thru the documents(PDFs) list when doiing a soldier counseling.
