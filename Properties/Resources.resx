@@ -1,0 +1,823 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="r4_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\reports\All Coun+Docs\r4_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CPT" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\rank icons\CPT.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="print_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\print\print_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="assess_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\assessment\assess_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="new90_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\add_new\90w\new90_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="r4_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\reports\All Coun+Docs\r4_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="soldiers_up1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\Soldier\soldiers_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="edit_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\edit\edit_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="resources_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\Resources\resources_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="splash" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\splash.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="documents_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\Documents\documents_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="soldiers_highlight1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\Soldier\soldiers_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_120_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\standard rectangle\120w\120_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="settings_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\settings\settings_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="extract_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling tabs\extracts\extract_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="r3_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\reports\Outstanding\r3_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pending_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\reports\Pending\pending_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="save_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\save\save_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="slide_onclick" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\reports\slider\slide_onclick.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="smpill_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\small_pill\smpill_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_90_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\standard rectangle\90w\90_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="x_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\X\x_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="slide_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\reports\slider\slide_left.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cont_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\continuation\cont_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="single_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\single counseling\single_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="help_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\Help\help_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="print_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\print\print_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="complete_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\reports\Complete\complete_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pending_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\reports\Pending\pending_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="general_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling tabs\general tab\general_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="asktop_banner" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\resources links\asktop_banner.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ccp_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\counseling package\ccp_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_90_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\standard rectangle\90w\90_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="divider_bar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\divider_bar.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="general_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling tabs\general tab\general_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="help_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\Help\help_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="edit_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\edit\edit_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_1SG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\rank icons\1SG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CW3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\rank icons\CW3.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="settings_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\settings\settings_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_120_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\standard rectangle\120w\120_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="discard_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\discard\discard_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="smpill_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\small_pill\smpill_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="xfdl_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\export to xfdl\xfdl_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="assess_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\assessment\assess_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pdf_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\pdf\pdf_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GEN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\rank icons\GEN.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="export_lotus_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\export to xfdl\xfdl_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="save_down1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\save\save_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="event_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling tabs\event specific\event_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="reports_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\Reports\reports_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="export_lotus_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\export\export_lotus_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="plus_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\+\plus_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="verbal_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\reports\Verbal\verbal_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="resources_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\Resources\resources_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="complete_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\reports\Complete\complete_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="discard_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\discard\discard_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="error" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\error.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="counseling_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\Counseling\counseling_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="save_highlight1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\save\save_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="savex_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\savex\savex_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="verbal_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\reports\Verbal\verbal_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="xfdl_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\export to xfdl\xfdl_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="general_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling tabs\general tab\general_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ref_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\References\ref_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="delete_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\delete\delete_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="assess_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\assessment\assess_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="soldiers_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\Soldier\soldiers_down.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="general_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling tabs\general tab\general_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="single_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\single counseling\single_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="discard_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\discard\discard_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="opt_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\option_dropdown\opt_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="save_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\save\save_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="references_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\References\references_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="r3_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\reports\Outstanding\r3_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="export_lotus_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\export\export_lotus_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SSG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\rank icons\SSG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="delete_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\delete\delete_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="new90_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\add_new\90w\new90_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="r3_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\reports\Outstanding\r3_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PackageIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PackageIcon.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="complete_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\reports\Complete\complete_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="extract_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling tabs\extracts\extract_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="verbal_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\reports\Verbal\verbal_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pdf_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\pdf\pdf_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NEW" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\rank icons\NEW.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="print_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\print\print_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="soldiers_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\Soldier\soldiers_up.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="plus_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\+\plus_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="prev_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\prev\prev_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_150_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\standard rectangle\150w\150_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="soldiers_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\Soldier\soldiers_disabled.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="new90_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\add_new\90w\new90_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SingleDocumentIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SingleDocumentIcon.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="delete_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\delete\delete_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="prev_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\prev\prev_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="opt_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\option_dropdown\opt_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="warning" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\warning.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="help_up2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\Help\help_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="smpill_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\small_pill\smpill_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_150_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\standard rectangle\150w\150_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="counseling_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\Counseling\counseling_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="plus_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\+\plus_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ACO_banner" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\resources links\ACO_banner.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="prev_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\prev\prev_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ref_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\References\ref_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pdf_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\pdf\pdf_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="single_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\single counseling\single_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="complete_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\reports\Complete\complete_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="next_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\next\next_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PVT" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\rank icons\PVT.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="savex_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\savex\savex_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_65_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\standard rectangle\65w\65_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="word_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\export to word\word_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="documents_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\Documents\documents_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="opt_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\option_dropdown\opt_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_65_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\standard rectangle\65w\65_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_180_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\standard rectangle\180w\180_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MAJ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\rank icons\MAJ.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_65_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\standard rectangle\65w\65_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cont_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\continuation\cont_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="next_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\next\next_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="reports_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\Reports\reports_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="save_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\save\save_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="resources_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\Resources\resources_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="new90_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\add_new\90w\new90_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pending_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\reports\Pending\pending_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="single_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\single counseling\single_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="references_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\References\references_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="xfdl_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\export to xfdl\xfdl_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="references_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\References\references_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_180_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\standard rectangle\180w\180_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="event_disabled1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling tabs\event specific\event_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="soldiers_disabled1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\Soldier\soldiers_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pdf_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\pdf\pdf_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="save_disabled1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\save\save_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ref_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\References\ref_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="help_disabled1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\Help\help_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_1LT" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\rank icons\1LT.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="documents_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\Documents\documents_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="prev_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\prev\prev_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="blank" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HTML\blank.html;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="question" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\question.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dropshadow2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\dropshadow2.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="next_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\next\next_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="edit_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\edit\edit_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SGM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\rank icons\SGM.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="word_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\export to word\word_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="smpill_highligh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\small_pill\smpill_highligh.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="x_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\X\x_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ccp_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\counseling package\ccp_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="documents_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\Documents\documents_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="opt_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\option_dropdown\opt_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MSG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\rank icons\MSG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dropshadow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\dropshadow.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="discard_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\discard\discard_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pending_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\reports\Pending\pending_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_150_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\standard rectangle\150w\150_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CW5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\rank icons\CW5.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="next_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\next\next_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CPL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\rank icons\CPL.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="save_up1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\save\save_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="edit_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\edit\edit_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="soldiers_down1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\Soldier\soldiers_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="settings_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\settings\settings_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="help_highlight1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\Help\help_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_90_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\standard rectangle\90w\90_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="counseling_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\Counseling\counseling_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="references_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\References\references_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_120_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\standard rectangle\120w\120_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="word_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\export to word\word_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="reports_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\Reports\reports_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CSM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\rank icons\CSM.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LTG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\rank icons\LTG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cont_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\continuation\cont_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="savex_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\savex\savex_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="event_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling tabs\event specific\event_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="settings_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\settings\settings_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="delete_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\delete\delete_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_180_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\standard rectangle\180w\180_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="info" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\info.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SGT" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\rank icons\SGT.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="print_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\print\print_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="reports_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\Reports\reports_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WO1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\rank icons\WO1.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="help_up1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\Help\help_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="soldiers_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\Soldier\soldiers_highlight.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PFC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\rank icons\PFC.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="save_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\save\save_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_2LT" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\rank icons\2LT.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="export_lotus_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\export\export_lotus_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ref_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\References\ref_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="event_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling tabs\event specific\event_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="extract_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling tabs\extracts\extract_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="help_down1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\Help\help_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="resources_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\Resources\resources_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="plus_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\+\plus_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="assess_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\assessment\assess_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="counseling_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\Counseling\counseling_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="savex_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\savex\savex_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="x_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\X\x_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="verbal_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\reports\Verbal\verbal_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CW2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\rank icons\CW2.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LTC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\rank icons\LTC.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="r4_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\reports\All Coun+Docs\r4_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ccp_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\counseling package\ccp_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="word_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\export to word\word_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\rank icons\MG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CW4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\rank icons\CW4.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SFC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\rank icons\SFC.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="x_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\X\x_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cont_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\continuation\cont_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_120_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\standard rectangle\120w\120_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Image1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Image1.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="help_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\Help\help_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="other_resources" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\resources links\other-resources.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_65_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\standard rectangle\65w\65_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ccp_highlight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\counseling package\ccp_highlight.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PV2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\rank icons\PV2.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="event_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling tabs\event specific\event_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="COL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\rank icons\COL.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="slide_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\reports\slider\slide_right.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="xfdl_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling editor\export to xfdl\xfdl_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Counselor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Counselor.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\rank icons\BG.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="help_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\Help\help_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_90_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\standard rectangle\90w\90_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="extract_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\counseling tabs\extracts\extract_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_150_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\standard rectangle\150w\150_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="filler" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\Tabs\filler.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_180_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\standard rectangle\180w\180_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="r3_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\reports\Outstanding\r3_down.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SPC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\rank icons\SPC.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="r4_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Images\buttons\reports\All Coun+Docs\r4_up.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+</root>

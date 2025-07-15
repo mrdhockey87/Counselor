@@ -1,0 +1,1144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E899E74F-2F19-4498-87FE-511D87920E55}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CounselQuickPlatinum</RootNamespace>
+    <AssemblyName>Counselor</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>55</ApplicationRevision>
+    <ApplicationVersion>4.3.7.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <UseWinFormsOutOfProcDesigner>True</UseWinFormsOutOfProcDesigner>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <UseWinFormsOutOfProcDesigner>True</UseWinFormsOutOfProcDesigner>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Counselor.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>CounselQuickPlatinum.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ionic.Zip">
+      <HintPath>lib\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.76.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>SQLite\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.1.1.10\lib\net40\System.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Net.Http, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Net.Http.2.2.29\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.1.1.10\lib\net40\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.1.1.10\lib\net40\System.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutDialog.Designer.cs">
+      <DependentUpon>AboutDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Authenticator.cs" />
+    <Compile Include="ContinuationOfCounselingFormFiller.cs" />
+    <Compile Include="ContinuationOfCounselingPDFForm.cs" />
+    <Compile Include="CQPDateTimePicker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CQPDateTimePicker.Designer.cs">
+      <DependentUpon>CQPDateTimePicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQPExceptions.cs" />
+    <Compile Include="CQPRichTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CQPRichTextBox.Designer.cs">
+      <DependentUpon>CQPRichTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQPTextbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQPTextbox.Designer.cs">
+      <DependentUpon>CQPTextbox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DA4856Filler.cs" />
+    <Compile Include="DA4856PDFForm.cs" />
+    <Compile Include="Encryption.cs" />
+    <Compile Include="ImportConflictDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportConflictDialog.Designer.cs">
+      <DependentUpon>ImportConflictDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LegalNotice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LegalNotice.Designer.cs">
+      <DependentUpon>LegalNotice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LetterEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LetterEditor.Designer.cs">
+      <DependentUpon>LetterEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LetterInterface.cs" />
+    <Compile Include="LetterModel.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="GenericMemoEditorStepTwo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GenericMemoEditorStepTwo.Designer.cs">
+      <DependentUpon>GenericMemoEditorStepTwo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DocumentsTabPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DocumentsTabPage.Designer.cs">
+      <DependentUpon>DocumentsTabPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GenericMemo.cs" />
+    <Compile Include="MemoModel.cs" />
+    <Compile Include="NewDocumentPresetDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewDocumentPresetDialog.Designer.cs">
+      <DependentUpon>NewDocumentPresetDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AssessmentDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AssessmentDialog.Designer.cs">
+      <DependentUpon>AssessmentDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AttachToDocumentDialog.cs" />
+    <Compile Include="AttachToDocumentDialog.Designer.cs">
+      <DependentUpon>AttachToDocumentDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQPButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQPButton.Designer.cs">
+      <DependentUpon>CQPButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQPButtonAddNew.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQPButtonAddNew.Designer.cs">
+      <DependentUpon>CQPButtonAddNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQPDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQPDataGridView.Designer.cs">
+      <DependentUpon>CQPDataGridView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQPDocumentsDataGridView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CQPDocumentsDataGridView.Designer.cs">
+      <DependentUpon>CQPDocumentsDataGridView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQPGradientPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQPGradientPanel.Designer.cs">
+      <DependentUpon>CQPGradientPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQPGraphicsCheckbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQPGraphicsCheckbox.Designer.cs">
+      <DependentUpon>CQPGraphicsCheckbox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQPGraphicsIcon.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQPGraphicsIcon.Designer.cs">
+      <DependentUpon>CQPGraphicsIcon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQPGrayRectangleButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQPGrayRectangleButton.Designer.cs">
+      <DependentUpon>CQPGrayRectangleButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQPGreenButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQPGreenButton.Designer.cs">
+      <DependentUpon>CQPGreenButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQPLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQPLabel.Designer.cs">
+      <DependentUpon>CQPLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQPLinkLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQPLinkLabel.Designer.cs">
+      <DependentUpon>CQPLinkLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQPMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CQPMessageBox.Designer.cs">
+      <DependentUpon>CQPMessageBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQPPrintButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQPPrintButton.Designer.cs">
+      <DependentUpon>CQPPrintButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQPSearchBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQPSearchBox.Designer.cs">
+      <DependentUpon>CQPSearchBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQPSmallPillButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQPSmallPillButton.Designer.cs">
+      <DependentUpon>CQPSmallPillButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQPTabControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CQPTabControl.Designer.cs">
+      <DependentUpon>CQPTabControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQPTabPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CQPTabPage.Designer.cs">
+      <DependentUpon>CQPTabPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CQPTextButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CQPTextButton.Designer.cs">
+      <DependentUpon>CQPTextButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DocumentExportController.cs" />
+    <Compile Include="ExportSoldiersDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportSoldiersDialog.Designer.cs">
+      <DependentUpon>ExportSoldiersDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form3.Designer.cs">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HelpTabPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HelpTabPage.Designer.cs">
+      <DependentUpon>HelpTabPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="VersionClass.cs" />
+    <Compile Include="XFDLForm.cs" />
+    <Compile Include="OptionsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OptionsDialog.Designer.cs">
+      <DependentUpon>OptionsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OptionsModel.cs" />
+    <Compile Include="Params.cs" />
+    <Compile Include="PdfFormInterface.cs" />
+    <Compile Include="PDFViewerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDFViewerForm.Designer.cs">
+      <DependentUpon>PDFViewerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PregnancyElectionStatementEditorStepOne.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PregnancyElectionStatementEditorStepOne.Designer.cs">
+      <DependentUpon>PregnancyElectionStatementEditorStepOne.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PregnancyElectionStatementElectionRequest.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PregnancyElectionStatementElectionRequest.Designer.cs">
+      <DependentUpon>PregnancyElectionStatementElectionRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PregnancyElectionStatementElectionResponse.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PregnancyElectionStatementElectionResponse.Designer.cs">
+      <DependentUpon>PregnancyElectionStatementElectionResponse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PregnancyElectionStatementMemo.cs" />
+    <Compile Include="PregnancyElectionStatementStepTwo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PregnancyElectionStatementStepTwo.Designer.cs">
+      <DependentUpon>PregnancyElectionStatementStepTwo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrintHTMLForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintHTMLForm.Designer.cs">
+      <DependentUpon>PrintHTMLForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProcessMonitor.cs" />
+    <Compile Include="PromptToSubmitCrashReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PromptToSubmitCrashReport.Designer.cs">
+      <DependentUpon>PromptToSubmitCrashReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReassignDocumentController.cs" />
+    <Compile Include="ReferencesTabPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ReferencesTabPage.Designer.cs">
+      <DependentUpon>ReferencesTabPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ResourcesTabPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ResourcesTabPage.Designer.cs">
+      <DependentUpon>ResourcesTabPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectSoldierDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectSoldierDialog.Designer.cs">
+      <DependentUpon>SelectSoldierDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfirmDetachDocumentDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfirmDetachDocumentDialog.Designer.cs">
+      <DependentUpon>ConfirmDetachDocumentDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ContinuationOfCounselingDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ContinuationOfCounselingDialog.Designer.cs">
+      <DependentUpon>ContinuationOfCounselingDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ContinuationOfCounselingXMLForm.cs" />
+    <Compile Include="DataExporter.cs" />
+    <Compile Include="DataImporter.cs" />
+    <Compile Include="DialogHelper.cs" />
+    <Compile Include="CounselingsForSoldierForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CounselingsForSoldierForm.Designer.cs">
+      <DependentUpon>CounselingsForSoldierForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CounselingTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CounselingTab.Designer.cs">
+      <DependentUpon>CounselingTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseConnection.cs" />
+    <Compile Include="DataLoadFailedException.cs" />
+    <Compile Include="DataStoreFailedException.cs" />
+    <Compile Include="DebugDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DebugDialog.Designer.cs">
+      <DependentUpon>DebugDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReassignChildDocumentsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReassignChildDocumentsDialog.Designer.cs">
+      <DependentUpon>ReassignChildDocumentsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Document.cs" />
+    <Compile Include="DocumentModel.cs" />
+    <Compile Include="DocumentReportPreset.cs" />
+    <Compile Include="DocumentsReportFiltersDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DocumentsReportFiltersDialog.Designer.cs">
+      <DependentUpon>DocumentsReportFiltersDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DocumentStatus.cs" />
+    <Compile Include="DocumentPropertiesDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DocumentPropertiesDialog.Designer.cs">
+      <DependentUpon>DocumentPropertiesDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditNoteDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditNoteDialog.Designer.cs">
+      <DependentUpon>EditNoteDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FileException.cs" />
+    <Compile Include="FileUtils.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAccessFailedException.cs" />
+    <Compile Include="FormattedSoldierTable.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FormattedSoldierTable.Designer.cs">
+      <DependentUpon>FormattedSoldierTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormInterface.cs" />
+    <Compile Include="NewSoldierPage1Dialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewSoldierPage1Dialog.Designer.cs">
+      <DependentUpon>NewSoldierPage1Dialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewSoldierPage2Dialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewSoldierPage2Dialog.Designer.cs">
+      <DependentUpon>NewSoldierPage2Dialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditSoldierDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditSoldierDialog.Designer.cs">
+      <DependentUpon>EditSoldierDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NonQueryFailedException.cs" />
+    <Compile Include="NoteInterface.cs" />
+    <Compile Include="NotesModel.cs" />
+    <Compile Include="PromptToCompleteCounselingPackageDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PromptToCompleteCounselingPackageDialog.Designer.cs">
+      <DependentUpon>PromptToCompleteCounselingPackageDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ranking.cs" />
+    <Compile Include="RecycleBinDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RecycleBinDialog.Designer.cs">
+      <DependentUpon>RecycleBinDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportsTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ReportsTab.Designer.cs">
+      <DependentUpon>ReportsTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectNewParentDocumentDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectNewParentDocumentDialog.Designer.cs">
+      <DependentUpon>SelectNewParentDocumentDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectTemplateValuesDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectTemplateValuesDialog.Designer.cs">
+      <DependentUpon>SelectTemplateValuesDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsModel.cs" />
+    <Compile Include="Soldier.cs" />
+    <Compile Include="SoldierInfoDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SoldierInfoDialog.Designer.cs">
+      <DependentUpon>SoldierInfoDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SoldierModel.cs" />
+    <Compile Include="SoldierReportFiltersDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SoldierReportFiltersDialog.Designer.cs">
+      <DependentUpon>SoldierReportFiltersDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SoldiersDialog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SoldiersDialog.Designer.cs">
+      <DependentUpon>SoldiersDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryFailedException.cs" />
+    <Compile Include="SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StatusStruct.cs" />
+    <Compile Include="Template.cs" />
+    <Compile Include="TemplatesModel.cs" />
+    <Compile Include="TransparentBackgroundForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TransparentBackgroundForm.Designer.cs">
+      <DependentUpon>TransparentBackgroundForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnitHierarchyModel.cs" />
+    <Compile Include="UploadUserGeneratedCounselingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UploadUserGeneratedCounselingForm.Designer.cs">
+      <DependentUpon>UploadUserGeneratedCounselingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserGeneratedOrTemplateDocDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserGeneratedOrTemplateDocDialog.Designer.cs">
+      <DependentUpon>UserGeneratedOrTemplateDocDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities.cs" />
+    <Compile Include="WaitDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WaitDialog.Designer.cs">
+      <DependentUpon>WaitDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WaitDialogInterface.cs" />
+    <Compile Include="WordDocument.cs" />
+    <Compile Include="WordInterop.cs" />
+    <Compile Include="WordInteropException.cs" />
+    <Compile Include="DA4856XMLForm.cs" />
+    <Compile Include="DA4856Document.cs" />
+    <Compile Include="XFDLDocumentModel.cs" />
+    <Compile Include="XFDLEditorPage1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XFDLEditorPage1.Designer.cs">
+      <DependentUpon>XFDLEditorPage1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XFDLExportOverflowWarningDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XFDLExportOverflowWarningDialog.Designer.cs">
+      <DependentUpon>XFDLExportOverflowWarningDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XFDLFEditorPage2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XFDLFEditorPage2.Designer.cs">
+      <DependentUpon>XFDLFEditorPage2.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AboutDialog.resx">
+      <DependentUpon>AboutDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CQPDateTimePicker.resx">
+      <DependentUpon>CQPDateTimePicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CQPRichTextBox.resx">
+      <DependentUpon>CQPRichTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CQPSearchBox.resx">
+      <DependentUpon>CQPSearchBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CQPTextbox.resx">
+      <DependentUpon>CQPTextbox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GenericMemoEditorStepTwo.resx">
+      <DependentUpon>GenericMemoEditorStepTwo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DocumentsTabPage.resx">
+      <DependentUpon>DocumentsTabPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImportConflictDialog.resx">
+      <DependentUpon>ImportConflictDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LegalNotice.resx">
+      <DependentUpon>LegalNotice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LetterEditor.resx">
+      <DependentUpon>LetterEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewDocumentPresetDialog.resx">
+      <DependentUpon>NewDocumentPresetDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AssessmentDialog.resx">
+      <DependentUpon>AssessmentDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AttachToDocumentDialog.resx">
+      <DependentUpon>AttachToDocumentDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CQPButton.resx">
+      <DependentUpon>CQPButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CQPDataGridView.resx">
+      <DependentUpon>CQPDataGridView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CQPDocumentsDataGridView.resx">
+      <DependentUpon>CQPDocumentsDataGridView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CQPGradientPanel.resx">
+      <DependentUpon>CQPGradientPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CQPGraphicsCheckbox.resx">
+      <DependentUpon>CQPGraphicsCheckbox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CQPGrayRectangleButton.resx">
+      <DependentUpon>CQPGrayRectangleButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CQPGreenButton.resx">
+      <DependentUpon>CQPGreenButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CQPLabel.resx">
+      <DependentUpon>CQPLabel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CQPLinkLabel.resx">
+      <DependentUpon>CQPLinkLabel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CQPMessageBox.resx">
+      <DependentUpon>CQPMessageBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CQPPrintButton.resx">
+      <DependentUpon>CQPPrintButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CQPSmallPillButton.resx">
+      <DependentUpon>CQPSmallPillButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CQPTabControl.resx">
+      <DependentUpon>CQPTabControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CQPTabPage.resx">
+      <DependentUpon>CQPTabPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExportSoldiersDialog.resx">
+      <DependentUpon>ExportSoldiersDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form3.resx">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HelpTabPage.resx">
+      <DependentUpon>HelpTabPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OptionsDialog.resx">
+      <DependentUpon>OptionsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDFViewerForm.resx">
+      <DependentUpon>PDFViewerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PregnancyElectionStatementEditorStepOne.resx">
+      <DependentUpon>PregnancyElectionStatementEditorStepOne.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PregnancyElectionStatementElectionRequest.resx">
+      <DependentUpon>PregnancyElectionStatementElectionRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PregnancyElectionStatementStepTwo.resx">
+      <DependentUpon>PregnancyElectionStatementStepTwo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintHTMLForm.resx">
+      <DependentUpon>PrintHTMLForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PromptToSubmitCrashReport.resx">
+      <DependentUpon>PromptToSubmitCrashReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReferencesTabPage.resx">
+      <DependentUpon>ReferencesTabPage.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResourcesTabPage.resx">
+      <DependentUpon>ResourcesTabPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectSoldierDialog.resx">
+      <DependentUpon>SelectSoldierDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfirmDetachDocumentDialog.resx">
+      <DependentUpon>ConfirmDetachDocumentDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContinuationOfCounselingDialog.resx">
+      <DependentUpon>ContinuationOfCounselingDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CounselingsForSoldierForm.resx">
+      <DependentUpon>CounselingsForSoldierForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CounselingTab.resx">
+      <DependentUpon>CounselingTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DebugDialog.resx">
+      <DependentUpon>DebugDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReassignChildDocumentsDialog.resx">
+      <DependentUpon>ReassignChildDocumentsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DocumentsReportFiltersDialog.resx">
+      <DependentUpon>DocumentsReportFiltersDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DocumentPropertiesDialog.resx">
+      <DependentUpon>DocumentPropertiesDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditNoteDialog.resx">
+      <DependentUpon>EditNoteDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormattedSoldierTable.resx">
+      <DependentUpon>FormattedSoldierTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewSoldierPage1Dialog.resx">
+      <DependentUpon>NewSoldierPage1Dialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewSoldierPage2Dialog.resx">
+      <DependentUpon>NewSoldierPage2Dialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditSoldierDialog.resx">
+      <DependentUpon>EditSoldierDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PromptToCompleteCounselingPackageDialog.resx">
+      <DependentUpon>PromptToCompleteCounselingPackageDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RecycleBinDialog.resx">
+      <DependentUpon>RecycleBinDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportsTab.resx">
+      <DependentUpon>ReportsTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectNewParentDocumentDialog.resx">
+      <DependentUpon>SelectNewParentDocumentDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectTemplateValuesDialog.resx">
+      <DependentUpon>SelectTemplateValuesDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SoldierInfoDialog.resx">
+      <DependentUpon>SoldierInfoDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SoldierReportFiltersDialog.resx">
+      <DependentUpon>SoldierReportFiltersDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SoldiersDialog.resx">
+      <DependentUpon>SoldiersDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TransparentBackgroundForm.resx">
+      <DependentUpon>TransparentBackgroundForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UploadUserGeneratedCounselingForm.resx">
+      <DependentUpon>UploadUserGeneratedCounselingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl1.resx">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserGeneratedOrTemplateDocDialog.resx">
+      <DependentUpon>UserGeneratedOrTemplateDocDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WaitDialog.resx">
+      <DependentUpon>WaitDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XFDLEditorPage1.resx">
+      <DependentUpon>XFDLEditorPage1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XFDLExportOverflowWarningDialog.resx">
+      <DependentUpon>XFDLExportOverflowWarningDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XFDLFEditorPage2.resx">
+      <DependentUpon>XFDLFEditorPage2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PackageIcon.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SingleDocumentIcon.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Counselor.ico" />
+    <Content Include="Resources\ACO.PNG" />
+    <None Include="Resources\Images\splash.png" />
+    <None Include="Resources\Images\rank icons\WO1.png" />
+    <None Include="Resources\Images\rank icons\SSG.png" />
+    <None Include="Resources\Images\rank icons\SPC.png" />
+    <None Include="Resources\Images\rank icons\SGT.png" />
+    <None Include="Resources\Images\rank icons\SGM.png" />
+    <None Include="Resources\Images\rank icons\SFC.png" />
+    <None Include="Resources\Images\rank icons\PVT.png" />
+    <None Include="Resources\Images\rank icons\PV2.png" />
+    <None Include="Resources\Images\rank icons\PFC.png" />
+    <None Include="Resources\Images\rank icons\NEW.png" />
+    <None Include="Resources\Images\rank icons\MSG.png" />
+    <None Include="Resources\Images\rank icons\MG.png" />
+    <None Include="Resources\Images\rank icons\MAJ.png" />
+    <None Include="Resources\Images\rank icons\LTG.png" />
+    <None Include="Resources\Images\rank icons\LTC.png" />
+    <None Include="Resources\Images\rank icons\GEN.png" />
+    <None Include="Resources\Images\rank icons\CW5.png" />
+    <None Include="Resources\Images\rank icons\CW4.png" />
+    <None Include="Resources\Images\rank icons\CW3.png" />
+    <None Include="Resources\Images\rank icons\CW2.png" />
+    <None Include="Resources\Images\rank icons\CSM.png" />
+    <None Include="Resources\Images\rank icons\CPT.png" />
+    <None Include="Resources\Images\rank icons\CPL.png" />
+    <None Include="Resources\Images\rank icons\COL.png" />
+    <None Include="Resources\Images\rank icons\BG.png" />
+    <None Include="Resources\Images\rank icons\2LT.png" />
+    <None Include="Resources\Images\rank icons\1SG.png" />
+    <None Include="Resources\Images\rank icons\1LT.png" />
+    <None Include="Resources\Images\Counselor.ico" />
+    <None Include="Resources\Images\counseling editor\pdf\pdf_up.png" />
+    <None Include="Resources\Images\counseling editor\pdf\pdf_highlight.png" />
+    <None Include="Resources\Images\counseling editor\pdf\pdf_down.png" />
+    <None Include="Resources\Images\counseling editor\pdf\pdf_disabled.png" />
+    <None Include="Resources\Images\buttons\reports\Pending\pending_up.png" />
+    <None Include="Resources\Images\buttons\reports\Pending\pending_down.png" />
+    <None Include="Resources\Images\buttons\reports\Pending\pending_disabled.png" />
+    <None Include="Resources\Images\buttons\reports\Complete\complete_up.png" />
+    <None Include="Resources\Images\buttons\reports\Complete\complete_highlight.png" />
+    <None Include="Resources\Images\buttons\reports\Complete\complete_down.png" />
+    <None Include="Resources\Images\buttons\reports\Complete\complete_disabled.png" />
+    <None Include="Resources\Images\buttons\reports\Verbal\verbal_up.png" />
+    <None Include="Resources\Images\buttons\reports\Verbal\verbal_highlight.png" />
+    <None Include="Resources\Images\buttons\reports\Verbal\verbal_down.png" />
+    <None Include="Resources\Images\buttons\reports\Verbal\verbal_disabled.png" />
+    <None Include="Resources\Images\counseling editor\assessment\assess_up.png" />
+    <None Include="Resources\Images\counseling editor\assessment\assess_highlight.png" />
+    <None Include="Resources\Images\counseling editor\assessment\assess_down.png" />
+    <None Include="Resources\Images\counseling editor\assessment\assess_disabled.png" />
+    <None Include="Resources\Images\buttons\reports\Pending\pending_highlight.png" />
+    <None Include="Resources\Images\counseling editor\export to word\word_down.png" />
+    <None Include="Resources\Images\counseling editor\export to word\word_disabled.png" />
+    <None Include="Resources\Images\counseling editor\export to word\word_highlight.png" />
+    <None Include="Resources\Images\counseling editor\export to word\word_up.png" />
+    <None Include="Resources\Images\counseling editor\export to xfdl\xfdl_down.png" />
+    <None Include="Resources\Images\counseling editor\export to xfdl\xfdl_disabled.png" />
+    <None Include="Resources\Images\counseling editor\export to xfdl\xfdl_highlight.png" />
+    <None Include="Resources\Images\counseling editor\export to xfdl\xfdl_up.png" />
+    <None Include="Resources\Images\counseling editor\prev\prev_down.png" />
+    <None Include="Resources\Images\counseling editor\prev\prev_disabled.png" />
+    <None Include="Resources\Images\counseling editor\prev\prev_highlight.png" />
+    <None Include="Resources\Images\counseling editor\prev\prev_up.png" />
+    <None Include="Resources\HTML\blank.html" />
+    <None Include="Resources\Images\buttons\single counseling\single_up.png" />
+    <None Include="Resources\Images\buttons\single counseling\single_highlight.png" />
+    <None Include="Resources\Images\buttons\single counseling\single_down.png" />
+    <None Include="Resources\Images\buttons\single counseling\single_disabled.png" />
+    <None Include="Resources\Images\buttons\counseling package\ccp_up.png" />
+    <None Include="Resources\Images\buttons\counseling package\ccp_highlight.png" />
+    <None Include="Resources\Images\buttons\counseling package\ccp_down.png" />
+    <None Include="Resources\Images\buttons\counseling package\ccp_disabled.png" />
+    <None Include="Resources\Images\buttons\X\x_up.png" />
+    <None Include="Resources\Images\buttons\X\x_highlight.png" />
+    <None Include="Resources\Images\buttons\X\x_down.png" />
+    <None Include="Resources\Images\buttons\X\x_disabled.png" />
+    <None Include="Resources\Images\buttons\+\plus_up.png" />
+    <None Include="Resources\Images\buttons\+\plus_highlight.png" />
+    <None Include="Resources\Images\buttons\+\plus_down.png" />
+    <None Include="Resources\Images\buttons\+\plus_disabled.png" />
+    <Content Include="Resources\ASKTOP.PNG" />
+    <None Include="Resources\Images\counseling editor\next\next_up.png" />
+    <None Include="Resources\Images\counseling editor\next\next_highlight.png" />
+    <None Include="Resources\Images\counseling editor\next\next_down.png" />
+    <None Include="Resources\Images\counseling editor\next\next_disabled.png" />
+    <None Include="Resources\Images\counseling editor\continuation\cont_up.png" />
+    <None Include="Resources\Images\counseling editor\continuation\cont_highlight.png" />
+    <None Include="Resources\Images\counseling editor\continuation\cont_down.png" />
+    <None Include="Resources\Images\counseling editor\continuation\cont_disabled.png" />
+    <None Include="Resources\Images\question.png" />
+    <None Include="Resources\Images\info.png" />
+    <None Include="Resources\Images\error.png" />
+    <None Include="Resources\Images\Tabs\Documents\documents_up.png" />
+    <None Include="Resources\Images\Tabs\Documents\documents_highlight.png" />
+    <None Include="Resources\Images\Tabs\Documents\documents_down.png" />
+    <None Include="Resources\Images\Tabs\Documents\documents_disabled.png" />
+    <None Include="Resources\Images\Tabs\References\references_up.png" />
+    <None Include="Resources\Images\Tabs\References\references_highlight.png" />
+    <None Include="Resources\Images\Tabs\References\references_down.png" />
+    <None Include="Resources\Images\Tabs\References\references_disabled.png" />
+    <None Include="Resources\Images\counseling editor\divider_bar.png" />
+    <None Include="Resources\Images\counseling editor\export\export_lotus_up.png" />
+    <None Include="Resources\Images\counseling editor\export\export_lotus_highlight.png" />
+    <None Include="Resources\Images\counseling editor\export\export_lotus_down.png" />
+    <None Include="Resources\Images\counseling editor\export\export_lotus_disabled.png" />
+    <None Include="Resources\Images\counseling editor\discard\discard_up.png" />
+    <None Include="Resources\Images\counseling editor\discard\discard_highlight.png" />
+    <None Include="Resources\Images\counseling editor\discard\discard_down.png" />
+    <None Include="Resources\Images\counseling editor\discard\discard_disabled.png" />
+    <None Include="Resources\Images\counseling editor\savex\savex_up.png" />
+    <None Include="Resources\Images\counseling editor\savex\savex_highlight.png" />
+    <None Include="Resources\Images\counseling editor\savex\savex_down.png" />
+    <None Include="Resources\Images\counseling editor\savex\savex_disabled.png" />
+    <None Include="Resources\Images\counseling editor\save\save_up.png" />
+    <None Include="Resources\Images\counseling editor\save\save_highlight.png" />
+    <None Include="Resources\Images\counseling editor\save\save_down.png" />
+    <None Include="Resources\Images\counseling editor\save\save_disabled.png" />
+    <None Include="Resources\Images\buttons\standard rectangle\180w\180_up.png" />
+    <None Include="Resources\Images\buttons\standard rectangle\180w\180_highlight.png" />
+    <None Include="Resources\Images\buttons\standard rectangle\180w\180_down.png" />
+    <None Include="Resources\Images\buttons\standard rectangle\180w\180_disabled.png" />
+    <None Include="Resources\Images\buttons\standard rectangle\150w\150_up.png" />
+    <None Include="Resources\Images\buttons\standard rectangle\150w\150_highlight.png" />
+    <None Include="Resources\Images\buttons\standard rectangle\150w\150_down.png" />
+    <None Include="Resources\Images\buttons\standard rectangle\150w\150_disabled.png" />
+    <None Include="Resources\Images\warning.png" />
+    <None Include="Resources\Images\Tabs\dropshadow2.png" />
+    <None Include="Resources\Images\Tabs\dropshadow.png" />
+    <None Include="Resources\Images\buttons\option_dropdown\opt_up.png" />
+    <None Include="Resources\Images\buttons\option_dropdown\opt_highlight.png" />
+    <None Include="Resources\Images\buttons\option_dropdown\opt_down.png" />
+    <None Include="Resources\Images\buttons\option_dropdown\opt_disabled.png" />
+    <None Include="Resources\Images\buttons\edit\edit_up.png" />
+    <None Include="Resources\Images\buttons\edit\edit_highlight.png" />
+    <None Include="Resources\Images\buttons\edit\edit_down.png" />
+    <None Include="Resources\Images\buttons\edit\edit_disabled.png" />
+    <None Include="Resources\Images\counseling tabs\general tab\general_up.png" />
+    <None Include="Resources\Images\counseling tabs\general tab\general_highlight.png" />
+    <None Include="Resources\Images\counseling tabs\general tab\general_down.png" />
+    <None Include="Resources\Images\counseling tabs\general tab\general_disabled.png" />
+    <None Include="Resources\Images\counseling tabs\extracts\extract_up.png" />
+    <None Include="Resources\Images\counseling tabs\extracts\extract_highlight.png" />
+    <None Include="Resources\Images\counseling tabs\extracts\extract_down.png" />
+    <None Include="Resources\Images\counseling tabs\extracts\extract_disabled.png" />
+    <None Include="Resources\Images\counseling tabs\event specific\event_up.png" />
+    <None Include="Resources\Images\counseling tabs\event specific\event_highlight.png" />
+    <None Include="Resources\Images\counseling tabs\event specific\event_down.png" />
+    <None Include="Resources\Images\Tabs\Help\help_up.png" />
+    <None Include="Resources\Images\Tabs\Help\help_highlight.png" />
+    <None Include="Resources\Images\Tabs\Help\help_down.png" />
+    <None Include="Resources\Images\Tabs\Help\help_disabled.png" />
+    <None Include="Resources\Images\Tabs\Resources\resources_up.png" />
+    <None Include="Resources\Images\Tabs\Resources\resources_highlight.png" />
+    <None Include="Resources\Images\Tabs\Resources\resources_down.png" />
+    <None Include="Resources\Images\Tabs\Resources\resources_disabled.png" />
+    <None Include="Resources\Images\Tabs\References\ref_up.png" />
+    <None Include="Resources\Images\Tabs\References\ref_highlight.png" />
+    <None Include="Resources\Images\Tabs\References\ref_down.png" />
+    <None Include="Resources\Images\Tabs\References\ref_disabled.png" />
+    <None Include="Resources\Images\Tabs\Reports\reports_up.png" />
+    <None Include="Resources\Images\Tabs\Reports\reports_highlight.png" />
+    <None Include="Resources\Images\Tabs\Reports\reports_down.png" />
+    <None Include="Resources\Images\Tabs\Reports\reports_disabled.png" />
+    <None Include="Resources\Images\Tabs\Counseling\counseling_up.png" />
+    <None Include="Resources\Images\Tabs\Counseling\counseling_highlight.png" />
+    <None Include="Resources\Images\Tabs\Counseling\counseling_down.png" />
+    <None Include="Resources\Images\Tabs\Counseling\counseling_disabled.png" />
+    <None Include="Resources\Images\Tabs\Soldier\soldiers_up.png" />
+    <None Include="Resources\Images\Tabs\Soldier\soldiers_highlight.png" />
+    <None Include="Resources\Images\Tabs\Soldier\soldiers_down.png" />
+    <None Include="Resources\Images\Tabs\Soldier\soldiers_disabled.png" />
+    <None Include="Resources\Images\buttons\standard rectangle\120w\120_up.png" />
+    <None Include="Resources\Images\buttons\standard rectangle\120w\120_highlight.png" />
+    <None Include="Resources\Images\buttons\standard rectangle\120w\120_down.png" />
+    <None Include="Resources\Images\buttons\standard rectangle\120w\120_disabled.png" />
+    <None Include="Resources\Images\buttons\settings\settings_up.png" />
+    <None Include="Resources\Images\buttons\settings\settings_highlight.png" />
+    <None Include="Resources\Images\buttons\settings\settings_down.png" />
+    <None Include="Resources\Images\buttons\settings\settings_disabled.png" />
+    <None Include="Resources\Images\Tabs\filler.jpg" />
+    <None Include="Resources\Images\Tabs\Soldier\soldiers_up.jpg" />
+    <None Include="Resources\Images\Tabs\Soldier\soldiers_highlight.jpg" />
+    <None Include="Resources\Images\Tabs\Soldier\soldiers_down.jpg" />
+    <None Include="Resources\Images\Tabs\Soldier\soldiers_disabled.jpg" />
+    <None Include="Resources\Images\counseling tabs\event specific\event_disabled.png" />
+    <None Include="Resources\Images\buttons\delete\delete_up.png" />
+    <None Include="Resources\Images\buttons\delete\delete_highlight.png" />
+    <None Include="Resources\Images\buttons\delete\delete_down.png" />
+    <None Include="Resources\Images\buttons\delete\delete_disabled.png" />
+    <None Include="Resources\Images\buttons\save\save_up.png" />
+    <None Include="Resources\Images\buttons\save\save_highlight.png" />
+    <None Include="Resources\Images\buttons\save\save_down.png" />
+    <None Include="Resources\Images\buttons\save\save_disabled.png" />
+    <None Include="Resources\Images\buttons\reports\Outstanding\r3_up.png" />
+    <None Include="Resources\Images\buttons\reports\Outstanding\r3_highlight.png" />
+    <None Include="Resources\Images\buttons\reports\Outstanding\r3_down.png" />
+    <None Include="Resources\Images\buttons\reports\Outstanding\r3_disabled.png" />
+    <None Include="Resources\Images\buttons\reports\All Coun+Docs\r4_up.png" />
+    <None Include="Resources\Images\buttons\reports\All Coun+Docs\r4_highlight.png" />
+    <None Include="Resources\Images\buttons\reports\All Coun+Docs\r4_down.png" />
+    <None Include="Resources\Images\buttons\reports\All Coun+Docs\r4_disabled.png" />
+    <None Include="Resources\Images\buttons\reports\slider\slide_right.png" />
+    <None Include="Resources\Images\buttons\reports\slider\slide_onclick.png" />
+    <None Include="Resources\Images\buttons\reports\slider\slide_left.png" />
+    <None Include="Resources\Images\buttons\standard rectangle\90w\90_up.png" />
+    <None Include="Resources\Images\buttons\standard rectangle\90w\90_highlight.png" />
+    <None Include="Resources\Images\buttons\standard rectangle\90w\90_down.png" />
+    <None Include="Resources\Images\buttons\standard rectangle\90w\90_disabled.png" />
+    <None Include="Resources\Images\resources links\other-resources.png" />
+    <None Include="Resources\Images\resources links\asktop_banner.png" />
+    <None Include="Resources\Images\resources links\ACO_banner.png" />
+    <None Include="Resources\Images\buttons\standard rectangle\65w\65_up.png" />
+    <None Include="Resources\Images\buttons\standard rectangle\65w\65_highlight.png" />
+    <None Include="Resources\Images\buttons\standard rectangle\65w\65_down.png" />
+    <None Include="Resources\Images\buttons\standard rectangle\65w\65_disabled.png" />
+    <None Include="Resources\Images\buttons\print\print_up.png" />
+    <None Include="Resources\Images\buttons\print\print_highlight.png" />
+    <None Include="Resources\Images\buttons\print\print_down.png" />
+    <None Include="Resources\Images\buttons\print\print_disabled.png" />
+    <None Include="Resources\Images\buttons\small_pill\smpill_up.png" />
+    <None Include="Resources\Images\buttons\small_pill\smpill_highligh.png" />
+    <None Include="Resources\Images\buttons\small_pill\smpill_down.png" />
+    <None Include="Resources\Images\buttons\small_pill\smpill_disabled.png" />
+    <None Include="Resources\Images\buttons\add_new\90w\new90_up.png" />
+    <None Include="Resources\Images\buttons\add_new\90w\new90_highlight.png" />
+    <None Include="Resources\Images\buttons\add_new\90w\new90_down.png" />
+    <None Include="Resources\Images\buttons\add_new\90w\new90_disabled.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>copy $(TargetDir)Counselor.exe $(TargetDir)CounselorObf.exe</PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+  </Target>
+</Project>

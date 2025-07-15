@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XFDL xmlns:custom="http://www.ibm.com/xmlns/prod/XFDL/Custom" xmlns:designer="http://www.ibm.com/xmlns/prod/workplace/forms/designer/2.6" xmlns:ev="http://www.w3.org/2001/xml-events" xml:lang="en-US-u-cu-USD-x-csymbol-$" xmlns:xfdl="http://www.ibm.com/xmlns/prod/XFDL/7.7" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns="http://www.ibm.com/xmlns/prod/XFDL/7.7" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+       <globalpage sid="global">
+
+              <global sid="global">
+
+                  <formid>
+                <title></title>
+                <serialnumber>299FE4639DA9B870:-778E7E73:12C2C970C3E:-7FF9</serialnumber>
+                <version>1.0.0</version>
+            </formid>
+            <xformsmodels>
+                <xforms:model>
+                    <xforms:instance id="Generated" designer:type="generated" xmlns="">
+                  <data>
+                     <page1>
+                        <field1> </field1>
+                        <field2> </field2>
+                        <field3></field3>
+                        <field4></field4>
+                        <field5></field5>
+                     </page1>
+                  </data>
+               </xforms:instance>
+                </xforms:model>
+            </xformsmodels>
+         <designer:date>20101108</designer:date>
+         <history>
+            <editors>
+               <editor minversion="3.5" version="3.5.1">IBM Lotus Forms Designer</editor>
+            </editors>
+         </history>
+         <printsettings>
+            <pages>
+               <filter>omit</filter>
+               <pageref>TOOLBAR</pageref>
+            </pages>
+         </printsettings>
+         <publicdata>
+            <dataref>
+               <ref>instance('Generated')/page1/field1</ref>
+               <name>field1</name>
+               <type>xsd:anySimpleType</type>
+            </dataref>
+         </publicdata>
+        </global>
+
+       </globalpage>
+
+    <page sid="page1">
+        <global sid="global">
+         <designer:pagesize>960;1260</designer:pagesize>
+         <label>DA 4856 Counselling Form</label>
+      </global>
+      <line sid="LINE1">
+         <itemlocation>
+            <x>55</x>
+            <y>66</y>
+            <width>851</width>
+            <height>3</height>
+         </itemlocation>
+      </line>
+      <field sid="FIELD1">
+         <xforms:textarea ref="instance('Generated')/page1/field1">
+            <xforms:label></xforms:label>
+         </xforms:textarea>
+         <itemlocation>
+            <x>70</x>
+            <y>111</y>
+            <width>818</width>
+            <height>937</height>
+         </itemlocation>
+         <scrollhoriz>wordwrap</scrollhoriz>
+         <scrollvert>fixed</scrollvert>
+         <border>off</border>
+         <labelfontinfo>
+            <fontname>Times New Roman</fontname>
+            <size>8</size>
+         </labelfontinfo>
+         <labelbgcolor>#FFFFFF</labelbgcolor>
+         <fontinfo>
+            <fontname>Times New Roman</fontname>
+            <size>8</size>
+         </fontinfo>
+         <bgcolor>transparent</bgcolor>
+      </field>
+      <field sid="FIELD2">
+         <xforms:textarea ref="instance('Generated')/page1/field2">
+            <xforms:label></xforms:label>
+         </xforms:textarea>
+         <itemlocation>
+            <x>68</x>
+            <y>1080</y>
+            <width>362</width>
+            <height>28</height>
+         </itemlocation>
+         <scrollhoriz>wordwrap</scrollhoriz>
+         <scrollvert>fixed</scrollvert>
+         <border>off</border>
+         <labelfontinfo>
+            <fontname>Times New Roman</fontname>
+            <size>8</size>
+         </labelfontinfo>
+         <labelbgcolor>#FFFFFF</labelbgcolor>
+         <fontinfo>
+            <fontname>Times New Roman</fontname>
+            <size>8</size>
+         </fontinfo>
+      </field>
+      <field sid="FIELD3">
+         <xforms:textarea ref="instance('Generated')/page1/field3">
+            <xforms:label></xforms:label>
+         </xforms:textarea>
+         <itemlocation>
+            <x>764</x>
+            <y>1081</y>
+            <width>131</width>
+            <height>28</height>
+         </itemlocation>
+         <scrollhoriz>wordwrap</scrollhoriz>
+         <scrollvert>fixed</scrollvert>
+         <border>off</border>
+         <labelfontinfo>
+            <fontname>Times New Roman</fontname>
+            <size>8</size>
+         </labelfontinfo>
+         <labelbgcolor>#FFFFFF</labelbgcolor>
+         <fontinfo>
+            <fontname>Times New Roman</fontname>
+            <size>8</size>
+         </fontinfo>
+      </field>
+      <field sid="FIELD4">
+         <xforms:textarea ref="instance('Generated')/page1/field4">
+            <xforms:label></xforms:label>
+         </xforms:textarea>
+         <itemlocation>
+            <x>68</x>
+            <y>1147</y>
+            <width>362</width>
+            <height>28</height>
+         </itemlocation>
+         <scrollhoriz>wordwrap</scrollhoriz>
+         <scrollvert>fixed</scrollvert>
+         <border>off</border>
+         <labelfontinfo>
+            <fontname>Times New Roman</fontname>
+            <size>8</size>
+         </labelfontinfo>
+         <labelbgcolor>#FFFFFF</labelbgcolor>
+         <fontinfo>
+            <fontname>Times New Roman</fontname>
+            <size>8</size>
+         </fontinfo>
+      </field>
+      <field sid="FIELD5">
+         <xforms:textarea ref="instance('Generated')/page1/field5">
+            <xforms:label></xforms:label>
+         </xforms:textarea>
+         <itemlocation>
+            <x>764</x>
+            <y>1147</y>
+            <width>131</width>
+            <height>28</height>
+         </itemlocation>
+         <scrollhoriz>wordwrap</scrollhoriz>
+         <scrollvert>fixed</scrollvert>
+         <border>off</border>
+         <labelfontinfo>
+            <fontname>Times New Roman</fontname>
+            <size>8</size>
+         </labelfontinfo>
+         <labelbgcolor>#FFFFFF</labelbgcolor>
+         <fontinfo>
+            <fontname>Times New Roman</fontname>
+            <size>8</size>
+         </fontinfo>
+      </field>
+      <line sid="LINE2">
+         <itemlocation>
+            <x>54</x>
+            <y>67</y>
+            <width>3</width>
+            <height>1119</height>
+         </itemlocation>
+      </line>
+      <line sid="LINE3">
+         <itemlocation>
+            <x>57</x>
+            <y>87</y>
+            <width>848</width>
+            <height>3</height>
+         </itemlocation>
+      </line>
+      <line sid="LINE4">
+         <itemlocation>
+            <x>55</x>
+            <y>1051</y>
+            <width>853</width>
+            <height>2</height>
+         </itemlocation>
+      </line>
+      <line sid="LINE5">
+         <itemlocation>
+            <x>55</x>
+            <y>1115</y>
+            <width>851</width>
+            <height>2</height>
+         </itemlocation>
+      </line>
+      <line sid="LINE6">
+         <itemlocation>
+            <x>56</x>
+            <y>1183</y>
+            <width>851</width>
+            <height>3</height>
+         </itemlocation>
+      </line>
+      <line sid="LINE7">
+         <itemlocation>
+            <x>905</x>
+            <y>66</y>
+            <width>3</width>
+            <height>1120</height>
+         </itemlocation>
+      </line>
+      <label sid="LABEL1">
+         <itemlocation>
+            <x>364</x>
+            <y>66</y>
+         </itemlocation>
+         <value>CONTINUATION OF COUNSELING</value>
+         <fontinfo>
+            <fontname>Arial</fontname>
+            <size>9</size>
+            <effect>bold</effect>
+         </fontinfo>
+      </label>
+      <label sid="LABEL2">
+         <itemlocation>
+            <x>70</x>
+            <y>92</y>
+         </itemlocation>
+         <value>ADDITIONAL NOTATION:</value>
+         <fontinfo>
+            <fontname>Arial</fontname>
+            <size>8</size>
+            <effect>bold</effect>
+         </fontinfo>
+      </label>
+      <label sid="LABEL3">
+         <itemlocation>
+            <x>70</x>
+            <y>1056</y>
+         </itemlocation>
+         <value>NAME AND GRADE OF COUNSELEE:</value>
+         <fontinfo>
+            <fontname>Helvetica</fontname>
+            <size>8</size>
+         </fontinfo>
+      </label>
+      <label sid="LABEL4">
+         <itemlocation>
+            <x>70</x>
+            <y>1120</y>
+         </itemlocation>
+         <value>NAME AND GRADE OF COUNSELOR:</value>
+         <fontinfo>
+            <fontname>Helvetica</fontname>
+            <size>8</size>
+         </fontinfo>
+      </label>
+      <line sid="LINE8">
+         <itemlocation>
+            <x>436</x>
+            <y>1051</y>
+            <width>2</width>
+            <height>135</height>
+         </itemlocation>
+      </line>
+      <line sid="LINE9">
+         <itemlocation>
+            <x>755</x>
+            <y>1051</y>
+            <width>2</width>
+            <height>135</height>
+         </itemlocation>
+      </line>
+      <label sid="LABEL5">
+         <itemlocation>
+            <x>444</x>
+            <y>1056</y>
+         </itemlocation>
+         <value>SIGNATURE:</value>
+         <fontinfo>
+            <fontname>Helvetica</fontname>
+            <size>8</size>
+         </fontinfo>
+      </label>
+      <label sid="LABEL6">
+         <itemlocation>
+            <x>444</x>
+            <y>1120</y>
+            <height>22</height>
+         </itemlocation>
+         <value>SIGNATURE:
+</value>
+         <fontinfo>
+            <fontname>Helvetica</fontname>
+            <size>8</size>
+         </fontinfo>
+      </label>
+      <label sid="LABEL7">
+         <itemlocation>
+            <x>766</x>
+            <y>1056</y>
+         </itemlocation>
+         <value>DATE:</value>
+         <fontinfo>
+            <fontname>Helvetica</fontname>
+            <size>8</size>
+         </fontinfo>
+      </label>
+      <label sid="LABEL8">
+         <itemlocation>
+            <x>766</x>
+            <y>1120</y>
+            <height>22</height>
+         </itemlocation>
+         <value>DATE:</value>
+         <fontinfo>
+            <fontname>Helvetica</fontname>
+            <size>8</size>
+         </fontinfo>
+      </label>
+      <label sid="LABEL9">
+         <itemlocation>
+            <x>54</x>
+            <y>1184</y>
+            <width>636</width>
+            <height>22</height>
+         </itemlocation>
+         <value>CONTINUATION OF COUNSELING  |  ©2012 Mentor Enterprises Inc.</value>
+         <fontinfo>
+            <fontname>Arial</fontname>
+            <size>8</size>
+            <effect>italic</effect>
+         </fontinfo>
+      </label>
+      <label sid="LABEL10">
+         <itemlocation>
+            <x>54</x>
+            <y>1201</y>
+            <width>636</width>
+            <height>22</height>
+         </itemlocation>
+         <value>Distribution and reproduction of this form or formatting for any purpose, other than individual use, is prohibited.</value>
+ 
+         <fontinfo>
+            <fontname>Arial</fontname>
+            <size>6</size>
+            <effect>italic</effect>
+         </fontinfo>
+      </label>
+    </page>
+</XFDL>
