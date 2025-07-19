@@ -97,7 +97,7 @@ namespace CounselQuickPlatinum
                 foreach (DataRow unitDesignatorRow in unitDesignatorsTable.Rows)
                 {
                     int unitDesignatorID = Convert.ToInt32(unitDesignatorRow["unitdesignatorid"]);
-                    //string unitDesignatorName = unitDesignatorRow["unitdesignatorname"].ToString();
+
                     string unitDesignatorName = UnitHierarchyModel.GetUnitDesignatorName(unitDesignatorID);
 
                     DataRow[] soldiersInUnit
@@ -248,7 +248,6 @@ namespace CounselQuickPlatinum
                     while (n != null)
                     {
                         n.Checked = bCheck;
-                        //RecursiveTreeSelect(n);
                         n = n.NextNode;
                     }
                 }

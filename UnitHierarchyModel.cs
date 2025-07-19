@@ -49,7 +49,6 @@ namespace CounselQuickPlatinum
                 
                 bool equals = true;
 
-                //equals &= lhs.unitHierarchyID == rhs.unitHierarchyID;
                 equals &= lhs.battalionID == rhs.battalionID;
                 equals &= lhs.unitID == rhs.unitID;
                 equals &= lhs.unitDesignatorID == rhs.unitDesignatorID;
@@ -98,7 +97,6 @@ namespace CounselQuickPlatinum
             RefreshUnitHierarchyDataSet();
         }
 
-
         internal static DataSet GetAllUnitInfo()
         {
             if (unitHierarchyDataSet == null)
@@ -110,7 +108,6 @@ namespace CounselQuickPlatinum
             return unitHierarchyDataSet;
         }
 
-
         internal static UnitHierarchyModelUpdatedEvent UnitHierarchyModelUpdated
         {
             set
@@ -118,7 +115,6 @@ namespace CounselQuickPlatinum
                 OnUnitHierarchyModelUpdated += value;
             }
         }
-
 
         internal static void Refresh()
         {
@@ -129,7 +125,6 @@ namespace CounselQuickPlatinum
             if (OnUnitHierarchyModelUpdated != null)
                 OnUnitHierarchyModelUpdated();
         }
-
 
         internal static void RefreshUnitHierarchyDataSet()
         {
@@ -166,41 +161,6 @@ namespace CounselQuickPlatinum
             }
         }
 
-
-        //public static int GetPlatoonIDForSquadSection(int squadSectionID)
-        //{
-        //    DataTable results;
-        //    int platoonid;
-        //    string error = "Could not retrieve the unit hierarchy for the selected soldier";
-
-        //    try
-        //    {
-        //        results = DatabaseConnection.Query("select * from squadsections where squadsectionid = " + squadSectionID);
-
-        //        if (results.Rows.Count != 1)
-        //            throw new DataLoadFailedException("Could not retrieve the unit hierarchy for the selected soldier");
-
-        //        platoonid = Convert.ToInt32(results.Rows[0]["platoonid"]);
-
-        //    }
-        //    catch (QueryFailedException ex)
-        //    {
-        //        throw new DataLoadFailedException(error, ex);
-        //    }
-        //    catch (DataException ex)
-        //    {
-        //        throw new DataLoadFailedException("Could not retrieve the unit hierarchy for the selected soldier", ex);
-        //    }
-        //    catch (InvalidCastException ex)
-        //    {
-        //        throw new DataLoadFailedException("Could not retrieve the unit hierarchy for the selected soldier", ex);
-        //    }
-
-
-        //    return platoonid;
-        //}
-
-
         public static string GetPlatoonName(int platoonID)
         {
             string error = "Could not retrieve the unit hierarchy for the selected Soldier";
@@ -215,7 +175,6 @@ namespace CounselQuickPlatinum
                 throw new DataLoadFailedException(error, ex);
             }
         }
-
 
         internal static string GetSectionSquadName(int sectionSquadID)
         {
@@ -232,27 +191,6 @@ namespace CounselQuickPlatinum
             }
         }
 
-
-        //internal static int GetUnitIDForPlatoonID(int platoonID)
-        //{
-        //    string error = "Could not retrieve the unit hierarchy for the selected soldier";
-
-        //    try
-        //    {
-        //        string unitID = DatabaseConnection.GetSingleValue("platoons", "platoonid", platoonID, "unitid");
-        //        return Convert.ToInt32(unitID);
-        //    }
-        //    catch (InvalidCastException ex)
-        //    {
-        //        throw new DataLoadFailedException(error, ex);
-        //    }
-        //    catch (QueryFailedException ex)
-        //    {
-        //        throw new DataLoadFailedException(error, ex);
-        //    }
-        //}
-
-
         internal static string GetUnitName(int unitID)
         {
             string error = "Could not retrieve the unit hierarhy for the selected soldier";
@@ -268,7 +206,6 @@ namespace CounselQuickPlatinum
             }
         }
 
-
         internal static UnitHierarchy GetUnassignedUnitHierarchy()
         {
             UnitHierarchy hierarchy = new UnitHierarchy();
@@ -282,7 +219,6 @@ namespace CounselQuickPlatinum
 
             return hierarchy;
         }
-
 
         internal static UnitHierarchy GetUnitHierarchyByID(int unitHierarchyID)
         {
@@ -310,7 +246,6 @@ namespace CounselQuickPlatinum
             }
         }
 
-
         internal static string GetUnitDesignatorName(int unitDesignatorID)
         {
             try
@@ -330,14 +265,12 @@ namespace CounselQuickPlatinum
             }
         }
 
-
         internal static bool BattalionNameExists(string battalionName)
         {
             DataRow[] rows = unitHierarchyDataSet.Tables["battalions"].Select("battalionname = '" + battalionName + "'");
 
             return (rows.Count() > 0);
         }
-
 
         internal static int GetBattalionID(string battalionName)
         {
@@ -353,7 +286,6 @@ namespace CounselQuickPlatinum
                 throw new DataLoadFailedException("An error occurred accessing the unit hierarchy.");
             }
         }
-
 
         internal static string GetBattalionName(int battalionID)
         {
@@ -380,15 +312,11 @@ namespace CounselQuickPlatinum
 
             int battalionID = DatabaseConnection.Insert(insertCommand, paramValues);
 
-            //int battalionID = DatabaseConnection.Insert("insert into battalions (battalionname) "
-            //                                            + " values (\"" + battalionName + "\")");
-
             Refresh();
             DatabaseConnection.Backup();
 
             return battalionID;
         }
-
 
         internal static void UpdateUnitHierarchyID(UnitHierarchy unitHierarchy)
         {
@@ -407,9 +335,7 @@ namespace CounselQuickPlatinum
 
         private static bool UnitHierarchyReferenced(int unitHierarchyID)
         {
-            DataRow[] rows
-                //= unitHierarchyDataSet.Tables["unithierarchies"].Select("unithierarchyid = " + unitHierarchyID);
-                = SoldierModel.GetSoldiersByUnitHierarchy(unitHierarchyID); //SoldierModel.FormattedSoldiersTable.Select("unithierarchyid = " + unitHierarchyID);
+            DataRow[] rows = SoldierModel.GetSoldiersByUnitHierarchy(unitHierarchyID); 
 
             if (rows.Length > 0)
                 return true;
@@ -417,10 +343,8 @@ namespace CounselQuickPlatinum
             return false;
         }
 
-
         private static void RemoveUnitHierarchy(int unitHierarchyID)
         {
-            //string deleteCommand = "delete from unithierarchies where unithierarchyid = " + unitHierarchy;
             try
             {
                 DatabaseConnection.Delete("unithierarchies", "unithierarchyid", unitHierarchyID.ToString());
@@ -434,10 +358,8 @@ namespace CounselQuickPlatinum
             }
         }
 
-
         internal static int CreateUnitHierarchyIfNotExists(UnitHierarchy unitHierarchy)
         {
-            //if (unitHierarchy.battalionID == -1 || unitHierarchy.battalionID == 0)
             if (unitHierarchy.battalionID == -1)
                 unitHierarchy.battalionID = CreateBattalion(unitHierarchy.battalionName);
 
@@ -453,11 +375,9 @@ namespace CounselQuickPlatinum
 
             if (rows.Length != 0)
             {
-                //    return unitHierarchy.unitHierarchyID;
                 unitHierarchyID = Convert.ToInt32(rows[0]["unithierarchyid"]);
                 return unitHierarchyID;
             }
-
 
             string insertStatement = "insert into unithierarchies "
                                     + "(battalionid, unitid, unitdesignatorid, platoonid, squadsectionid) "

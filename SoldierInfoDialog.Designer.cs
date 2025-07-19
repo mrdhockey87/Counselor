@@ -1,4 +1,6 @@
-﻿namespace CounselQuickPlatinum
+﻿using System.Windows.Forms;
+
+namespace CounselQuickPlatinum
 {
     partial class SoldierInfoDialog
     {
@@ -440,6 +442,7 @@
         private System.Windows.Forms.Label battalionLabel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Label formattedDORLabel;
+        private System.Windows.Forms.DateTimePicker timePicker;
         private System.Windows.Forms.Label formattedAgeLabel;
         private System.Windows.Forms.Label formattedBattalionLabel;
         private System.Windows.Forms.Label formattedUnitLabel;

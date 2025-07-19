@@ -310,13 +310,15 @@ namespace CounselQuickPlatinum
             System.IO.DirectoryInfo directory = new System.IO.DirectoryInfo(target.DirectoryName);
 
             bool ready = false;
-            
-            FileSystemWatcher watcher = new FileSystemWatcher();
-            watcher.NotifyFilter = NotifyFilters.LastWrite;// | NotifyFilters.LastAccess | NotifyFilters.FileName | NotifyFilters.DirectoryName | N
-            watcher.Path = directory.FullName;
-            watcher.Filter = "*" + target.Extension;
-            watcher.InternalBufferSize = 65535;
-            watcher.EnableRaisingEvents = true;
+
+            FileSystemWatcher watcher = new FileSystemWatcher
+            {
+                NotifyFilter = NotifyFilters.LastWrite,
+                Path = directory.FullName,
+                Filter = "*" + target.Extension,
+                InternalBufferSize = 65535,
+                EnableRaisingEvents = true
+            };
 
             bool firsttime = true;
             DateTime previousLastWriteTime = new DateTime();
@@ -365,8 +367,6 @@ namespace CounselQuickPlatinum
 
 
             System.IO.File.Copy(original.FullName, target.FullName, true);
-
-            //WaitForChangedResult result = watcher.WaitForChanged(WatcherChangeTypes.All, 1000);
 
             while (!ready)
             {

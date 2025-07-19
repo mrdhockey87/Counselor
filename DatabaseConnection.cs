@@ -30,7 +30,6 @@ namespace CounselQuickPlatinum
         static private string oldBackupName = "";
         static private string currentBackupName = "";
 
-        //static private string oldCheckpointFilename = "";
         static private string currentCheckpointFilename = "";
 
         static private Mutex databaseLock;
@@ -55,7 +54,6 @@ namespace CounselQuickPlatinum
             transaction = null;
         }
 
-
         static public void Backup()
         {
             Lock();
@@ -66,14 +64,11 @@ namespace CounselQuickPlatinum
                 return;
             }
 
-            //string databasePath = Utilities.GetCQPUserDataDirectory() + @"\sqlite";
-            //string databaseBackupFilename = databasePath + @"\~" + DateTime.Now.Ticks + ".db3";
             string databaseBackupFilename = databaseDirectory.FullName + @"\~" + DateTime.Now.Ticks + ".db3";
 
             oldBackupName = currentBackupName;
             currentBackupName = databaseBackupFilename;
 
-            //System.IO.File.Copy(databaseFilename, currentBackupName, true);
             FileUtils.BlockingFileCopy(databaseFilename, currentBackupName);
 
             if(oldBackupName != "")
@@ -82,22 +77,14 @@ namespace CounselQuickPlatinum
             Unlock();
         }
 
-
         static public void SetCheckPoint()
         {
             Lock();
 
-            //oldCheckpointFilename = currentCheckpointFilename;
-
-            //string databasePath = Utilities.GetCQPUserDataDirectory() + @"\sqlite";
-            //currentCheckpointFilename = databasePath + @"\~checkpoint" + DateTime.Now.Ticks + ".db3";
             currentCheckpointFilename = databaseDirectory.FullName + @"\~checkpoint" + DateTime.Now.Ticks + ".db3";
 
-            //System.IO.File.Copy(databaseFilename, currentCheckpointFilename, true);
             FileUtils.BlockingFileCopy(databaseFilename, currentCheckpointFilename);
 
-            //if (oldCheckpointFilename != "")
-            //    System.IO.File.Delete(oldCheckpointFilename);
 
             if (currentBackupName != "")
             {
@@ -108,30 +95,18 @@ namespace CounselQuickPlatinum
             Unlock();
         }
 
-
         internal static void Restore()
         {
             if (currentCheckpointFilename == "")
             {
-                //System.IO.File.Copy(currentBackupName, databaseFilename,true);
-                //FileUtils.BlockingFileCopy(currentBackupName, databaseFilename);
-                //File.Delete(currentBackupName);
                 RestoreBackup();
 
             }
             else
             {
-                //System.IO.File.Copy(currentCheckpointFilename, databaseFilename, true);
-                //FileUtils.BlockingFileCopy(currentCheckpointFilename, databaseFilename);
-                //File.Delete(currentCheckpointFilename);
-
-                //currentCheckpointFilename = "";
-                //return;
                 RestoreCheckpoint();
 
             }
-
-            //currentBackupName = "";
         }
 
         private static void RestoreBackup()
@@ -140,20 +115,16 @@ namespace CounselQuickPlatinum
                 return;
 
             FileUtils.BlockingFileCopy(currentBackupName, databaseFilename);
-            //File.Delete(currentBackupName);
-            //Backup();
         }
 
 
         internal static void RestoreCheckpoint()
         {
-            //System.IO.File.Copy(currentCheckpointFilename, databaseFilename, true);
             FileUtils.BlockingFileCopy(currentCheckpointFilename, databaseFilename);
             File.Delete(currentCheckpointFilename);
             Backup();
 
             currentCheckpointFilename = "";
-            //oldCheckpointFilename = "";
         }
 
 
@@ -168,14 +139,11 @@ namespace CounselQuickPlatinum
             Backup();
         }
 
-
         internal static void DeleteBackups()
         {
             try
             {
                 Cleanup();
-                /*System.IO.File.Delete(currentBackupName);
-                ClearCheckpoint();*/
             }
             catch (Exception)
             {
@@ -183,13 +151,10 @@ namespace CounselQuickPlatinum
             }
         }
 
-
         static public void Open()
         {
             Lock();
-            //connection.Open();
         }
-
 
         static internal void BatchUpdateLock()
         {
@@ -198,14 +163,12 @@ namespace CounselQuickPlatinum
             batchUpdateThread = Thread.CurrentThread;
         }
 
-
         static internal void BatchUpdateUnlock()
         {
             batchUpdateMutex.ReleaseMutex();
             batchUpdateThread = null;
             performingBatchUpdate = false;
         }
-
 
         static void Lock()
         {
@@ -215,7 +178,6 @@ namespace CounselQuickPlatinum
             databaseLock.WaitOne();
         }
 
-
         static void Unlock()
         {
             databaseLock.ReleaseMutex();
@@ -224,10 +186,8 @@ namespace CounselQuickPlatinum
                 batchUpdateMutex.ReleaseMutex();
         }
 
-
         static public void Close()
         {
-            //connection.Close();
             Unlock();
         }
 
@@ -236,7 +196,6 @@ namespace CounselQuickPlatinum
             if(connection != null)
                 connection.Close();
         }
-
 
         static public bool Initialize(FileInfo databaseFile)
         {
@@ -258,6 +217,9 @@ namespace CounselQuickPlatinum
             }
 
             databaseFilename = databaseFile.FullName;
+            var databaseFileDecrypted = databaseFile.Directory + @"couns_decrypted.db3";
+
+            DecryptDB(databaseFilename, databaseFileDecrypted, "fr#=eqAphe2e@azaD?t8brab5-p3s3e#");
 
             SQLiteConnectionStringBuilder connectionStringBuilder = new SQLiteConnectionStringBuilder();
             connectionStringBuilder.DataSource = databaseFile.FullName;
@@ -265,7 +227,7 @@ namespace CounselQuickPlatinum
             connectionStringBuilder.ForeignKeys = false;
             connectionStringBuilder.Password = "fr#=eqAphe2e@azaD?t8brab5-p3s3e#";
             connectionStringBuilder.DateTimeFormat = SQLiteDateFormats.Ticks;
-            
+
             connection = new SQLiteConnection(connectionStringBuilder.ConnectionString);
             
             databaseLock = new Mutex();
@@ -276,7 +238,6 @@ namespace CounselQuickPlatinum
             try
             {
                 connection.Open();
-                //connection.ChangePassword("fr#=eqAphe2e@azaD?t8brab5-p3s3e#");
                 connection.GetSchema("Tables");
             }
             catch (SQLiteException ex)
@@ -290,7 +251,6 @@ namespace CounselQuickPlatinum
 
             databaseDirectory = databaseFile.Directory;
 
-            //Cleanup(databaseFile);
             Cleanup();
 
             Backup();
@@ -299,20 +259,15 @@ namespace CounselQuickPlatinum
             return isValid;
         }
 
-
-        //private static void Cleanup(FileInfo databaseFile)
         private static void Cleanup()
         {
             Logger.Trace();
 
-            //string sqlDirectory = Utilities.GetCQPUserDataDirectory() + "\\sqlite";
             string sqlDirectory = databaseDirectory.FullName;
             DirectoryInfo directory = new DirectoryInfo(sqlDirectory);
 
 
             FileInfo []files 
-                //= databaseFile.Directory.GetFiles("*.db3").Where(file => file.Name != databaseFile.Name).ToArray();
-                //= Directory.GetFiles(sqlDirectory, "*.db3").Where(file => file != databaseFilename).ToArray();
                 = directory.GetFiles("*.db3").Where(file => file.FullName.ToLower() != databaseFilename.ToLower()).ToArray();
 
             Logger.Trace("Deleting " + files.Count() + " files");
@@ -322,7 +277,6 @@ namespace CounselQuickPlatinum
                 file.Delete();
             }
         }
-
 
         private static FileInfo GetBaseCopy()
         {
@@ -338,7 +292,6 @@ namespace CounselQuickPlatinum
 
             return baseDatabase;
         }
-
 
         static internal void RepairFromMostRecentBackup(FileInfo databaseFile)
         {
@@ -356,34 +309,23 @@ namespace CounselQuickPlatinum
 
             if (i > -1)
                 FileUtils.BlockingFileCopy(files[i], databaseFile);
-
-            // else
-            // Attempt repair?
-            // Find abandoned nodes and whatnot?
         }
-
-
-
 
         static public bool IsValid
         {
             get { return isValid; }
         }
 
-
         static public void Delete(string tableName, string whereColumn, string pkid)
         {
             Open();
 
             string deleteCommand = "delete from " + tableName + " where " + whereColumn + " = @pkid";
-            //string deleteCommand = "delete from @tableName where @whereColumn = @pkid";
 
             try
             {
                 SQLiteCommand command = connection.CreateCommand();
                 command.CommandText = deleteCommand;
-                //command.Parameters.AddWithValue("@tableName", tableName);
-                //command.Parameters.AddWithValue("@whereColumn", whereColumn);
                 command.Parameters.AddWithValue("@pkid", pkid);
 
                 command.ExecuteNonQuery();
@@ -392,14 +334,9 @@ namespace CounselQuickPlatinum
             {
                 throw ex;
             }
-           /* catch (NonQueryFailedException ex)
-            {
-                throw ex;
-            }*/
 
             Close();
         }
-
 
         static public int GetLastInsertID()
         {
@@ -422,7 +359,6 @@ namespace CounselQuickPlatinum
 
             return lastInsertID;
         }
-
 
         static private DataTable NonLockQuery(string query)
         {
@@ -456,38 +392,6 @@ namespace CounselQuickPlatinum
                 command.Parameters.AddWithValue(param, paramValue);
             }
         }
-
-        /*
-        static public DataTable Query(string query, Dictionary<string, string> paramValues)
-        {
-            Open();
-
-            SQLiteCommand command = new SQLiteCommand();
-            DataTable resultSet = new DataTable();
-
-            try
-            {
-                command = connection.CreateCommand();
-                command.CommandText = query;
-
-                FillSQLParams(query, paramValues, command);
-
-                adapter = new SQLiteDataAdapter(command);
-                //adapter = new SQLiteDataAdapter(query, connection);
-
-                resultSet = new DataTable();
-                adapter.Fill(resultSet);
-            }
-            catch (SQLiteException)
-            {
-                throw new QueryFailedException("Could not execute query \"" + query + "\"");
-            }
-
-            Close();
-            return resultSet;
-        }
-        */
-
         
         static public DataTable Query(string query)
         {
@@ -513,9 +417,6 @@ namespace CounselQuickPlatinum
             return resultSet;
         }
         
-
-        
-        //static public int Insert(string insertcommand, Dictionary<string, string> paramValues)
         static public int Insert(string insertcommand, Params paramValues)
         {
             int lastInsertID = -1;
@@ -550,104 +451,7 @@ namespace CounselQuickPlatinum
             }
 
             return lastInsertID;
-        }
-        
-
-        /*
-        static public int Insert(string insertcommand)
-        {
-            int lastInsertID = -1;
-
-            try
-            {
-                if (transaction == null)
-                {
-                    Open();
-                    SQLiteCommand command = connection.CreateCommand();
-                    command.CommandText = insertcommand;
-                    command.ExecuteNonQuery();
-
-                    lastInsertID = GetLastInsertID();
-
-                    Close();
-                }
-                else
-                {
-                    Open();
-                    SQLiteCommand command = new SQLiteCommand(insertcommand, connection, transaction);
-
-                    Close();
-                }
-            }
-            catch (SQLiteException ex)
-            {
-                throw ex;
-            }
-
-            return lastInsertID;
-        }
-         * */
-         
-
-        /*
-        static private string BuildInsertCommand(string tableName, List<string> columns, List<string> values)
-        {
-            StringBuilder sb = new StringBuilder();
-
-            sb.Append("insert into " + tableName + " (");
-            foreach (string columnName in columns)
-            {
-                sb.Append(columnName + ", ");
-            }
-            sb = sb.Remove(sb.Length - 2, 2);
-
-            sb.Append(") values (");
-
-            foreach (string columnName in columns)
-            {
-                sb.Append("@" + columnName + ", ");
-            }
-            sb = sb.Remove(sb.Length - 2, 2);
-
-            sb.Append(")");
-
-            return sb.ToString();
-        }
-
-
-        static public int Insert(string tableName, List<string> columns, List<string> values)
-        {
-            int lastInsertID = -1;
-
-            try
-            {
-                Open();
-
-                SQLiteCommand command = new SQLiteCommand();
-                DataTable resultSet = new DataTable();
-
-                string insertCommand = BuildInsertCommand(tableName, columns, values);
-                command = connection.CreateCommand();
-                command.CommandText = insertCommand;
-
-                for (int i = 0; i < columns.Count; i++)
-                {
-                    command.Parameters.AddWithValue("@" + columns[i], values[i]);
-                }
-
-                command.ExecuteNonQuery();
-                lastInsertID = GetLastInsertID();
-
-                Close();
-            }
-            catch (SQLiteException ex)
-            {
-                throw ex;
-            }
-
-            return lastInsertID;
-        }
-        */
+        }        
 
         static public string GetSingleValue(string tablename, string primaryKeyColumn, int primaryKey, string columnName)
         {
@@ -680,9 +484,6 @@ namespace CounselQuickPlatinum
             Close();
             return result;
         }
-
-
-
         static public DataTable GetTable(string tableName)
         {
             string query = "select * from " + tableName;
@@ -699,13 +500,9 @@ namespace CounselQuickPlatinum
             
             return queryResults;
         }
-
-
         static public DataTable GetTableWhereNot(string tableName, string pkidColumn, int pkid)
         {
             string query = "select * from " + tableName + " where " + pkidColumn + " <> " + pkid;
-            //Dictionary<string, string> paramValues = new Dictionary<string,string>();
-            //paramValues.Add("@pkid", pkid.ToString());
             
             DataTable queryResults;
 
@@ -720,7 +517,6 @@ namespace CounselQuickPlatinum
 
             return queryResults;
         }
-
 
         static public DataTable GetJoinedTables(List<string> tableNames, List<string> joinColumns, string joinType)
         {
@@ -753,7 +549,6 @@ namespace CounselQuickPlatinum
             return resultSet;
         }
 
-
         static public void Update(string tableName, string columnName,
             string newValue, string whereColumn, string whereValue)
         {
@@ -775,7 +570,6 @@ namespace CounselQuickPlatinum
                 else
                 {
                     Open();
-                    //SQLiteCommand command = new SQLiteCommand(updateCommand, connection, transaction);
                     SQLiteCommand command = connection.CreateCommand();
                     command.CommandText = updateCommand;
                     command.Parameters.AddWithValue("@newValue", newValue);
@@ -793,7 +587,6 @@ namespace CounselQuickPlatinum
 
             Close();
         }
-
 
         static private string BuildUpdateErrorString(string tableName, List<string> columnNames,
             List<string> newValues, List<string> whereColumns, List<string> whereValues)
@@ -826,7 +619,6 @@ namespace CounselQuickPlatinum
             return error;
         }
 
-
         static private bool UpdateParametersValid(List<string> columnNames, List<string> newValues,
                                                     List<string> whereColumns, List<string> whereValues)
         {
@@ -839,7 +631,6 @@ namespace CounselQuickPlatinum
 
             return valid;
         }
-
 
         static public void Update(string tableName, List<string> columnNames,
             List<string> newValues, List<string> whereColumns, List<string> whereValues)
@@ -901,9 +692,6 @@ namespace CounselQuickPlatinum
             }
         }
 
-
-
-
         internal static void IssueBatchCommands(List<string> commands)
         {
             Open();
@@ -955,15 +743,13 @@ namespace CounselQuickPlatinum
 
             sb.Append("select ");
 
-            // if there are specified columns, append the list,
-            // else get *
+            // if there are specified columns, append the list, else get *
             if (columnsToRetrieve != null && columnsToRetrieve.Count > 0)
             {
                 sb.Append("(");
                 for (int i = 0; i < columnsToRetrieve.Count; i++)
                 {
                     sb.Append(columnsToRetrieve[i]);
-                    //sb.Append("@columnName" + i);
                     if(i < columnsToRetrieve.Count - 1)
                         sb.Append(", ");
                 }
@@ -974,16 +760,13 @@ namespace CounselQuickPlatinum
                 sb.Append("*");
             }
 
-            //sb.Append(" from @tableName ");
             sb.Append(" from " + tableName + " ");
-
             // if there are conditions, apply them
             if (conditions != null && conditions.Count > 0)
             {
                 sb.Append("where ");
                 for (int i = 0; i < conditions.Count; i++)
                 {
-                    //sb.Append("@conditionName" + i + " ");
                     sb.Append(conditions[i].columnName + " ");
                     sb.Append(symbols[conditions[i].comparator]);
                     sb.Append(" @conditionValue" + i);
@@ -992,10 +775,8 @@ namespace CounselQuickPlatinum
                         sb.Append(" and ");
                 }
             }
-
             return sb.ToString();
         }
-
 
         internal static DataTable Query(string tableName, List<string> columnsToRetrieve, List<Condition> conditions)
         {
@@ -1005,13 +786,6 @@ namespace CounselQuickPlatinum
 
             SQLiteCommand command = connection.CreateCommand();
             command.CommandText = query;
-
-            //command.Parameters.AddWithValue("@tableName", tableName);
-
-            //for (int i = 0; i < columnsToRetrieve.Count; i++)
-            //    command.Parameters.AddWithValue("@columnName" + i, columnsToRetrieve[i]);
-            //for (int i = 0; i < conditions.Count; i++)
-            //    command.Parameters.AddWithValue("@conditionName" + i, conditions[i].columnName);
 
             for (int i = 0; i < conditions.Count; i++)
                 command.Parameters.AddWithValue("@conditionValue" + i, conditions[i].value);
@@ -1034,48 +808,6 @@ namespace CounselQuickPlatinum
             return resultSet;
         }
 
-
-        private static bool TableExists(string tableName)
-        {
-            DataTable results = new DataTable();
-
-            try
-            {
-                Open();
-                results = Query("foo", null, null);
-                //results = Query("SELECT * FROM sqlite_master WHERE name ='" + tableName + "' and type='table'");
-                Close();
-            }
-            catch (Exception)
-            {
-                Close();
-                return false;
-            }
-
-            return (results.Rows.Count > 0);
-        }
-
-        /*
-        private static bool TableExists(string tableName)
-        {
-            DataTable results = new DataTable();
-
-            try
-            {
-                Open();
-                results = Query("SELECT * FROM sqlite_master WHERE name ='" + tableName + "' and type='table'");
-                Close();
-            }
-            catch (Exception)
-            {
-                Close();
-                return false;
-            }
-
-            return (results.Rows.Count > 0);
-        }
-        */
-
         private static void CleanupUpdates()
         {
             try
@@ -1083,7 +815,6 @@ namespace CounselQuickPlatinum
                 string updatesDirectory = Utilities.GetCQPUserDataDirectory() + @"\updates";
                 FileUtils.CreateDirectoryIfNotExists(updatesDirectory);
 
-                //FileInfo[] files = new DirectoryInfo(updatesDirectory).GetFiles("*.sql");
                 FileInfo[] files = new DirectoryInfo(updatesDirectory).GetFiles("*.dat");
 
                 foreach (FileInfo file in files)
@@ -1094,7 +825,6 @@ namespace CounselQuickPlatinum
                 Logger.Error("DatabaseConnection.CleanupUpdates: " + ex);
             }
         }
-
 
         internal static void RunSQLUpdateScripts()
         {
@@ -1107,7 +837,6 @@ namespace CounselQuickPlatinum
                 
                 DirectoryInfo sqlUpdateDirectory = new DirectoryInfo(sqlUpdateDirectoryPath);
 
-                //FileInfo[] files = sqlUpdateDirectory.GetFiles("*.sql");
                 FileInfo[] files = sqlUpdateDirectory.GetFiles("*.dat");
                 files.OrderBy(file => Convert.ToInt32(FileUtils.FilenameWithoutExtension(file)));
 
@@ -1137,7 +866,6 @@ namespace CounselQuickPlatinum
 
             ClearCheckpoint();
         }
-
         
         private static void Update(string updateCommand)
         {
@@ -1155,7 +883,6 @@ namespace CounselQuickPlatinum
                 throw ex;
             }
         }
-
         
         private static void Delete(string deleteCommand)
         {
@@ -1173,32 +900,6 @@ namespace CounselQuickPlatinum
                 throw ex;
             }
         }
-        
-
-        /*
-        private static bool ValidateScriptFile(string validationLine, string filename)
-        {
-            string key = filename + "Mentor Security Signature SHA 512" + filename;
-            byte[] shaKey;
-            byte[] shaValidation;
-
-            using (System.Security.Cryptography.SHA512 s = new System.Security.Cryptography.SHA512Managed() )
-            {
-                shaKey = s.ComputeHash(Encoding.Default.GetBytes(key.ToString()));
-                //shaValidation = s.ComputeHash(Encoding.Default.GetBytes(validationLine));
-                shaValidation = Encoding.Default.GetBytes(validationLine); //s.ComputeHash(Encoding.Default.GetBytes(validationLine));
-            }
-
-            byte[] onlyInFirst = shaKey.Where(b => !shaValidation.Contains(b)).ToArray();
-            byte[] onlyInSecond = shaValidation.Where(b => !shaKey.Contains(b)).ToArray();
-
-            if (onlyInFirst.Count() > 0 || onlyInSecond.Count() > 0)
-                return false;
-
-            return true;
-        }
-         * */
-
 
         private static string Decode(string text)
         {
@@ -1215,16 +916,9 @@ namespace CounselQuickPlatinum
             base64Array = base64Array.Reverse().ToArray();
             text = new string(base64Array);
 
-            //if (base64Array.Length != text.Length)
-            //    Logger.Error("Error:  The base64 array was not the correct length when decoding the update.");
-
             MD5 md5 = MD5.Create();
             byte[] inputBytes = System.Text.Encoding.UTF8.GetBytes(text);
             byte[] hash = md5.ComputeHash(inputBytes);
-            //string strHash = Encoding.UTF8.GetString(hash);
-
-            //if (inputBytes.Length != text.Length)
-            //    Logger.Error("Error:  The inputBytes array was not the correct length when decoding the update.");
 
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < hash.Length; i++)
@@ -1232,14 +926,11 @@ namespace CounselQuickPlatinum
                 sb.Append(hash[i].ToString("X2"));
             }
 
-            //return sb.ToString();
             string strHash = sb.ToString();
 
             if (md5str.ToLower() != strHash.ToLower())
             {
-                //LogAndThrowUpdateScriptInvalidError(file);
                 throw new Exception("An error occurred while decoding the update script.");
-                //return;
             }
 
             byte[] encodedDataAsBytes 
@@ -1248,36 +939,8 @@ namespace CounselQuickPlatinum
             string returnValue =
                System.Text.ASCIIEncoding.ASCII.GetString(encodedDataAsBytes);
 
-            //if (encodedDataAsBytes.Length != text.Length)
-            //    Logger.Error("Error:  The encodedDataAsBytes array was not the correct length when decoding the update.");
-            
             return returnValue;
-            
-            /*
-            int size = text.Length;
-            StringBuilder returnvalue = new StringBuilder();
-            int bytesRead = 0;
-            int z = 0;
-
-            while (bytesRead < text.Length)
-            {
-                if (z > 0)
-                    Logger.Error("Found long one.");
-
-                byte[] encodedDataAsBytes
-                    = System.Convert.FromBase64String(text.Substring(bytesRead));
-                returnvalue.Append(System.Text.ASCIIEncoding.ASCII.GetString(encodedDataAsBytes));
-                bytesRead += encodedDataAsBytes.Length;
-                z++;
-            }
-
-            if (bytesRead != text.Length)
-                Logger.Error("Error:  didn't read the correct number of bytes.");
-
-            return returnvalue.ToString();
-             * */
         }
-
 
         private static void LogAndThrowUpdateScriptInvalidError(FileInfo file)
         {
@@ -1294,54 +957,18 @@ namespace CounselQuickPlatinum
             throw new InvalidUpdateScriptException(errorDisplayMessage);
         }
 
-
-        private static bool ValidateScriptFile(string validationLine, string filename)
-        {
-            /*byte[] bytes = Encoding.Default.GetBytes(validationLine);
-            string value = Logger.DecryptStringFromBytes(bytes);
-
-            if (value == filename + "Mentor Security Signature SHA 512" + filename)*/
-                //return true;
-
-            return false;
-        }
-
-
         private static void RunSQLUpdateScript(FileInfo file)
         {
-            //List<string> lines = File.ReadAllLines(file.FullName, ).ToList();
-            //string validationLine = lines[0];
-
-            // convert ! to =
             string text = File.ReadAllText(file.FullName);
 
 
             List<string> lines = File.ReadAllText(file.FullName).Split('?').ToList();
-            //string validationLine = lines[0];
-
-            //if (!ValidateScriptFile(validationLine, file.Name))
-            //{
-            //    LogAndThrowUpdateScriptInvalidError(file);
-            //    return;
-            //}
-
-            //lines.RemoveAt(0);
 
             try
             {
                 foreach (string line in lines)
                 {
-                    //string formattedLine = line.ToLower();
-                    //string formattedLine = FormatSQLLine
                     string decoded = Decode(line);
-                    //if (decoded.Contains("Army physical fitness training"))
-                    //{
-                        //decoded = decoded.Insert(0, " ");
-                        //StreamWriter s = new StreamWriter("tmp.txt");
-                        //s.WriteLine(decoded);
-                        //s.Close();
-                        //continue;
-                    //}
 
                     RunSQLLine(decoded);
                 }
@@ -1354,7 +981,6 @@ namespace CounselQuickPlatinum
 
             file.Delete();
         }
-
 
         private static void RunSQLLine(string line)
         {
@@ -1374,7 +1000,6 @@ namespace CounselQuickPlatinum
             else
                 throw new Exception("RunSQLLine: Not update or insert");
         }
-
 
         private static void ThrowIfInvalid(string sqlCommand)
         {
@@ -1404,80 +1029,12 @@ namespace CounselQuickPlatinum
                 }
             }
 
-                //= line.Contains("update battalions")
-                //|| line.Contains("delete from battalions")
-                //|| line.Contains("update notes")
-                //|| line.Contains("delete from notes")
-                //|| line.Contains("update notevalues")
-                //|| line.Contains("delete frmnotevalues")
-                ////|| (line.Contains(" settings ") && line.Contains(" update "))
-                //|| line.Contains("update soldiers")
-                //|| line.Contains("delete from soldiers")
-                //|| line.Contains("update soldierstatuses")
-                //|| line.Contains("delete from soldierstatuses")
-                //|| line.Contains("update unithierarchies")
-                //|| line.Contains("delete from unithierarchies")
-                //|| line.Contains("update usergeneratedvalues")
-                //|| line.Contains("delete from usergeneratedvalues")
-                //|| line.Contains("update usergenerateddocs")
-                //|| line.Contains("delete from usergenerateddocs")
-                //|| line.Contains("update useroptions")
-                //|| line.Contains("delete from useroptions");
-                //|| line.Contains("drop")
-                //|| line.Contains("delete ");
-
             bool containsMultipleCommands = false;
-
-            /*int firstSemiColon = line.IndexOf(';');
-            if(firstSemiColon != -1)
-            {
-                if(line.Length - firstSemiColon > 1)
-                    containsMultipleCommands = true;
-            }*/
 
             if(containsForbiddenKeyword || containsMultipleCommands)
             {
                 throw new InvalidUpdateScriptException(errorMessage);
             }
         }
-
-
-        /*
-        private static bool ValidateSQL(string line)
-        {
-            if (line.StartsWith("update"))
-                return ValidateUpdate(line);
-            else if (line.StartsWith("insert"))
-                return ValidateInsert(line);
-            else
-                return false;
-        }
-
-
-        private static bool ValidateUpdate(string line)
-        {
-            string[] words = line.Split(' ');
-            
-            //   1      2        3    4 [ 5/6 ]
-            // update tablename set column=value, column=value, ... column=value [where column=value]
-            if (words.Length < 4)
-                return false;
-
-            string tableName = words[1];
-            if (!TableExists(tableName))
-                return false;
-
-
-
-            return false;
-        }
-
-        private static bool ValidateInsert(string line)
-        {
-            return false;
-        }
-         * */
-
-
     }
 }
