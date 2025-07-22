@@ -9,7 +9,7 @@ namespace CounselQuickPlatinum
     static class VersionClass
     {       
         static public string version_word = "Version:";
-        static public string version_string = "4.3.7.54";
+        static public string version_string = "4.3.7.56";
 
         static public string GetVersion()
         {
@@ -23,14 +23,26 @@ namespace CounselQuickPlatinum
 * 
 * 
 * 
- * v5.3.7.60 - Simplify the SQLiteConnectionStringBuilder in the DatabaseConnetoion class mdail 7-22-2025
+ * v5.4.8.63 - Fix infinite recursion loop in the formattedText of both EditSoldierDialog and NewSoldierPage1Dialog
+ *             the last updates adding the ability to edit the combo baxes and fixing the loop were done by the AI in
+ *             agent mode using Claude Sonnet 4 in the GetHub chat. mdail 7-22-2025
+ * v5.4.8.62 - Added automatic text formatting for unit hierarchy ComboBoxes. When users enter alphabetic text in the 
+ *             editable unit, unit designator, platoon, and squad/section ComboBoxes, the text is automatically 
+ *             formatted with proper title case (first letter of each word capitalized, rest lowercase). Numeric 
+ *             and mixed alphanumeric entries are left unchanged. This ensures consistent data entry and formatting 
+ *             across all unit hierarchy elements while maintaining flexibility for custom entries.  mdail 7-22-2025
+ * v5.4.8.61 - Enhanced UnitHierarchyModel to support editable ComboBoxes for unit hierarchy elements. Users can now type custom 
+ *             entries for Units, Unit Designators, Platoons, and Squad/Sections in both EditSoldierDialog and NewSoldierPage1Dialog.
+ *             Added creation methods: CreateUnit, CreateUnitDesignator, CreatePlatoon, CreateSquadSection and corresponding 
+ *             existence checking and ID retrieval methods. Added CreateUnitHierarchyWithCustomEntries method to handle custom 
+ *             text entries when creating unit hierarchies. Updated ComboBox DropDownStyle from DropDownList to DropDown to 
+ *             enable text editing. Enhanced validation logic to accept both selected items and custom text entries. mdail 7-22-2025
+ * v5.3.7.60 - Simplify the SQLiteConnectionStringBuilder in the DatabaseConnetoion class  mdail 7-22-2025
  * v5.3.7.59 - More clean up of old code that Chris left behind mdail 7-19-2025
  * v5.3.7.58 - Clean up old code that was left behind from Chris, Trying to figure out where the database tables comes from  mdail 7-15-2025
  * v5.3.7.57 - Rehome t0 Github mdail 7-15-2025 
  * v5.3.7.56 - Fix to make it compile and run since windows obsoleted the old target framework and the old version of Dotfuscator was not working 
  *             with the new version of Visual Studio. mdail 7-14-2025
- * v4.3.7.55 - Fix crashing with null pointer exception when doing a search thru the documents(PDFs) list when doiing a soldier counseling.
- *             This also caused the search to return incorrect results as it would skip over node that should have been removed. mdail 4-11-2022
  * v4.3.7.54 - Finally found and set the extracts button tab to be not visible as requested mdail 4-7-2022
  * v4.3.7.53 - Tested for crashing on upload of custom documents and not being able to open the documents. can not verify send for further testing mdail 1-2-19 
  * v4.3.7.52 - Fix startup position of the splash screen to be the center of the main screens last saved location or the center of the screen mdail 1-2-20

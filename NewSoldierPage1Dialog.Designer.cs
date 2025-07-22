@@ -300,7 +300,7 @@
             // 
             // squadSectionNumberCombobox
             // 
-            this.squadSectionNumberCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.squadSectionNumberCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             this.squadSectionNumberCombobox.FormattingEnabled = true;
             this.squadSectionNumberCombobox.Location = new System.Drawing.Point(236, 264);
             this.squadSectionNumberCombobox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -308,6 +308,7 @@
             this.squadSectionNumberCombobox.Size = new System.Drawing.Size(193, 24);
             this.squadSectionNumberCombobox.TabIndex = 20;
             this.squadSectionNumberCombobox.SelectedIndexChanged += new System.EventHandler(this.ValueChanged);
+            this.squadSectionNumberCombobox.TextChanged += new System.EventHandler(this.squadSectionNumberCombobox_TextChanged);
             // 
             // squadSectionLabel
             // 
@@ -320,7 +321,7 @@
             // 
             // platoonNumberCombobox
             // 
-            this.platoonNumberCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.platoonNumberCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             this.platoonNumberCombobox.FormattingEnabled = true;
             this.platoonNumberCombobox.Location = new System.Drawing.Point(3, 264);
             this.platoonNumberCombobox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -328,6 +329,7 @@
             this.platoonNumberCombobox.Size = new System.Drawing.Size(193, 24);
             this.platoonNumberCombobox.TabIndex = 18;
             this.platoonNumberCombobox.SelectedIndexChanged += new System.EventHandler(this.platoonNumberCombobox_SelectedIndexChanged);
+            this.platoonNumberCombobox.TextChanged += new System.EventHandler(this.platoonNumberCombobox_TextChanged);
             // 
             // platoonLabel
             // 
@@ -368,7 +370,7 @@
             // 
             // unitNumberCombobox
             // 
-            this.unitNumberCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.unitNumberCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             this.unitNumberCombobox.FormattingEnabled = true;
             this.unitNumberCombobox.Location = new System.Drawing.Point(3, 4);
             this.unitNumberCombobox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -376,16 +378,18 @@
             this.unitNumberCombobox.Size = new System.Drawing.Size(88, 24);
             this.unitNumberCombobox.TabIndex = 0;
             this.unitNumberCombobox.SelectedIndexChanged += new System.EventHandler(this.unitNumberCombobox_SelectedIndexChanged);
+            this.unitNumberCombobox.TextChanged += new System.EventHandler(this.unitNumberCombobox_TextChanged);
             // 
             // unitDesignatorCombobox
             // 
-            this.unitDesignatorCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.unitDesignatorCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             this.unitDesignatorCombobox.FormattingEnabled = true;
             this.unitDesignatorCombobox.Location = new System.Drawing.Point(109, 4);
             this.unitDesignatorCombobox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.unitDesignatorCombobox.Name = "unitDesignatorCombobox";
             this.unitDesignatorCombobox.Size = new System.Drawing.Size(88, 24);
             this.unitDesignatorCombobox.TabIndex = 1;
+            this.unitDesignatorCombobox.TextChanged += new System.EventHandler(this.unitDesignatorCombobox_TextChanged);
             // 
             // battalionLabel
             // 

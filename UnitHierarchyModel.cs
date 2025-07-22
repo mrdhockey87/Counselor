@@ -39,7 +39,6 @@ namespace CounselQuickPlatinum
                 unitDesignatorID = -1;
                 platoonID = -1;
                 squadID = -1;
-
             }
 
             public static bool operator==(UnitHierarchy lhs, UnitHierarchy rhs)
@@ -318,6 +317,197 @@ namespace CounselQuickPlatinum
             return battalionID;
         }
 
+        // Unit creation methods
+        internal static int CreateUnit(string unitName)
+        {
+            string insertCommand = "insert into units (unitname) values (@unitname)";
+            Params paramValues = new Params();
+            paramValues.Add("@unitname", unitName);
+
+            int unitID = DatabaseConnection.Insert(insertCommand, paramValues);
+
+            Refresh();
+            DatabaseConnection.Backup();
+
+            return unitID;
+        }
+
+        internal static bool UnitNameExists(string unitName)
+        {
+            DataRow[] rows = unitHierarchyDataSet.Tables["units"].Select("unitname = '" + unitName + "'");
+            return (rows.Count() > 0);
+        }
+
+        internal static int GetUnitID(string unitName)
+        {
+            try
+            {
+                DataRow[] row = unitHierarchyDataSet.Tables["units"].Select("unitname = '" + unitName + "'");
+                int unitID = Convert.ToInt32(row[0]["unitid"]);
+                return unitID;
+            }
+            catch (Exception)
+            {
+                throw new DataLoadFailedException("An error occurred accessing the unit hierarchy.");
+            }
+        }
+
+        // Unit Designator creation methods
+        internal static int CreateUnitDesignator(string unitDesignatorName)
+        {
+            string insertCommand = "insert into unitdesignators (unitdesignatorname) values (@unitdesignatorname)";
+            Params paramValues = new Params();
+            paramValues.Add("@unitdesignatorname", unitDesignatorName);
+
+            int unitDesignatorID = DatabaseConnection.Insert(insertCommand, paramValues);
+
+            Refresh();
+            DatabaseConnection.Backup();
+
+            return unitDesignatorID;
+        }
+
+        internal static bool UnitDesignatorNameExists(string unitDesignatorName)
+        {
+            DataRow[] rows = unitHierarchyDataSet.Tables["unitdesignators"].Select("unitdesignatorname = '" + unitDesignatorName + "'");
+            return (rows.Count() > 0);
+        }
+
+        internal static int GetUnitDesignatorID(string unitDesignatorName)
+        {
+            try
+            {
+                DataRow[] row = unitHierarchyDataSet.Tables["unitdesignators"].Select("unitdesignatorname = '" + unitDesignatorName + "'");
+                int unitDesignatorID = Convert.ToInt32(row[0]["unitdesignatorid"]);
+                return unitDesignatorID;
+            }
+            catch (Exception)
+            {
+                throw new DataLoadFailedException("An error occurred accessing the unit hierarchy.");
+            }
+        }
+
+        // Platoon creation methods
+        internal static int CreatePlatoon(string platoonName)
+        {
+            string insertCommand = "insert into platoons (platoonname) values (@platoonname)";
+            Params paramValues = new Params();
+            paramValues.Add("@platoonname", platoonName);
+
+            int platoonID = DatabaseConnection.Insert(insertCommand, paramValues);
+
+            Refresh();
+            DatabaseConnection.Backup();
+
+            return platoonID;
+        }
+
+        internal static bool PlatoonNameExists(string platoonName)
+        {
+            DataRow[] rows = unitHierarchyDataSet.Tables["platoons"].Select("platoonname = '" + platoonName + "'");
+            return (rows.Count() > 0);
+        }
+
+        internal static int GetPlatoonID(string platoonName)
+        {
+            try
+            {
+                DataRow[] row = unitHierarchyDataSet.Tables["platoons"].Select("platoonname = '" + platoonName + "'");
+                int platoonID = Convert.ToInt32(row[0]["platoonid"]);
+                return platoonID;
+            }
+            catch (Exception)
+            {
+                throw new DataLoadFailedException("An error occurred accessing the unit hierarchy.");
+            }
+        }
+
+        // Squad/Section creation methods
+        internal static int CreateSquadSection(string squadSectionName)
+        {
+            string insertCommand = "insert into squadsections (squadsectionname) values (@squadsectionname)";
+            Params paramValues = new Params();
+            paramValues.Add("@squadsectionname", squadSectionName);
+
+            int squadSectionID = DatabaseConnection.Insert(insertCommand, paramValues);
+
+            Refresh();
+            DatabaseConnection.Backup();
+
+            return squadSectionID;
+        }
+
+        internal static bool SquadSectionNameExists(string squadSectionName)
+        {
+            DataRow[] rows = unitHierarchyDataSet.Tables["squadsections"].Select("squadsectionname = '" + squadSectionName + "'");
+            return (rows.Count() > 0);
+        }
+
+        internal static int GetSquadSectionID(string squadSectionName)
+        {
+            try
+            {
+                DataRow[] row = unitHierarchyDataSet.Tables["squadsections"].Select("squadsectionname = '" + squadSectionName + "'");
+                int squadSectionID = Convert.ToInt32(row[0]["squadsectionid"]);
+                return squadSectionID;
+            }
+            catch (Exception)
+            {
+                throw new DataLoadFailedException("An error occurred accessing the unit hierarchy.");
+            }
+        }
+
+        // Enhanced method to create or get IDs for unit hierarchy components with custom entries
+        internal static int CreateUnitHierarchyWithCustomEntries(UnitHierarchy unitHierarchy, 
+            string customUnitName = null, 
+            string customUnitDesignatorName = null, 
+            string customPlatoonName = null, 
+            string customSquadSectionName = null)
+        {
+            // Handle Battalion (already exists)
+            if (unitHierarchy.battalionID == -1 && !string.IsNullOrEmpty(unitHierarchy.battalionName))
+                unitHierarchy.battalionID = CreateBattalion(unitHierarchy.battalionName);
+
+            // Handle Unit
+            if (unitHierarchy.unitID == -1 && !string.IsNullOrEmpty(customUnitName))
+            {
+                if (!UnitNameExists(customUnitName))
+                    unitHierarchy.unitID = CreateUnit(customUnitName);
+                else
+                    unitHierarchy.unitID = GetUnitID(customUnitName);
+            }
+
+            // Handle Unit Designator
+            if (unitHierarchy.unitDesignatorID == -1 && !string.IsNullOrEmpty(customUnitDesignatorName))
+            {
+                if (!UnitDesignatorNameExists(customUnitDesignatorName))
+                    unitHierarchy.unitDesignatorID = CreateUnitDesignator(customUnitDesignatorName);
+                else
+                    unitHierarchy.unitDesignatorID = GetUnitDesignatorID(customUnitDesignatorName);
+            }
+
+            // Handle Platoon
+            if (unitHierarchy.platoonID == -1 && !string.IsNullOrEmpty(customPlatoonName))
+            {
+                if (!PlatoonNameExists(customPlatoonName))
+                    unitHierarchy.platoonID = CreatePlatoon(customPlatoonName);
+                else
+                    unitHierarchy.platoonID = GetPlatoonID(customPlatoonName);
+            }
+
+            // Handle Squad/Section
+            if (unitHierarchy.squadID == -1 && !string.IsNullOrEmpty(customSquadSectionName))
+            {
+                if (!SquadSectionNameExists(customSquadSectionName))
+                    unitHierarchy.squadID = CreateSquadSection(customSquadSectionName);
+                else
+                    unitHierarchy.squadID = GetSquadSectionID(customSquadSectionName);
+            }
+
+            // Create the unit hierarchy entry
+            return CreateUnitHierarchyIfNotExists(unitHierarchy);
+        }
+
         internal static void UpdateUnitHierarchyID(UnitHierarchy unitHierarchy)
         {
             try
@@ -425,11 +615,14 @@ namespace CounselQuickPlatinum
                                         + "platoonid = " + pID + " and "
                                         + "squadsectionid = " + sID;
 
-            DataRow unitHierarchyRow = unitHierarchyDataSet.Tables["unithierarchies"].Select(selectStatement).First();
-            if (unitHierarchyRow == null)
+            DataRow[] unitHierarchyRows = unitHierarchyDataSet.Tables["unithierarchies"].Select(selectStatement);
+            if (unitHierarchyRows.Length == 0)
+            {
+                Unlock();
                 return -1;
+            }
 
-            int unitHierarchyID = Convert.ToInt32(unitHierarchyRow["unithierarchyid"]);
+            int unitHierarchyID = Convert.ToInt32(unitHierarchyRows[0]["unithierarchyid"]);
             Unlock();
 
             return unitHierarchyID;

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace CounselQuickPlatinum
 {
@@ -19,6 +20,7 @@ namespace CounselQuickPlatinum
         bool soldierImageChanged;
         bool soldierCustomImage;
         List<Image> rankingImages;
+        bool isFormattingComboBoxText = false; // Guard variable to prevent recursion
                 
         internal EditSoldierDialog(Soldier soldier)
         {
@@ -32,7 +34,28 @@ namespace CounselQuickPlatinum
             initialized = true;
         }
 
+        /// <summary>
+        /// Formats text with proper capitalization for unit hierarchy entries
+        /// </summary>
+        /// <param name="text">The text to format</param>
+        /// <returns>Formatted text with first letter capitalized and rest lowercase for alphabetic entries</returns>
+        private string FormatUnitHierarchyText(string text)
+        {
+            if (string.IsNullOrWhiteSpace(text))
+                return text;
 
+            // Check if the text contains only letters (and possibly spaces/hyphens)
+            if (text.All(c => char.IsLetter(c) || char.IsWhiteSpace(c) || c == '-'))
+            {
+                // Use TextInfo.ToTitleCase which capitalizes the first letter of each word
+                // and makes the rest lowercase
+                TextInfo textInfo = CultureInfo.CurrentCulture.TextInfo;
+                return textInfo.ToTitleCase(text.ToLower());
+            }
+            
+            // For mixed alphanumeric or numeric entries, return as-is
+            return text;
+        }
 
         private void OnInitNew()
         {
@@ -195,6 +218,79 @@ namespace CounselQuickPlatinum
         private void platoonNumberCombobox_SelectedIndexChanged(object sender, EventArgs e)
         {
             ValueChanged(null, null);
+        }
+
+        private void unitNumberCombobox_TextChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = sender as ComboBox;
+            if (comboBox != null && !comboBox.DroppedDown)
+            {
+                FormatComboBoxText(comboBox);
+            }
+            ValueChanged(null, null);
+        }
+
+        private void unitDesignatorCombobox_TextChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = sender as ComboBox;
+            if (comboBox != null && !comboBox.DroppedDown)
+            {
+                FormatComboBoxText(comboBox);
+            }
+            ValueChanged(null, null);
+        }
+
+        private void platoonNumberCombobox_TextChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = sender as ComboBox;
+            if (comboBox != null && !comboBox.DroppedDown)
+            {
+                FormatComboBoxText(comboBox);
+            }
+            ValueChanged(null, null);
+        }
+
+        private void squadSectionNumberCombobox_TextChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = sender as ComboBox;
+            if (comboBox != null && !comboBox.DroppedDown)
+            {
+                FormatComboBoxText(comboBox);
+            }
+            ValueChanged(null, null);
+        }
+
+        /// <summary>
+        /// Formats the text in a ComboBox with proper capitalization
+        /// </summary>
+        /// <param name="comboBox">The ComboBox to format</param>
+        private void FormatComboBoxText(ComboBox comboBox)
+        {
+            // Guard against recursion
+            if (isFormattingComboBoxText)
+                return;
+
+            try
+            {
+                isFormattingComboBoxText = true;
+                
+                string originalText = comboBox.Text;
+                int originalSelectionStart = comboBox.SelectionStart;
+                
+                string formattedText = FormatUnitHierarchyText(originalText);
+                
+                if (originalText != formattedText)
+                {
+                    comboBox.Text = formattedText;
+                    // Restore cursor position, accounting for any length changes
+                    int newPosition = Math.Min(originalSelectionStart, formattedText.Length);
+                    comboBox.SelectionStart = newPosition;
+                }
+            }
+            finally
+            {
+                isFormattingComboBoxText = false;
+            }
         }
 
         private void dateOfBirth_ValueChanged(object sender, EventArgs e)
@@ -364,7 +460,7 @@ namespace CounselQuickPlatinum
             {
                 if(dateOfBirthTextBox.Text != "        ")
                     soldier.DateOfBirth = DateTime.ParseExact(dateOfBirthTextBox.Text, "yyyy MM dd",
-                                               System.Globalization.CultureInfo.InvariantCulture);
+                                       System.Globalization.CultureInfo.InvariantCulture);
                 else if (dateOfBirthTextBox.Text == "        ")
                     soldier.DateOfBirth = new DateTime(0);
             }
@@ -373,22 +469,75 @@ namespace CounselQuickPlatinum
             {
                 if (dateOfRankTextBox.Text != "        ")
                     soldier.DateOfRank = DateTime.ParseExact(dateOfRankTextBox.Text, "yyyy MM dd",
-                                                System.Globalization.CultureInfo.InvariantCulture);
+                                        System.Globalization.CultureInfo.InvariantCulture);
                 else if (dateOfRankTextBox.Text == "        ")
                     soldier.DateOfRank = new DateTime(0);
             }
 
+            // Handle Unit Hierarchy with custom entries
+            UnitHierarchyModel.UnitHierarchy newUnitHierarchy = new UnitHierarchyModel.UnitHierarchy();
+
+            // Battalion handling (already works with custom text)
             int battalionSelectedIndex = battalionCombobox.SelectedIndex;
             if (battalionSelectedIndex == -1)
-                soldier.UnitHierarchy.battalionID = -1;
+                newUnitHierarchy.battalionID = -1;
             else
-                soldier.UnitHierarchy.battalionID = Convert.ToInt32(battalionCombobox.SelectedValue);
+                newUnitHierarchy.battalionID = Convert.ToInt32(battalionCombobox.SelectedValue);
+            
+            newUnitHierarchy.battalionName = battalionCombobox.Text;
 
-            soldier.UnitHierarchy.battalionName = battalionCombobox.Text;
-            soldier.UnitHierarchy.unitID = Convert.ToInt32(unitNumberCombobox.SelectedValue);
-            soldier.UnitHierarchy.unitDesignatorID = Convert.ToInt32(unitDesignatorCombobox.SelectedValue);
-            soldier.UnitHierarchy.platoonID = Convert.ToInt32(platoonNumberCombobox.SelectedValue);
-            soldier.UnitHierarchy.squadID = Convert.ToInt32(squadSectionNumberCombobox.SelectedValue);
+            // Handle other hierarchy components
+            string customUnitName = null;
+            string customUnitDesignatorName = null;
+            string customPlatoonName = null;
+            string customSquadSectionName = null;
+
+            // Unit handling
+            if (unitNumberCombobox.SelectedValue != null)
+                newUnitHierarchy.unitID = Convert.ToInt32(unitNumberCombobox.SelectedValue);
+            else
+            {
+                newUnitHierarchy.unitID = -1;
+                customUnitName = unitNumberCombobox.Text;
+            }
+
+            // Unit Designator handling
+            if (unitDesignatorCombobox.SelectedValue != null)
+                newUnitHierarchy.unitDesignatorID = Convert.ToInt32(unitDesignatorCombobox.SelectedValue);
+            else
+            {
+                newUnitHierarchy.unitDesignatorID = -1;
+                customUnitDesignatorName = unitDesignatorCombobox.Text;
+            }
+
+            // Platoon handling
+            if (platoonNumberCombobox.SelectedValue != null)
+                newUnitHierarchy.platoonID = Convert.ToInt32(platoonNumberCombobox.SelectedValue);
+            else
+            {
+                newUnitHierarchy.platoonID = -1;
+                customPlatoonName = platoonNumberCombobox.Text;
+            }
+
+            // Squad/Section handling
+            if (squadSectionNumberCombobox.SelectedValue != null)
+                newUnitHierarchy.squadID = Convert.ToInt32(squadSectionNumberCombobox.SelectedValue);
+            else
+            {
+                newUnitHierarchy.squadID = -1;
+                customSquadSectionName = squadSectionNumberCombobox.Text;
+            }
+
+            // Create or get the unit hierarchy ID using the enhanced method
+            int unitHierarchyID = UnitHierarchyModel.CreateUnitHierarchyWithCustomEntries(
+                newUnitHierarchy, 
+                customUnitName, 
+                customUnitDesignatorName, 
+                customPlatoonName, 
+                customSquadSectionName);
+
+            newUnitHierarchy.unitHierarchyID = unitHierarchyID;
+            soldier.UnitHierarchy = newUnitHierarchy;
 
             soldier.OtherStatus = otherTextbox.Text;
 

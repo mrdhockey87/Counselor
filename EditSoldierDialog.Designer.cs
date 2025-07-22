@@ -341,7 +341,7 @@
             // 
             // squadSectionNumberCombobox
             // 
-            this.squadSectionNumberCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.squadSectionNumberCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             this.squadSectionNumberCombobox.FormattingEnabled = true;
             this.squadSectionNumberCombobox.Location = new System.Drawing.Point(278, 204);
             this.squadSectionNumberCombobox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -349,6 +349,7 @@
             this.squadSectionNumberCombobox.Size = new System.Drawing.Size(207, 24);
             this.squadSectionNumberCombobox.TabIndex = 19;
             this.squadSectionNumberCombobox.SelectedIndexChanged += new System.EventHandler(this.ValueChanged);
+            this.squadSectionNumberCombobox.TextChanged += new System.EventHandler(this.squadSectionNumberCombobox_TextChanged);
             // 
             // label2
             // 
@@ -361,7 +362,7 @@
             // 
             // platoonNumberCombobox
             // 
-            this.platoonNumberCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.platoonNumberCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             this.platoonNumberCombobox.FormattingEnabled = true;
             this.platoonNumberCombobox.Location = new System.Drawing.Point(3, 204);
             this.platoonNumberCombobox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -370,6 +371,7 @@
             this.platoonNumberCombobox.TabIndex = 17;
             this.platoonNumberCombobox.SelectedIndexChanged += new System.EventHandler(this.ValueChanged);
             this.platoonNumberCombobox.SelectedValueChanged += new System.EventHandler(this.platoonNumberCombobox_SelectedIndexChanged);
+            this.platoonNumberCombobox.TextChanged += new System.EventHandler(this.platoonNumberCombobox_TextChanged);
             // 
             // platoonLabel
             // 
@@ -400,18 +402,19 @@
             // 
             // unitNumberCombobox
             // 
-            this.unitNumberCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.unitNumberCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             this.unitNumberCombobox.FormattingEnabled = true;
             this.unitNumberCombobox.Location = new System.Drawing.Point(3, 4);
             this.unitNumberCombobox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.unitNumberCombobox.Name = "unitNumberCombobox";
             this.unitNumberCombobox.Size = new System.Drawing.Size(65, 24);
             this.unitNumberCombobox.TabIndex = 0;
-            this.unitNumberCombobox.SelectedIndexChanged += new System.EventHandler(this.ValueChanged);
+            this.unitNumberCombobox.SelectedIndexChanged += new System.EventHandler(this.unitNumberCombobox_SelectedIndexChanged);
+            this.unitNumberCombobox.TextChanged += new System.EventHandler(this.unitNumberCombobox_TextChanged);
             // 
             // unitDesignatorCombobox
             // 
-            this.unitDesignatorCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.unitDesignatorCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             this.unitDesignatorCombobox.FormattingEnabled = true;
             this.unitDesignatorCombobox.Location = new System.Drawing.Point(79, 4);
             this.unitDesignatorCombobox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -419,6 +422,7 @@
             this.unitDesignatorCombobox.Size = new System.Drawing.Size(121, 24);
             this.unitDesignatorCombobox.TabIndex = 1;
             this.unitDesignatorCombobox.SelectedIndexChanged += new System.EventHandler(this.ValueChanged);
+            this.unitDesignatorCombobox.TextChanged += new System.EventHandler(this.unitDesignatorCombobox_TextChanged);
             // 
             // unitLabel
             // 
