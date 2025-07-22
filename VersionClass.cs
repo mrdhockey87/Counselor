@@ -9,7 +9,7 @@ namespace CounselQuickPlatinum
     static class VersionClass
     {       
         static public string version_word = "Version:";
-        static public string version_string = "5.4.8.64";
+        static public string version_string = "5.4.8.65";
 
         static public string GetVersion()
         {
@@ -23,6 +23,11 @@ namespace CounselQuickPlatinum
 * 
 * 
 * 
+ * v5.4.8.65 - Moved text formatting from TextChanged events to SaveDialogValuesToSoldier methods in both EditSoldierDialog 
+ *             and NewSoldierPage1Dialog. This ensures that all unit hierarchy ComboBox text is properly formatted at save 
+ *             time regardless of when changes are made, preventing missed formatting when text is changed multiple times 
+ *             quickly or when text is pasted. The formatting now occurs consistently for all ComboBoxes 
+ *             (battalion, unit, unit designator, platoon, squad/section) before the data is saved to the database. mdail 7-22-2025
  * v5.4.8.64 - Enhanced FormatUnitHierarchyText method in both EditSoldierDialog and NewSoldierPage1Dialog to properly handle
  *             multiple separate words by splitting text into individual words, formatting each word with proper title case,
  *             and handling hyphenated words correctly. The formatting now processes each word individually rather than

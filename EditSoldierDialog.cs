@@ -20,7 +20,6 @@ namespace CounselQuickPlatinum
         bool soldierImageChanged;
         bool soldierCustomImage;
         List<Image> rankingImages;
-        bool isFormattingComboBoxText = false; // Guard variable to prevent recursion
                 
         internal EditSoldierDialog(Soldier soldier)
         {
@@ -249,75 +248,22 @@ namespace CounselQuickPlatinum
 
         private void unitNumberCombobox_TextChanged(object sender, EventArgs e)
         {
-            ComboBox comboBox = sender as ComboBox;
-            if (comboBox != null && !comboBox.DroppedDown)
-            {
-                FormatComboBoxText(comboBox);
-            }
             ValueChanged(null, null);
         }
 
         private void unitDesignatorCombobox_TextChanged(object sender, EventArgs e)
         {
-            ComboBox comboBox = sender as ComboBox;
-            if (comboBox != null && !comboBox.DroppedDown)
-            {
-                FormatComboBoxText(comboBox);
-            }
             ValueChanged(null, null);
         }
 
         private void platoonNumberCombobox_TextChanged(object sender, EventArgs e)
         {
-            ComboBox comboBox = sender as ComboBox;
-            if (comboBox != null && !comboBox.DroppedDown)
-            {
-                FormatComboBoxText(comboBox);
-            }
             ValueChanged(null, null);
         }
 
         private void squadSectionNumberCombobox_TextChanged(object sender, EventArgs e)
         {
-            ComboBox comboBox = sender as ComboBox;
-            if (comboBox != null && !comboBox.DroppedDown)
-            {
-                FormatComboBoxText(comboBox);
-            }
             ValueChanged(null, null);
-        }
-
-        /// <summary>
-        /// Formats the text in a ComboBox with proper capitalization
-        /// </summary>
-        /// <param name="comboBox">The ComboBox to format</param>
-        private void FormatComboBoxText(ComboBox comboBox)
-        {
-            // Guard against recursion
-            if (isFormattingComboBoxText)
-                return;
-
-            try
-            {
-                isFormattingComboBoxText = true;
-                
-                string originalText = comboBox.Text;
-                int originalSelectionStart = comboBox.SelectionStart;
-                
-                string formattedText = FormatUnitHierarchyText(originalText);
-                
-                if (originalText != formattedText)
-                {
-                    comboBox.Text = formattedText;
-                    // Restore cursor position, accounting for any length changes
-                    int newPosition = Math.Min(originalSelectionStart, formattedText.Length);
-                    comboBox.SelectionStart = newPosition;
-                }
-            }
-            finally
-            {
-                isFormattingComboBoxText = false;
-            }
         }
 
         private void dateOfBirth_ValueChanged(object sender, EventArgs e)
@@ -500,6 +446,13 @@ namespace CounselQuickPlatinum
                 else if (dateOfRankTextBox.Text == "        ")
                     soldier.DateOfRank = new DateTime(0);
             }
+
+            // Format unit hierarchy text before saving to ensure consistent formatting
+            battalionCombobox.Text = FormatUnitHierarchyText(battalionCombobox.Text);
+            unitNumberCombobox.Text = FormatUnitHierarchyText(unitNumberCombobox.Text);
+            unitDesignatorCombobox.Text = FormatUnitHierarchyText(unitDesignatorCombobox.Text);
+            platoonNumberCombobox.Text = FormatUnitHierarchyText(platoonNumberCombobox.Text);
+            squadSectionNumberCombobox.Text = FormatUnitHierarchyText(squadSectionNumberCombobox.Text);
 
             // Handle Unit Hierarchy with custom entries
             UnitHierarchyModel.UnitHierarchy newUnitHierarchy = new UnitHierarchyModel.UnitHierarchy();
