@@ -217,16 +217,15 @@ namespace CounselQuickPlatinum
             }
 
             databaseFilename = databaseFile.FullName;
-            var databaseFileDecrypted = databaseFile.Directory + @"couns_decrypted.db3";
 
-            DecryptDB(databaseFilename, databaseFileDecrypted, "fr#=eqAphe2e@azaD?t8brab5-p3s3e#");
-
-            SQLiteConnectionStringBuilder connectionStringBuilder = new SQLiteConnectionStringBuilder();
-            connectionStringBuilder.DataSource = databaseFile.FullName;
-            connectionStringBuilder.Version = 3;
-            connectionStringBuilder.ForeignKeys = false;
-            connectionStringBuilder.Password = "fr#=eqAphe2e@azaD?t8brab5-p3s3e#";
-            connectionStringBuilder.DateTimeFormat = SQLiteDateFormats.Ticks;
+            SQLiteConnectionStringBuilder connectionStringBuilder = new SQLiteConnectionStringBuilder
+            {
+                DataSource = databaseFile.FullName,
+                Version = 3,
+                ForeignKeys = false,
+                Password = "fr#=eqAphe2e@azaD?t8brab5-p3s3e#",
+                DateTimeFormat = SQLiteDateFormats.Ticks
+            };
 
             connection = new SQLiteConnection(connectionStringBuilder.ConnectionString);
             

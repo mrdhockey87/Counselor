@@ -23,6 +23,7 @@ namespace CounselQuickPlatinum
 * 
 * 
 * 
+ * v5.3.7.60 - Simplify the SQLiteConnectionStringBuilder in the DatabaseConnetoion class mdail 7-22-2025
  * v5.3.7.59 - More clean up of old code that Chris left behind mdail 7-19-2025
  * v5.3.7.58 - Clean up old code that was left behind from Chris, Trying to figure out where the database tables comes from  mdail 7-15-2025
  * v5.3.7.57 - Rehome t0 Github mdail 7-15-2025 
