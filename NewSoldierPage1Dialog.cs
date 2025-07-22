@@ -44,10 +44,37 @@ namespace CounselQuickPlatinum
             // Check if the text contains only letters (and possibly spaces/hyphens)
             if (text.All(c => char.IsLetter(c) || char.IsWhiteSpace(c) || c == '-'))
             {
-                // Use TextInfo.ToTitleCase which capitalizes the first letter of each word
-                // and makes the rest lowercase
+                // Split the text into individual words
+                string[] words = text.Split(new char[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+                
+                if (words.Length == 0)
+                    return text;
+
+                // Format each word individually with proper title case
                 TextInfo textInfo = CultureInfo.CurrentCulture.TextInfo;
-                return textInfo.ToTitleCase(text.ToLower());
+                for (int i = 0; i < words.Length; i++)
+                {
+                    // Handle words with hyphens by splitting and formatting each part
+                    if (words[i].Contains("-"))
+                    {
+                        string[] hyphenParts = words[i].Split('-');
+                        for (int j = 0; j < hyphenParts.Length; j++)
+                        {
+                            if (!string.IsNullOrWhiteSpace(hyphenParts[j]))
+                            {
+                                hyphenParts[j] = textInfo.ToTitleCase(hyphenParts[j].ToLower());
+                            }
+                        }
+                        words[i] = string.Join("-", hyphenParts);
+                    }
+                    else
+                    {
+                        words[i] = textInfo.ToTitleCase(words[i].ToLower());
+                    }
+                }
+                
+                // Join the formatted words back together with single spaces
+                return string.Join(" ", words);
             }
             
             // For mixed alphanumeric or numeric entries, return as-is

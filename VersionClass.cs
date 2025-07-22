@@ -9,7 +9,7 @@ namespace CounselQuickPlatinum
     static class VersionClass
     {       
         static public string version_word = "Version:";
-        static public string version_string = "4.3.7.56";
+        static public string version_string = "5.4.8.64";
 
         static public string GetVersion()
         {
@@ -23,6 +23,11 @@ namespace CounselQuickPlatinum
 * 
 * 
 * 
+ * v5.4.8.64 - Enhanced FormatUnitHierarchyText method in both EditSoldierDialog and NewSoldierPage1Dialog to properly handle
+ *             multiple separate words by splitting text into individual words, formatting each word with proper title case,
+ *             and handling hyphenated words correctly. The formatting now processes each word individually rather than
+ *             relying solely on TextInfo.ToTitleCase, ensuring consistent capitalization across multiple words and
+ *             hyphenated compound words. This provides better formatting control for unit hierarchy entries. mdail 7-22-2025
  * v5.4.8.63 - Fix infinite recursion loop in the formattedText of both EditSoldierDialog and NewSoldierPage1Dialog
  *             the last updates adding the ability to edit the combo baxes and fixing the loop were done by the AI in
  *             agent mode using Claude Sonnet 4 in the GetHub chat. mdail 7-22-2025
