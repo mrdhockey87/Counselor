@@ -39,8 +39,7 @@
             this.ageLabel = new System.Windows.Forms.Label();
             this.formattedAgeLabel = new System.Windows.Forms.Label();
             this.rankingCombobox = new System.Windows.Forms.ComboBox();
-            this.dateOfBirthTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.dateOfRankTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.dateOfBirthPicker = new CounselQuickPlatinum.CQPDatePicker();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.firstNameTextbox = new CounselQuickPlatinum.CQPTextbox();
             this.middleInitialTextbox = new CounselQuickPlatinum.CQPTextbox();
@@ -57,6 +56,7 @@
             this.unitLabel = new System.Windows.Forms.Label();
             this.battalionCombobox = new System.Windows.Forms.ComboBox();
             this.battalionLabel = new System.Windows.Forms.Label();
+            this.dateOfRankPicker = new CounselQuickPlatinum.CQPDatePicker();
             this.statusCheckBoxesLayoutTable = new System.Windows.Forms.TableLayoutPanel();
             this.flaggedCheckbox = new System.Windows.Forms.CheckBox();
             this.barredCheckbox = new System.Windows.Forms.CheckBox();
@@ -130,8 +130,7 @@
             this.tableLayoutPanel2.Controls.Add(this.ageLabel, 2, 4);
             this.tableLayoutPanel2.Controls.Add(this.formattedAgeLabel, 2, 5);
             this.tableLayoutPanel2.Controls.Add(this.rankingCombobox, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.dateOfBirthTextBox, 0, 5);
-            this.tableLayoutPanel2.Controls.Add(this.dateOfRankTextBox, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.dateOfBirthPicker, 0, 5);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 2, 3);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel4, 2, 2);
             this.tableLayoutPanel2.Controls.Add(this.squadSectionNumberCombobox, 2, 9);
@@ -142,6 +141,7 @@
             this.tableLayoutPanel2.Controls.Add(this.unitLabel, 2, 6);
             this.tableLayoutPanel2.Controls.Add(this.battalionCombobox, 0, 7);
             this.tableLayoutPanel2.Controls.Add(this.battalionLabel, 0, 6);
+            this.tableLayoutPanel2.Controls.Add(this.dateOfRankPicker, 2, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(13, 101);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
@@ -157,7 +157,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(530, 232);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(530, 233);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // dateOfRankLabel
@@ -237,30 +237,15 @@
             this.rankingCombobox.TabIndex = 2;
             this.rankingCombobox.SelectedIndexChanged += new System.EventHandler(this.rankingCombobox_SelectedIndexChanged);
             // 
-            // dateOfBirthTextBox
+            // dateOfBirthPicker
             // 
-            this.dateOfBirthTextBox.Location = new System.Drawing.Point(3, 112);
-            this.dateOfBirthTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dateOfBirthTextBox.Mask = "0000 00 00";
-            this.dateOfBirthTextBox.Name = "dateOfBirthTextBox";
-            this.dateOfBirthTextBox.Size = new System.Drawing.Size(100, 20);
-            this.dateOfBirthTextBox.TabIndex = 9;
-            this.dateOfBirthTextBox.TextChanged += new System.EventHandler(this.ValueChanged);
-            this.dateOfBirthTextBox.Enter += new System.EventHandler(this.dateOfBirthTextBox_Enter);
-            this.dateOfBirthTextBox.Leave += new System.EventHandler(this.dateOfBirthTextBox1_Leave);
-            // 
-            // dateOfRankTextBox
-            // 
-            this.dateOfRankTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.dateOfRankTextBox.Location = new System.Drawing.Point(278, 22);
-            this.dateOfRankTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dateOfRankTextBox.Mask = "0000 00 00";
-            this.dateOfRankTextBox.Name = "dateOfRankTextBox";
-            this.dateOfRankTextBox.Size = new System.Drawing.Size(100, 20);
-            this.dateOfRankTextBox.TabIndex = 3;
-            this.dateOfRankTextBox.TextChanged += new System.EventHandler(this.ValueChanged);
-            this.dateOfRankTextBox.Enter += new System.EventHandler(this.dateOfRankTextBox_Enter);
-            this.dateOfRankTextBox.Leave += new System.EventHandler(this.dateOfRankTextBox_Leave);
+            this.dateOfBirthPicker.Location = new System.Drawing.Point(3, 112);
+            this.dateOfBirthPicker.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dateOfBirthPicker.Name = "dateOfBirthPicker";
+            this.dateOfBirthPicker.Size = new System.Drawing.Size(147, 21);
+            this.dateOfBirthPicker.TabIndex = 9;
+            this.dateOfBirthPicker.Value = new System.DateTime(((long)(0)));
+            this.dateOfBirthPicker.ValueChanged += new System.EventHandler(this.dateOfBirthPicker_ValueChanged);
             // 
             // tableLayoutPanel3
             // 
@@ -341,9 +326,8 @@
             // 
             // squadSectionNumberCombobox
             // 
-            this.squadSectionNumberCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             this.squadSectionNumberCombobox.FormattingEnabled = true;
-            this.squadSectionNumberCombobox.Location = new System.Drawing.Point(278, 204);
+            this.squadSectionNumberCombobox.Location = new System.Drawing.Point(278, 205);
             this.squadSectionNumberCombobox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.squadSectionNumberCombobox.Name = "squadSectionNumberCombobox";
             this.squadSectionNumberCombobox.Size = new System.Drawing.Size(207, 24);
@@ -354,7 +338,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(278, 184);
+            this.label2.Location = new System.Drawing.Point(278, 185);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 16);
             this.label2.TabIndex = 18;
@@ -362,9 +346,8 @@
             // 
             // platoonNumberCombobox
             // 
-            this.platoonNumberCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             this.platoonNumberCombobox.FormattingEnabled = true;
-            this.platoonNumberCombobox.Location = new System.Drawing.Point(3, 204);
+            this.platoonNumberCombobox.Location = new System.Drawing.Point(3, 205);
             this.platoonNumberCombobox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.platoonNumberCombobox.Name = "platoonNumberCombobox";
             this.platoonNumberCombobox.Size = new System.Drawing.Size(216, 24);
@@ -376,7 +359,7 @@
             // platoonLabel
             // 
             this.platoonLabel.AutoSize = true;
-            this.platoonLabel.Location = new System.Drawing.Point(3, 184);
+            this.platoonLabel.Location = new System.Drawing.Point(3, 185);
             this.platoonLabel.Name = "platoonLabel";
             this.platoonLabel.Size = new System.Drawing.Size(52, 16);
             this.platoonLabel.TabIndex = 16;
@@ -392,7 +375,7 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel7.Controls.Add(this.unitNumberCombobox, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.unitDesignatorCombobox, 2, 0);
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(278, 152);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(278, 153);
             this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
@@ -402,7 +385,6 @@
             // 
             // unitNumberCombobox
             // 
-            this.unitNumberCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             this.unitNumberCombobox.FormattingEnabled = true;
             this.unitNumberCombobox.Location = new System.Drawing.Point(3, 4);
             this.unitNumberCombobox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -414,7 +396,6 @@
             // 
             // unitDesignatorCombobox
             // 
-            this.unitDesignatorCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             this.unitDesignatorCombobox.FormattingEnabled = true;
             this.unitDesignatorCombobox.Location = new System.Drawing.Point(79, 4);
             this.unitDesignatorCombobox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -427,7 +408,7 @@
             // unitLabel
             // 
             this.unitLabel.AutoSize = true;
-            this.unitLabel.Location = new System.Drawing.Point(278, 136);
+            this.unitLabel.Location = new System.Drawing.Point(278, 137);
             this.unitLabel.Name = "unitLabel";
             this.unitLabel.Size = new System.Drawing.Size(36, 16);
             this.unitLabel.TabIndex = 14;
@@ -448,11 +429,22 @@
             // battalionLabel
             // 
             this.battalionLabel.AutoSize = true;
-            this.battalionLabel.Location = new System.Drawing.Point(3, 136);
+            this.battalionLabel.Location = new System.Drawing.Point(3, 137);
             this.battalionLabel.Name = "battalionLabel";
             this.battalionLabel.Size = new System.Drawing.Size(60, 16);
             this.battalionLabel.TabIndex = 12;
             this.battalionLabel.Text = "* Battalion";
+            // 
+            // dateOfRankPicker
+            // 
+            this.dateOfRankPicker.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.dateOfRankPicker.Location = new System.Drawing.Point(278, 21);
+            this.dateOfRankPicker.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dateOfRankPicker.Name = "dateOfRankPicker";
+            this.dateOfRankPicker.Size = new System.Drawing.Size(147, 21);
+            this.dateOfRankPicker.TabIndex = 3;
+            this.dateOfRankPicker.Value = new System.DateTime(((long)(0)));
+            this.dateOfRankPicker.ValueChanged += new System.EventHandler(this.dateOfRankPicker_ValueChanged);
             // 
             // statusCheckBoxesLayoutTable
             // 
@@ -477,7 +469,7 @@
             this.statusCheckBoxesLayoutTable.Controls.Add(this.label3, 2, 6);
             this.statusCheckBoxesLayoutTable.Controls.Add(this.otherTextbox, 2, 5);
             this.statusCheckBoxesLayoutTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.statusCheckBoxesLayoutTable.Location = new System.Drawing.Point(13, 338);
+            this.statusCheckBoxesLayoutTable.Location = new System.Drawing.Point(13, 339);
             this.statusCheckBoxesLayoutTable.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.statusCheckBoxesLayoutTable.Name = "statusCheckBoxesLayoutTable";
             this.statusCheckBoxesLayoutTable.RowCount = 7;
@@ -488,7 +480,7 @@
             this.statusCheckBoxesLayoutTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.statusCheckBoxesLayoutTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.statusCheckBoxesLayoutTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.statusCheckBoxesLayoutTable.Size = new System.Drawing.Size(530, 154);
+            this.statusCheckBoxesLayoutTable.Size = new System.Drawing.Size(530, 153);
             this.statusCheckBoxesLayoutTable.TabIndex = 2;
             // 
             // flaggedCheckbox
@@ -764,7 +756,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = global::CounselQuickPlatinum.Properties.Settings.Default.DefaultBackColor;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(556, 530);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -837,8 +829,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         //private System.Windows.Forms.Button cancelButton;
         //private System.Windows.Forms.Button saveButton;
-        private System.Windows.Forms.MaskedTextBox dateOfBirthTextBox;
-        private System.Windows.Forms.MaskedTextBox dateOfRankTextBox;
+        private CQPDatePicker dateOfBirthPicker;
+        private CQPDatePicker dateOfRankPicker;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private CQPTextbox middleInitialTextbox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;

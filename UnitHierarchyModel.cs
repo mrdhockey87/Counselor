@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace CounselQuickPlatinum
 {
@@ -167,6 +169,7 @@ namespace CounselQuickPlatinum
             try
             {
                 string platoonName = DatabaseConnection.GetSingleValue("platoons", "platoonid", platoonID, "platoonname");
+                platoonName = FormatUnitHierarchyText(platoonName);
                 return platoonName;
             }
             catch (QueryFailedException ex)
@@ -182,6 +185,7 @@ namespace CounselQuickPlatinum
             try
             {
                 string sectionSquadName = DatabaseConnection.GetSingleValue("squadsections", "squadsectionid", sectionSquadID, "squadsectionname");
+                sectionSquadName = FormatUnitHierarchyText(sectionSquadName);
                 return sectionSquadName;
             }
             catch (QueryFailedException ex)
@@ -197,6 +201,7 @@ namespace CounselQuickPlatinum
             try
             {
                 string unitName = DatabaseConnection.GetSingleValue("units", "unitid", unitID, "unitname");
+                unitName = FormatUnitHierarchyText(unitName);
                 return unitName;
             }
             catch (QueryFailedException ex)
@@ -251,7 +256,7 @@ namespace CounselQuickPlatinum
             {
                 DataRow[] row = unitHierarchyDataSet.Tables["unitdesignators"].Select("unitdesignatorid = " + unitDesignatorID);
                 string designatorName = row[0]["unitdesignatorname"].ToString();
-
+                designatorName = FormatUnitHierarchyText(designatorName);
                 return designatorName;
             }
             catch (Exception ex)
@@ -293,6 +298,7 @@ namespace CounselQuickPlatinum
                 DataRow[] row = unitHierarchyDataSet.Tables["battalions"].Select("battalionid = " + battalionID);
 
                 string battalionName = row[0]["battalionname"].ToString();
+                battalionName = FormatUnitHierarchyText(battalionName);
                 return battalionName;
             }
             catch (Exception ex)
@@ -578,7 +584,7 @@ namespace CounselQuickPlatinum
             string platoonID = unitHierarchy.platoonID.ToString();
             string squadID = unitHierarchy.squadID.ToString();
             string unitDesignatorID = unitHierarchy.unitDesignatorID.ToString();
-
+            
             Params paramValues = new Params();
             paramValues.Add("@battalionID", battalionID);
             paramValues.Add("@unitID", unitID);
@@ -648,5 +654,90 @@ namespace CounselQuickPlatinum
             Unlock();
             return rows;
         }
+
+        /// <summary>
+        /// Formats text with proper capitalization for unit hierarchy entries
+        /// </summary>
+        /// <param name="text">The text to format</param>
+        /// <returns>Formatted text with first letter capitalized and rest lowercase for alphabetic entries</returns>
+        public static string FormatUnitHierarchyText(string text)
+        {
+            string trimmedText = text.ToSelectiveTitleCase();
+            return trimmedText;
+          /*  if (string.IsNullOrWhiteSpace(text))
+                return text;
+
+            // Check if the text contains only letters (and possibly spaces/hyphens)
+            if (text.All(c => char.IsLetter(c) || char.IsWhiteSpace(c) || c == '-'))
+            {
+                // Split the text into individual words
+                string[] words = text.Split(new char[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+                
+                if (words.Length == 0)
+                    return text;
+
+                // Format each word individually with proper title case
+                System.Globalization.TextInfo textInfo = System.Globalization.CultureInfo.CurrentCulture.TextInfo;
+                List<string> formattedWords = new List<string>();
+                
+                for (int i = 0; i < words.Length; i++)
+                {
+                    string word = words[i];
+                    
+                    // Handle words with hyphens by splitting and formatting each part
+                    if (word.Contains("-"))
+                    {
+                        string[] hyphenParts = word.Split('-');
+                        for (int j = 0; j < hyphenParts.Length; j++)
+                        {
+                            if (!string.IsNullOrWhiteSpace(hyphenParts[j]))
+                            {
+                                hyphenParts[j] = textInfo.ToTitleCase(hyphenParts[j].ToLower());
+                            }
+                        }
+                        formattedWords.Add(string.Join("-", hyphenParts));
+                    }
+                    else
+                    {
+                        formattedWords.Add(textInfo.ToTitleCase(word.ToLower()));
+                    }
+                }
+                
+                // Join the formatted words back together with single spaces
+                return string.Join(" ", formattedWords);
+            }
+            
+            // For mixed alphanumeric or numeric entries, return as-is
+            return text;*/
+        }
+    }
+}
+public static class StringExtensions
+{
+    public static string ToSelectiveTitleCase(this string input)
+    {
+        if (string.IsNullOrEmpty(input))
+            return input;
+
+        var textInfo = CultureInfo.CurrentCulture.TextInfo;
+
+        // Split on whitespace while preserving the whitespace
+        var parts = Regex.Split(input, @"(\s+)");
+
+        for (int i = 0; i < parts.Length; i++)
+        {
+            // Skip whitespace parts
+            if (string.IsNullOrWhiteSpace(parts[i]))
+                continue;
+
+            // Check if the part contains only alphabetic characters
+            if (parts[i].All(char.IsLetter))
+            {
+                parts[i] = textInfo.ToTitleCase(parts[i].ToLower());
+            }
+            // Leave non-alphabetic parts unchanged
+        }
+
+        return string.Join("", parts);
     }
 }

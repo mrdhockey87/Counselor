@@ -28,7 +28,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>62</ApplicationRevision>
+    <ApplicationRevision>72</ApplicationRevision>
     <ApplicationVersion>5.4.8.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -118,6 +118,12 @@
     <Compile Include="Authenticator.cs" />
     <Compile Include="ContinuationOfCounselingFormFiller.cs" />
     <Compile Include="ContinuationOfCounselingPDFForm.cs" />
+    <Compile Include="CQPDatePicker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CQPDatePicker.Designer.cs">
+      <DependentUpon>CQPDatePicker.cs</DependentUpon>
+    </Compile>
     <Compile Include="CQPDateTimePicker.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -625,6 +631,9 @@
     </Compile>
     <EmbeddedResource Include="AboutDialog.resx">
       <DependentUpon>AboutDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CQPDatePicker.resx">
+      <DependentUpon>CQPDatePicker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CQPDateTimePicker.resx">
       <DependentUpon>CQPDateTimePicker.cs</DependentUpon>

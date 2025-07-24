@@ -37,8 +37,8 @@
             this.ageLabel = new System.Windows.Forms.Label();
             this.formattedAgeLabel = new System.Windows.Forms.Label();
             this.rankingCombobox = new System.Windows.Forms.ComboBox();
-            this.dateOfRankTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.dateOfBirthTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.dateOfRankPicker = new CounselQuickPlatinum.CQPDatePicker();
+            this.dateOfBirthPicker = new CounselQuickPlatinum.CQPDatePicker();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.firstNameTextbox = new CounselQuickPlatinum.CQPTextbox();
             this.middleInitialTextbox = new CounselQuickPlatinum.CQPTextbox();
@@ -90,8 +90,8 @@
             this.tableLayoutPanel2.Controls.Add(this.ageLabel, 2, 7);
             this.tableLayoutPanel2.Controls.Add(this.formattedAgeLabel, 2, 8);
             this.tableLayoutPanel2.Controls.Add(this.rankingCombobox, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.dateOfRankTextBox, 2, 2);
-            this.tableLayoutPanel2.Controls.Add(this.dateOfBirthTextBox, 0, 8);
+            this.tableLayoutPanel2.Controls.Add(this.dateOfRankPicker, 2, 2);
+            this.tableLayoutPanel2.Controls.Add(this.dateOfBirthPicker, 0, 8);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel5, 2, 5);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel6, 2, 4);
             this.tableLayoutPanel2.Controls.Add(this.squadSectionNumberCombobox, 2, 14);
@@ -201,29 +201,25 @@
             this.rankingCombobox.TabIndex = 1;
             this.rankingCombobox.SelectedIndexChanged += new System.EventHandler(this.rankingCombobox_SelectedIndexChanged);
             // 
-            // dateOfRankTextBox
+            // dateOfRankPicker
             // 
-            this.dateOfRankTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.dateOfRankTextBox.Location = new System.Drawing.Point(236, 32);
-            this.dateOfRankTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dateOfRankTextBox.Mask = "0000 00 00";
-            this.dateOfRankTextBox.Name = "dateOfRankTextBox";
-            this.dateOfRankTextBox.Size = new System.Drawing.Size(100, 20);
-            this.dateOfRankTextBox.TabIndex = 3;
-            this.dateOfRankTextBox.Enter += new System.EventHandler(this.dateOfRankTextBox_Enter);
-            this.dateOfRankTextBox.Leave += new System.EventHandler(this.dateOfRankTextBox_Leave);
+            this.dateOfRankPicker.Location = new System.Drawing.Point(236, 32);
+            this.dateOfRankPicker.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dateOfRankPicker.Name = "dateOfRankPicker";
+            this.dateOfRankPicker.Size = new System.Drawing.Size(147, 21);
+            this.dateOfRankPicker.TabIndex = 3;
+            this.dateOfRankPicker.Value = new System.DateTime(((long)(0)));
+            this.dateOfRankPicker.ValueChanged += new System.EventHandler(this.dateOfRankPicker_ValueChanged);
             // 
-            // dateOfBirthTextBox
+            // dateOfBirthPicker
             // 
-            this.dateOfBirthTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.dateOfBirthTextBox.Location = new System.Drawing.Point(3, 148);
-            this.dateOfBirthTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dateOfBirthTextBox.Mask = "0000 00 00";
-            this.dateOfBirthTextBox.Name = "dateOfBirthTextBox";
-            this.dateOfBirthTextBox.Size = new System.Drawing.Size(100, 20);
-            this.dateOfBirthTextBox.TabIndex = 9;
-            this.dateOfBirthTextBox.Enter += new System.EventHandler(this.dateOfBirthTextBox_Enter);
-            this.dateOfBirthTextBox.Leave += new System.EventHandler(this.dateOfBirthTextBox_Leave);
+            this.dateOfBirthPicker.Location = new System.Drawing.Point(3, 148);
+            this.dateOfBirthPicker.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dateOfBirthPicker.Name = "dateOfBirthPicker";
+            this.dateOfBirthPicker.Size = new System.Drawing.Size(147, 21);
+            this.dateOfBirthPicker.TabIndex = 9;
+            this.dateOfBirthPicker.Value = new System.DateTime(((long)(0)));
+            this.dateOfBirthPicker.ValueChanged += new System.EventHandler(this.dateOfBirthPicker_ValueChanged);
             // 
             // tableLayoutPanel5
             // 
@@ -300,9 +296,8 @@
             // 
             // squadSectionNumberCombobox
             // 
-            this.squadSectionNumberCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             this.squadSectionNumberCombobox.FormattingEnabled = true;
-            this.squadSectionNumberCombobox.Location = new System.Drawing.Point(236, 264);
+            this.squadSectionNumberCombobox.Location = new System.Drawing.Point(236, 265);
             this.squadSectionNumberCombobox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.squadSectionNumberCombobox.Name = "squadSectionNumberCombobox";
             this.squadSectionNumberCombobox.Size = new System.Drawing.Size(193, 24);
@@ -313,7 +308,7 @@
             // squadSectionLabel
             // 
             this.squadSectionLabel.AutoSize = true;
-            this.squadSectionLabel.Location = new System.Drawing.Point(236, 244);
+            this.squadSectionLabel.Location = new System.Drawing.Point(236, 245);
             this.squadSectionLabel.Name = "squadSectionLabel";
             this.squadSectionLabel.Size = new System.Drawing.Size(47, 16);
             this.squadSectionLabel.TabIndex = 17;
@@ -321,9 +316,8 @@
             // 
             // platoonNumberCombobox
             // 
-            this.platoonNumberCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             this.platoonNumberCombobox.FormattingEnabled = true;
-            this.platoonNumberCombobox.Location = new System.Drawing.Point(3, 264);
+            this.platoonNumberCombobox.Location = new System.Drawing.Point(3, 265);
             this.platoonNumberCombobox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.platoonNumberCombobox.Name = "platoonNumberCombobox";
             this.platoonNumberCombobox.Size = new System.Drawing.Size(193, 24);
@@ -334,7 +328,7 @@
             // platoonLabel
             // 
             this.platoonLabel.AutoSize = true;
-            this.platoonLabel.Location = new System.Drawing.Point(3, 244);
+            this.platoonLabel.Location = new System.Drawing.Point(3, 245);
             this.platoonLabel.Name = "platoonLabel";
             this.platoonLabel.Size = new System.Drawing.Size(52, 16);
             this.platoonLabel.TabIndex = 15;
@@ -343,7 +337,7 @@
             // unitLabel
             // 
             this.unitLabel.AutoSize = true;
-            this.unitLabel.Location = new System.Drawing.Point(236, 184);
+            this.unitLabel.Location = new System.Drawing.Point(236, 185);
             this.unitLabel.Name = "unitLabel";
             this.unitLabel.Size = new System.Drawing.Size(36, 16);
             this.unitLabel.TabIndex = 13;
@@ -360,7 +354,7 @@
             this.tableLayoutPanel7.Controls.Add(this.unitNumberCombobox, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.unitDesignatorCombobox, 2, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(236, 200);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(236, 201);
             this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
@@ -370,7 +364,6 @@
             // 
             // unitNumberCombobox
             // 
-            this.unitNumberCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             this.unitNumberCombobox.FormattingEnabled = true;
             this.unitNumberCombobox.Location = new System.Drawing.Point(3, 4);
             this.unitNumberCombobox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -382,7 +375,6 @@
             // 
             // unitDesignatorCombobox
             // 
-            this.unitDesignatorCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             this.unitDesignatorCombobox.FormattingEnabled = true;
             this.unitDesignatorCombobox.Location = new System.Drawing.Point(109, 4);
             this.unitDesignatorCombobox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -394,7 +386,7 @@
             // battalionLabel
             // 
             this.battalionLabel.AutoSize = true;
-            this.battalionLabel.Location = new System.Drawing.Point(3, 184);
+            this.battalionLabel.Location = new System.Drawing.Point(3, 185);
             this.battalionLabel.Name = "battalionLabel";
             this.battalionLabel.Size = new System.Drawing.Size(60, 16);
             this.battalionLabel.TabIndex = 12;
@@ -406,7 +398,7 @@
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.battalionCombobox);
-            this.panel1.Location = new System.Drawing.Point(3, 203);
+            this.panel1.Location = new System.Drawing.Point(3, 204);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 3, 0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(122, 26);
@@ -549,7 +541,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = global::CounselQuickPlatinum.Properties.Settings.Default.DefaultBackColor;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(473, 549);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
@@ -609,8 +601,8 @@
         private CQPGrayRectangleButton nextButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.PictureBox soldierPictureBox;
-        private System.Windows.Forms.MaskedTextBox dateOfRankTextBox;
-        private System.Windows.Forms.MaskedTextBox dateOfBirthTextBox;
+        private CounselQuickPlatinum.CQPDatePicker dateOfRankPicker;
+        private CounselQuickPlatinum.CQPDatePicker dateOfBirthPicker;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private CQPTextbox middleInitialTextbox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;

@@ -51,12 +51,16 @@ namespace CounselQuickPlatinum
 
                 // Format each word individually with proper title case
                 TextInfo textInfo = CultureInfo.CurrentCulture.TextInfo;
+                List<string> formattedWords = new List<string>();
+                
                 for (int i = 0; i < words.Length; i++)
                 {
+                    string word = words[i];
+                    
                     // Handle words with hyphens by splitting and formatting each part
-                    if (words[i].Contains("-"))
+                    if (word.Contains("-"))
                     {
-                        string[] hyphenParts = words[i].Split('-');
+                        string[] hyphenParts = word.Split('-');
                         for (int j = 0; j < hyphenParts.Length; j++)
                         {
                             if (!string.IsNullOrWhiteSpace(hyphenParts[j]))
@@ -64,16 +68,16 @@ namespace CounselQuickPlatinum
                                 hyphenParts[j] = textInfo.ToTitleCase(hyphenParts[j].ToLower());
                             }
                         }
-                        words[i] = string.Join("-", hyphenParts);
+                        formattedWords.Add(string.Join("-", hyphenParts));
                     }
                     else
                     {
-                        words[i] = textInfo.ToTitleCase(words[i].ToLower());
+                        formattedWords.Add(textInfo.ToTitleCase(word.ToLower()));
                     }
                 }
                 
                 // Join the formatted words back together with single spaces
-                return string.Join(" ", words);
+                return string.Join(" ", formattedWords);
             }
             
             // For mixed alphanumeric or numeric entries, return as-is
@@ -162,10 +166,41 @@ namespace CounselQuickPlatinum
         }
 
 
-        private void dateOfRankTextBox_Leave(object sender, EventArgs e)
+        private void dateOfBirthPicker_ValueChanged(object sender, EventArgs e)
         {
-            string dateTimeString = dateOfRankTextBox.Text;
-            if (DateTimeMaskedTextBoxValid(dateTimeString))
+            if (dateOfBirthPicker.HasValidDate())
+            {
+                dateOfBirthValid = true;
+                dateOfBirthLabel.ForeColor = Color.Black;
+
+                DateTime dt = dateOfBirthPicker.GetDate();
+                int age = Utilities.CalculateAge(dt, DateTime.Now);
+                formattedAgeLabel.Text = age.ToString();
+            }
+            else if (dateOfBirthPicker.IsBlank())
+            {
+                dateOfBirthValid = true;
+                dateOfBirthLabel.ForeColor = Color.Black;
+                formattedAgeLabel.Text = "";
+            }
+            else
+            {
+                dateOfBirthValid = false;
+                dateOfBirthLabel.ForeColor = Color.Red;
+                formattedAgeLabel.Text = "?";
+            }
+
+            ValueChanged(sender, e);
+        }
+
+        private void dateOfRankPicker_ValueChanged(object sender, EventArgs e)
+        {
+            if (dateOfRankPicker.HasValidDate())
+            {
+                dateOfRankValid = true;
+                dateOfRankLabel.ForeColor = Color.Black;
+            }
+            else if (dateOfRankPicker.IsBlank())
             {
                 dateOfRankValid = true;
                 dateOfRankLabel.ForeColor = Color.Black;
@@ -175,29 +210,9 @@ namespace CounselQuickPlatinum
                 dateOfRankValid = false;
                 dateOfRankLabel.ForeColor = Color.Red;
             }
+
+            ValueChanged(sender, e);
         }
-
-
-        private void dateOfBirthTextBox_Leave(object sender, EventArgs e)
-        {
-            string dateTimeString = dateOfBirthTextBox.Text;
-            if (DateTimeMaskedTextBoxValid(dateTimeString))
-            {
-                dateOfBirthValid = true;
-                dateOfBirthLabel.ForeColor = Color.Black;
-
-                if(dateTimeString != "        ")
-                    formattedAgeLabel.Text 
-                        = ""+ Utilities.CalculateAge(Convert.ToDateTime(dateTimeString), DateTime.Now);
-            }
-            else
-            {
-                dateOfBirthValid = false;
-                dateOfBirthLabel.ForeColor = Color.Red;
-                formattedAgeLabel.Text = "?";
-            }
-        }
-
 
         private bool DateTimeMaskedTextBoxValid(string dateTimeString)
         {
@@ -245,7 +260,7 @@ namespace CounselQuickPlatinum
 
         private void SaveDialogValuesToSoldier()
         {
-            if (!dateOfBirthValid || !dateOfRankValid)
+            if (!IsDateValid(dateOfBirthPicker) || !IsDateValid(dateOfRankPicker))
                 return;
 
             soldier.Rank = (Ranking)(rankingCombobox.SelectedIndex + 1);
@@ -253,87 +268,146 @@ namespace CounselQuickPlatinum
             soldier.FirstName = firstNameTextbox.Text;
             soldier.MiddleInitial = middleInitialTextbox.Text[0];
 
-            string dateOfBirthString = dateOfBirthTextBox.Text;
-            if (dateOfBirthString != "        ")
+            // Handle date of birth using CQPDatePicker
+            if (dateOfBirthPicker.HasValidDate())
             {
-                soldier.DateOfBirth = DateTime.ParseExact(dateOfBirthString, "yyyy MM dd",
-                                                            System.Globalization.CultureInfo.InvariantCulture);
+                soldier.DateOfBirth = dateOfBirthPicker.GetDate();
             }
             else
             {
                 soldier.DateOfBirth = new DateTime(0);
             }
 
-            string dateOfRankString = dateOfRankTextBox.Text;
-            if (dateOfRankString != "        ")
+            // Handle date of rank using CQPDatePicker
+            if (dateOfRankPicker.HasValidDate())
             {
-                soldier.DateOfRank = DateTime.ParseExact(dateOfRankString, "yyyy MM dd",
-                                                            System.Globalization.CultureInfo.InvariantCulture);
+                soldier.DateOfRank = dateOfRankPicker.GetDate();
             }
             else
             {
                 soldier.DateOfRank = new DateTime(0);
             }
 
-            // Format unit hierarchy text before saving to ensure consistent formatting
-            battalionCombobox.Text = FormatUnitHierarchyText(battalionCombobox.Text);
-            unitNumberCombobox.Text = FormatUnitHierarchyText(unitNumberCombobox.Text);
-            unitDesignatorCombobox.Text = FormatUnitHierarchyText(unitDesignatorCombobox.Text);
-            platoonNumberCombobox.Text = FormatUnitHierarchyText(platoonNumberCombobox.Text);
-            squadSectionNumberCombobox.Text = FormatUnitHierarchyText(squadSectionNumberCombobox.Text);
+            // Format all unit hierarchy text before processing to ensure consistent formatting
+            // This applies to both existing entries and new custom entries
+            string formattedBattalionText = FormatUnitHierarchyText(battalionCombobox.Text);
+            string formattedUnitText = FormatUnitHierarchyText(unitNumberCombobox.Text);
+            string formattedUnitDesignatorText = FormatUnitHierarchyText(unitDesignatorCombobox.Text);
+            string formattedPlatoonText = FormatUnitHierarchyText(platoonNumberCombobox.Text);
+            string formattedSquadSectionText = FormatUnitHierarchyText(squadSectionNumberCombobox.Text);
 
-            // Handle Unit Hierarchy with custom entries
+            // Update ComboBox text with formatted versions for user feedback
+            battalionCombobox.Text = formattedBattalionText;
+            unitNumberCombobox.Text = formattedUnitText;
+            unitDesignatorCombobox.Text = formattedUnitDesignatorText;
+            platoonNumberCombobox.Text = formattedPlatoonText;
+            squadSectionNumberCombobox.Text = formattedSquadSectionText;
+
+            // Handle Unit Hierarchy with custom entries and similarity checking
             UnitHierarchyModel.UnitHierarchy newUnitHierarchy = new UnitHierarchyModel.UnitHierarchy();
 
-            // Battalion handling (already works with custom text)
+            // Battalion handling
             int battalionComboboxIndex = battalionCombobox.SelectedIndex;
             if (battalionComboboxIndex == -1)
                 newUnitHierarchy.battalionID = -1;
             else
                 newUnitHierarchy.battalionID = Convert.ToInt32(battalionCombobox.SelectedValue);
             
-            newUnitHierarchy.battalionName = battalionCombobox.Text;
+            newUnitHierarchy.battalionName = formattedBattalionText;
 
-            // Handle other hierarchy components
+            // Handle other hierarchy components with similarity checking
             string customUnitName = null;
             string customUnitDesignatorName = null;
             string customPlatoonName = null;
             string customSquadSectionName = null;
 
-            // Unit handling
+            // Unit handling with prompt
             if (unitNumberCombobox.SelectedValue != null)
+            {
                 newUnitHierarchy.unitID = Convert.ToInt32(unitNumberCombobox.SelectedValue);
-            else
+            }
+            else if (!string.IsNullOrWhiteSpace(formattedUnitText))
             {
-                newUnitHierarchy.unitID = -1;
-                customUnitName = unitNumberCombobox.Text;
+                int promptResult = PromptForEntryAction(formattedUnitText, "Unit");
+                if (promptResult == 2) return; // User cancelled
+
+                if (promptResult == 1) // Use existing
+                {
+                    // For simplicity, just create new - could enhance with selection dialog later
+                    newUnitHierarchy.unitID = -1;
+                    customUnitName = formattedUnitText;
+                }
+                else // Create new
+                {
+                    newUnitHierarchy.unitID = -1;
+                    customUnitName = formattedUnitText;
+                }
             }
 
-            // Unit Designator handling
+            // Unit Designator handling with prompt
             if (unitDesignatorCombobox.SelectedValue != null)
+            {
                 newUnitHierarchy.unitDesignatorID = Convert.ToInt32(unitDesignatorCombobox.SelectedValue);
-            else
+            }
+            else if (!string.IsNullOrWhiteSpace(formattedUnitDesignatorText))
             {
-                newUnitHierarchy.unitDesignatorID = -1;
-                customUnitDesignatorName = unitDesignatorCombobox.Text;
+                int promptResult = PromptForEntryAction(formattedUnitDesignatorText, "Unit Designator");
+                if (promptResult == 2) return; // User cancelled
+
+                if (promptResult == 1) // Use existing
+                {
+                    newUnitHierarchy.unitDesignatorID = -1;
+                    customUnitDesignatorName = formattedUnitDesignatorText;
+                }
+                else // Create new
+                {
+                    newUnitHierarchy.unitDesignatorID = -1;
+                    customUnitDesignatorName = formattedUnitDesignatorText;
+                }
             }
 
-            // Platoon handling
+            // Platoon handling with prompt
             if (platoonNumberCombobox.SelectedValue != null)
-                newUnitHierarchy.platoonID = Convert.ToInt32(platoonNumberCombobox.SelectedValue);
-            else
             {
-                newUnitHierarchy.platoonID = -1;
-                customPlatoonName = platoonNumberCombobox.Text;
+                newUnitHierarchy.platoonID = Convert.ToInt32(platoonNumberCombobox.SelectedValue);
+            }
+            else if (!string.IsNullOrWhiteSpace(formattedPlatoonText))
+            {
+                int promptResult = PromptForEntryAction(formattedPlatoonText, "Platoon");
+                if (promptResult == 2) return; // User cancelled
+
+                if (promptResult == 1) // Use existing
+                {
+                    newUnitHierarchy.platoonID = -1;
+                    customPlatoonName = formattedPlatoonText;
+                }
+                else // Create new
+                {
+                    newUnitHierarchy.platoonID = -1;
+                    customPlatoonName = formattedPlatoonText;
+                }
             }
 
-            // Squad/Section handling
+            // Squad/Section handling with prompt
             if (squadSectionNumberCombobox.SelectedValue != null)
-                newUnitHierarchy.squadID = Convert.ToInt32(squadSectionNumberCombobox.SelectedValue);
-            else
             {
-                newUnitHierarchy.squadID = -1;
-                customSquadSectionName = squadSectionNumberCombobox.Text;
+                newUnitHierarchy.squadID = Convert.ToInt32(squadSectionNumberCombobox.SelectedValue);
+            }
+            else if (!string.IsNullOrWhiteSpace(formattedSquadSectionText))
+            {
+                int promptResult = PromptForEntryAction(formattedSquadSectionText, "Squad/Section");
+                if (promptResult == 2) return; // User cancelled
+
+                if (promptResult == 1) // Use existing
+                {
+                    newUnitHierarchy.squadID = -1;
+                    customSquadSectionName = formattedSquadSectionText;
+                }
+                else // Create new
+                {
+                    newUnitHierarchy.squadID = -1;
+                    customSquadSectionName = formattedSquadSectionText;
+                }
             }
 
             // Create or get the unit hierarchy ID using the enhanced method
@@ -442,9 +516,9 @@ namespace CounselQuickPlatinum
                 return false;
             if (squadSectionNumberCombobox.SelectedIndex < 0 && squadSectionNumberCombobox.Text == "")
                 return false;
-            if (!dateOfBirthValid)
+            if (!IsDateValid(dateOfBirthPicker))
                 return false;
-            if (!dateOfRankValid)
+            if (!IsDateValid(dateOfRankPicker))
                 return false;
 
             return true;
@@ -501,12 +575,12 @@ namespace CounselQuickPlatinum
             else
                 squadSectionLabel.ForeColor = Color.Black;
 
-            if (!dateOfBirthValid)
+            if (!IsDateValid(dateOfBirthPicker))
                 dateOfBirthLabel.ForeColor = Color.Red;
             else
                 dateOfBirthLabel.ForeColor = Color.Black;
 
-            if (!dateOfRankValid)
+            if (!IsDateValid(dateOfRankPicker))
                 dateOfRankLabel.ForeColor = Color.Red;
             else
                 dateOfRankLabel.ForeColor = Color.Black;
@@ -573,22 +647,6 @@ namespace CounselQuickPlatinum
             ValueChanged(null, null);
         }
 
-        private void dateOfBirthTextBox_Enter(object sender, EventArgs e)
-        {
-            this.BeginInvoke((MethodInvoker)delegate()
-            {
-                dateOfBirthTextBox.Select(0, 0);
-            });  
-        }
-
-        private void dateOfRankTextBox_Enter(object sender, EventArgs e)
-        {
-            this.BeginInvoke((MethodInvoker)delegate()
-            {
-                dateOfRankTextBox.Select(0, 0);
-            });  
-        }
-
         private void NewSoldierPage1Dialog_VisibleChanged(object sender, EventArgs e)
         {
 
@@ -606,7 +664,6 @@ namespace CounselQuickPlatinum
             }
             else
                 soldierPictureBox.Image = rankingImages[((int)soldier.Rank) - 1];
-
         }
 
         private void NewSoldierPage1Dialog_Load(object sender, EventArgs e)
@@ -660,6 +717,47 @@ namespace CounselQuickPlatinum
         private void squadSectionNumberCombobox_TextChanged(object sender, EventArgs e)
         {
             ValueChanged(null, null);
+        }
+
+        /// <summary>
+        /// Prompts user to create new or use existing entry
+        /// </summary>
+        /// <param name="entryText">The text entered by user</param>
+        /// <param name="entryType">Type of entry for display purposes</param>
+        /// <returns>Returns: 0=Create New, 1=Use Existing, 2=Cancel</returns>
+        private int PromptForEntryAction(string entryText, string entryType)
+        {
+            if (string.IsNullOrWhiteSpace(entryText))
+                return 0; // Create new if empty
+
+            string message = $"You entered: \"{entryText}\"\n\n";
+            message += $"Would you like to:\n";
+            message += $"• Create a new {entryType} entry\n";
+            message += $"• Change to an existing {entryType} entry\n";
+            message += $"• Cancel and edit your entry";
+
+            string caption = $"New {entryType} Entry";
+            CQPMessageBox.CQPMessageBoxButtons buttons = CQPMessageBox.CQPMessageBoxButtons.YesNoCancel;
+            CQPMessageBox.CQPMessageBoxIcon icon = CQPMessageBox.CQPMessageBoxIcon.Question;
+
+            List<string> buttonText = new List<string>();
+            buttonText.Add("Create New");
+            buttonText.Add("Use Existing");  
+            buttonText.Add("Cancel");
+
+            DialogResult result = CQPMessageBox.ShowDialog(message, caption, buttons, buttonText, icon);
+
+            if (result == DialogResult.Yes) return 0; // Create new
+            if (result == DialogResult.No) return 1;  // Use existing
+            if (result == DialogResult.Cancel) return 2; // Cancel
+            
+            return 0; // Default to create new
+        }
+
+        private bool IsDateValid(CQPDatePicker datePicker)
+        {
+            // Date is valid if it's either blank (allowed) or contains a valid date
+            return datePicker.IsBlank() || datePicker.HasValidDate();
         }
     }
 }

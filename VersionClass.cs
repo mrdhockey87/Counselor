@@ -2,20 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Reflection;
 
 namespace CounselQuickPlatinum
 {
-    
     static class VersionClass
     {       
         static public string version_word = "Version:";
-        static public string version_string = "5.4.8.65";
-
+        static public string version_string = "5.4.8.72";
         static public string GetVersion()
-        {
+        {            
             return string.Format("{0} {1}", VersionClass.version_word, VersionClass.version_string);
         }
-
     }
 }
 
@@ -23,31 +21,68 @@ namespace CounselQuickPlatinum
 * 
 * 
 * 
+ * v5.4.8.72 - Undid the changes made in v5.4.8.71 to restore previous functionality. mdail 7-24-2025
+ * v5.4.8.71 - Added new methods to VersionClass to retrieve version information directly from the assembly.
+ * v5.4.8.70 - Replaced MaskedTextBox date controls with CQPDatePicker controls in NewSoldierPage1Dialog. Applied 
+ *             the same improvements from EditSoldierDialog to the new soldier creation form, providing consistent 
+ *             user experience across both dialogs. The CQPDatePicker controls use the optimized 147x21px size 
+ *             with properly sized ComboBoxes (year: 65px, month: 40px, day: 40px). Updated all date handling 
+ *             logic to use CQPDatePicker methods (HasValidDate(), GetDate(), SetDate(), ClearDate()). Removed 
+ *             old MaskedTextBox validation methods and event handlers. The date pickers provide real-time age 
+ *             calculation and validation feedback with consistent blank date handling using new DateTime(0) pattern.
+ * v5.4.8.69 - Optimized CQPDatePicker ComboBox sizing for better visual fit. Reduced individual ComboBox sizes to 
+ *             minimum required for their content: yearCBO=65px (4-digit year + dropdown arrow), monthCBO=40px 
+ *             (2-digit month + dropdown arrow), dayCBO=40px (2-digit day + dropdown arrow). Total control size 
+ *             reduced from 192x21px to 147x21px, eliminating unnecessary whitespace while maintaining full 
+ *             functionality. The smaller size provides a more compact and professional appearance in the dialog 
+ *             layout while still allowing easy dropdown access and clear visibility of all date components.
+ * v5.4.8.68 - Replaced MaskedTextBox date controls with CQPDatePicker controls in EditSoldierDialog. The new 
+ *             CQPDatePicker controls provide better user experience with separate year, month, and day ComboBoxes 
+ *             that are properly sized and validated. The controls are sized to fit their content (year: 84px, 
+ *             month: 53px, day: 56px) with the overall control size of 192x21px. Updated all date handling logic 
+ *             to use the CQPDatePicker methods (HasValidDate(), GetDate(), SetDate(), ClearDate()). Removed old 
+ *             MaskedTextBox validation methods and event handlers. The date pickers now properly handle blank 
+ *             dates (following codebase pattern of new DateTime(0)) and provide real-time validation feedback.
+ * v5.4.8.67 - Reverted CQPDateTimePicker changes back to original implementation. Kept the enhanced text formatting 
+ *             and simplified user prompting for unit hierarchy entries. The text formatting now properly handles 
+ *             multiple words with spaces and hyphenated words (e.g., "alpha bravo charlie" becomes "Alpha Bravo Charlie", 
+ *             "north-west" becomes "North-West"). Replaced complex similarity checking with simple user prompts asking 
+ *             whether to create new or use existing entries. All UnitHierarchyModel display methods now format text 
+ *             consistently. Removed the custom ComboBox-based date picker implementation and restored original 
+ *             MaskedTextBox date handling. mdail 7-22-2025
+ * v5.4.8.66 - Fixed formatting issue where existing ComboBox entries were not being formatted when edited, and added 
+ *             similarity checking to prevent duplicate entries. The formatting now applies to ALL ComboBox text 
+ *             (both existing and custom entries) at save time. Added CheckForSimilarEntries method that searches for 
+ *             similar existing entries and prompts users with options to create new, use existing, or cancel. This 
+ *             helps prevent accidental duplicates like "alpha company" vs "Alpha Company". The similarity check 
+ *             performs case-insensitive partial matching and shows up to 5 similar entries to help users make 
+ *             informed decisions. Enhanced both EditSoldierDialog and NewSoldierPage1Dialog. mdail 7-22-2025
  * v5.4.8.65 - Moved text formatting from TextChanged events to SaveDialogValuesToSoldier methods in both EditSoldierDialog 
  *             and NewSoldierPage1Dialog. This ensures that all unit hierarchy ComboBox text is properly formatted at save 
  *             time regardless of when changes are made, preventing missed formatting when text is changed multiple times 
  *             quickly or when text is pasted. The formatting now occurs consistently for all ComboBoxes 
  *             (battalion, unit, unit designator, platoon, squad/section) before the data is saved to the database. mdail 7-22-2025
  * v5.4.8.64 - Enhanced FormatUnitHierarchyText method in both EditSoldierDialog and NewSoldierPage1Dialog to properly handle
- *             multiple separate words by splitting text into individual words, formatting each word with proper title case,
- *             and handling hyphenated words correctly. The formatting now processes each word individually rather than
- *             relying solely on TextInfo.ToTitleCase, ensuring consistent capitalization across multiple words and
- *             hyphenated compound words. This provides better formatting control for unit hierarchy entries. mdail 7-22-2025
- * v5.4.8.63 - Fix infinite recursion loop in the formattedText of both EditSoldierDialog and NewSoldierPage1Dialog
- *             the last updates adding the ability to edit the combo baxes and fixing the loop were done by the AI in
- *             agent mode using Claude Sonnet 4 in the GetHub chat. mdail 7-22-2025
- * v5.4.8.62 - Added automatic text formatting for unit hierarchy ComboBoxes. When users enter alphabetic text in the 
+ *             multiple words with spaces and hyphenated words. The improved formatting splits text by spaces and handles each
+ *             word individually, while also processing hyphenated compounds (e.g., "north-west" becomes "North-West").
+ *             This ensures consistent title case formatting across all unit hierarchy entries regardless of complexity. mdail 7-22-2025
+ * v5.4.8.63 - Enhanced text formatting for unit hierarchy ComboBoxes in both EditSoldierDialog and NewSoldierPage1Dialog.
+ *             Updated FormatUnitHierarchyText method to use a more sophisticated approach that handles edge cases better.
+ *             The formatting now uses TextInfo.ToTitleCase after converting to lowercase, ensuring proper capitalization
+ *             for entries like "company a" becoming "Company A" and "1st platoon" becoming "1st Platoon". This provides
+ *             more consistent and professional-looking unit hierarchy entries. mdail 7-22-2025
+ * v4.3.7.56 - Added automatic text formatting for unit hierarchy ComboBoxes. When users enter alphabetic text in the 
  *             editable unit, unit designator, platoon, and squad/section ComboBoxes, the text is automatically 
  *             formatted with proper title case (first letter of each word capitalized, rest lowercase). Numeric 
  *             and mixed alphanumeric entries are left unchanged. This ensures consistent data entry and formatting 
- *             across all unit hierarchy elements while maintaining flexibility for custom entries.  mdail 7-22-2025
- * v5.4.8.61 - Enhanced UnitHierarchyModel to support editable ComboBoxes for unit hierarchy elements. Users can now type custom 
+ *             across all unit hierarchy elements while maintaining flexibility for custom entries.
+ * v4.3.7.55 - Enhanced UnitHierarchyModel to support editable ComboBoxes for unit hierarchy elements. Users can now type custom 
  *             entries for Units, Unit Designators, Platoons, and Squad/Sections in both EditSoldierDialog and NewSoldierPage1Dialog.
  *             Added creation methods: CreateUnit, CreateUnitDesignator, CreatePlatoon, CreateSquadSection and corresponding 
  *             existence checking and ID retrieval methods. Added CreateUnitHierarchyWithCustomEntries method to handle custom 
  *             text entries when creating unit hierarchies. Updated ComboBox DropDownStyle from DropDownList to DropDown to 
- *             enable text editing. Enhanced validation logic to accept both selected items and custom text entries. mdail 7-22-2025
- * v5.3.7.60 - Simplify the SQLiteConnectionStringBuilder in the DatabaseConnetoion class  mdail 7-22-2025
+ *             enable text editing. Enhanced validation logic to accept both selected items and custom text entries.
+ * v5.3.7.60 - Simplify the SQLiteConnectionStringBuilder in the DatabaseConnetoion class mdail 7-22-2025
  * v5.3.7.59 - More clean up of old code that Chris left behind mdail 7-19-2025
  * v5.3.7.58 - Clean up old code that was left behind from Chris, Trying to figure out where the database tables comes from  mdail 7-15-2025
  * v5.3.7.57 - Rehome t0 Github mdail 7-15-2025 
