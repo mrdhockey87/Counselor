@@ -21,6 +21,7 @@ namespace CounselQuickPlatinum
 * 
 * 
 * 
+ * v5.4.8.74 - Set up Dotfuscator to obfuscate the assembly. mdail 7-29-2025
  * v5.4.8.73 - Add Dotfuscator xml file to the project and set up to otfuscate release builds. mdail 7-28-2025
  * v5.4.8.72 - Undid the changes made in v5.4.8.71 to restore previous functionality. mdail 7-24-2025
  * v5.4.8.71 - Added new methods to VersionClass to retrieve version information directly from the assembly.
