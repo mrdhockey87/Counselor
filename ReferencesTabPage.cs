@@ -8,6 +8,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace CounselQuickPlatinum
 {
@@ -46,7 +47,6 @@ namespace CounselQuickPlatinum
 
             LoadAdobeReader();
             InitializeDocumentTreeViewLists();
-            //LoadFullGroupedTree();
             RefreshTreeView();
 
             webBrowser1.DocumentText = CounselQuickPlatinum.Properties.Resources.blank;
@@ -54,7 +54,9 @@ namespace CounselQuickPlatinum
 
         void ReferencesTabPage_Load(object sender, EventArgs e)
         {
-            referencesDirectory = SettingsModel.ReferencesDirectory;
+            //not required if the reference directory is in the application directory, If there is an way to change the references directory
+            //and update the settings table then this needs to be uncommented. mdail 7-31-25
+            //referencesDirectory = SettingsModel.ReferencesDirectory;
         }
 
 
@@ -109,7 +111,8 @@ namespace CounselQuickPlatinum
 
             groupNode.Tag = groupTag;
             groupNode.Text = name;
-
+            //If updating the refernces this prints out referenceGroup list in the database.
+            // Debug.WriteLine("ReferencesTabPage - GetGroupNode - Group: " + name + " (id: " + id + ")");
             DataRow[] documentRows = referenceDocuments.Select("referencegroupid = " + id);
 
             foreach (DataRow document in documentRows)
@@ -132,7 +135,8 @@ namespace CounselQuickPlatinum
             string filepath = document["referencedocumentfilename"].ToString();
             string name = document["referencedocumentname"].ToString();
             int id = Convert.ToInt32(document["referencedocumentid"]);
-
+            //If updating the references this prints out document list in the database.
+            //Debug.WriteLine("ReferencesTabPage - GetDocumentNode - filepath: " + filepath + " Document: " + name + " (id: " + id + ")");
             documentNode.Text = name;
 
             documentTag.id = id;
@@ -152,8 +156,11 @@ namespace CounselQuickPlatinum
 
             if (tag.isGroupNode)
                 return;
-
-            string filepath = referencesDirectory + tag.documentPath;
+            //it was failing to load prf files so I changed the way it builds the path because I couldn't why Chris had made the references directory
+            //a field in the settings table. now it looks up the application startup path and builds the path to the references directory from there. mdail 7-31-25
+            string appPath = Application.StartupPath;
+            string referencesDirectory = Path.Combine(appPath, "References");
+            string filepath = Path.Combine(referencesDirectory, tag.documentPath);
 
             Logger.Trace("   ReferencesTabPage - TreeNodeDoubleClick - Opening Preview: " + filepath);
 

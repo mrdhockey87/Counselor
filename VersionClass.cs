@@ -21,6 +21,12 @@ namespace CounselQuickPlatinum
 * 
 * 
 * 
+ * v5.4.8.76 - Changed the way it builds the references directory path and path to the files so it uses the
+ *             application startup path instead of looking it up in the database. This allows the application to
+ *             load the rferences even in debug mode. CHanged the open & print buttons on the references tab
+ *             to not visible as they really didn't work any way, the print button it looks like tries to print
+ *             the references tab not the document and the doc should prin from the pdf reader anywany. mdail 7-29-2025
+ * v5.4.8.75 - Clean old code form Encryption class mdail 7-29-2025
  * v5.4.8.74 - Set up Dotfuscator to obfuscate the assembly. mdail 7-29-2025
  * v5.4.8.73 - Add Dotfuscator xml file to the project and set up to otfuscate release builds. mdail 7-28-2025
  * v5.4.8.72 - Undid the changes made in v5.4.8.71 to restore previous functionality. mdail 7-24-2025

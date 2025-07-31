@@ -54,6 +54,7 @@
             this.tableLayoutPanel5.SuspendLayout();
             this.adobePanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -108,6 +109,7 @@
             this.cqpPrintButton1.TabIndex = 3;
             this.cqpPrintButton1.Text = " ";
             this.cqpPrintButton1.UseVisualStyleBackColor = false;
+            this.cqpPrintButton1.Visible = false;
             this.cqpPrintButton1.Click += new System.EventHandler(this.OnPrintButtonClicked);
             // 
             // cqpGrayRectangleButton1
@@ -129,6 +131,7 @@
             this.cqpGrayRectangleButton1.TabIndex = 2;
             this.cqpGrayRectangleButton1.Text = "Open";
             this.cqpGrayRectangleButton1.UseVisualStyleBackColor = false;
+            this.cqpGrayRectangleButton1.Visible = false;
             this.cqpGrayRectangleButton1.Click += new System.EventHandler(this.OnOpenButtonClicked);
             // 
             // stopShowingAdobeWarningLink
@@ -359,6 +362,7 @@
             this.tableLayoutPanel1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
 
