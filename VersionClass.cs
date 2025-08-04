@@ -9,10 +9,27 @@ namespace CounselQuickPlatinum
     static class VersionClass
     {       
         static public string version_word = "Version:";
-        static public string version_string = "5.4.8.72";
+        
+        // Get version from assembly - this will always match AssemblyInfo.cs
+        static public string version_string = GetAssemblyVersion();
+        
         static public string GetVersion()
         {            
             return string.Format("{0} {1}", VersionClass.version_word, VersionClass.version_string);
+        }
+        
+        static private string GetAssemblyVersion()
+        {
+            try
+            {
+                Assembly assembly = Assembly.GetExecutingAssembly();
+                return assembly.GetName().Version.ToString();
+            }
+            catch
+            {
+                // Fallback version if assembly version fails
+                return "5.4.8.78";
+            }
         }
     }
 }
@@ -21,6 +38,18 @@ namespace CounselQuickPlatinum
 * 
 * 
 * 
+ * v5.4.8.80 - Enabled the Open button and added a singel click to the tree view in the ReferencesTabPage to open the
+ *             selected reference. This allows the user to open the references by selecting the reference in the tree and
+ *             clicking the Open button or by double clicking the reference. Set the Print button to visible = false
+ *             as it wanted to print the refence page not the pdf file. mdail 8-4-2025
+ * v5.4.8.79 - Changed the company name in the AssemblyInfo to Byrrd Enterprises, Inc. Updated the SplashScreen with a
+ *             new image that has the new company name and the new version number. Updated the AboutDialog to show the
+ *             new company name and the new version number. Updated the RefencesTabPage to open the references using the
+ *             System.Diagnostics.Process.Start instead of the webBrowser1 control. This stops the File daownload dialog
+ *             from popping up when the user clicks on the links in the references. mdail 8-4-2025
+ * v5.4.8.78 - Added the AssemblyInfo class so the exe will have the propery version information in it. mdail 8-2-2025
+ * v5.4.8.77 - Put open & print buttons back on the references tab and made them visible again. I need to test
+ *             to see if the webBrowser1 ever get set to a valid URL before I remove the buttons. mdail 8-2-2025
  * v5.4.8.76 - Changed the way it builds the references directory path and path to the files so it uses the
  *             application startup path instead of looking it up in the database. This allows the application to
  *             load the rferences even in debug mode. CHanged the open & print buttons on the references tab

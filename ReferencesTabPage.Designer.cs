@@ -118,7 +118,6 @@
             this.cqpGrayRectangleButton1.BackColor = System.Drawing.SystemColors.Control;
             this.cqpGrayRectangleButton1.BackgroundImage = global::CounselQuickPlatinum.Properties.Resources._65_up;
             this.cqpGrayRectangleButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.cqpGrayRectangleButton1.Enabled = false;
             this.cqpGrayRectangleButton1.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.cqpGrayRectangleButton1.FlatAppearance.BorderSize = 0;
             this.cqpGrayRectangleButton1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
@@ -131,7 +130,6 @@
             this.cqpGrayRectangleButton1.TabIndex = 2;
             this.cqpGrayRectangleButton1.Text = "Open";
             this.cqpGrayRectangleButton1.UseVisualStyleBackColor = false;
-            this.cqpGrayRectangleButton1.Visible = false;
             this.cqpGrayRectangleButton1.Click += new System.EventHandler(this.OnOpenButtonClicked);
             // 
             // stopShowingAdobeWarningLink
@@ -179,6 +177,7 @@
             this.referencesTreeView.Size = new System.Drawing.Size(319, 374);
             this.referencesTreeView.TabIndex = 1;
             this.referencesTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.referencesTreeView_AfterSelect);
+            this.referencesTreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.referencesTreeView_NodeMouseClick_1);
             this.referencesTreeView.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.TreeNodeDoubleClick);
             // 
             // referencesLabel
