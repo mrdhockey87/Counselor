@@ -37,7 +37,8 @@ namespace CounselQuickPlatinum
 /*
 * 
 * 
-* 
+ * v5.4.8.81 - Updated it so if the selection in the tree view changes the Open button still works. as it still sets the
+ *             selectedFilePath and makes sure it is a valid file. mdail 8-4-2025
  * v5.4.8.80 - Enabled the Open button and added a singel click to the tree view in the ReferencesTabPage to open the
  *             selected reference. This allows the user to open the references by selecting the reference in the tree and
  *             clicking the Open button or by double clicking the reference. Set the Print button to visible = false

@@ -370,6 +370,27 @@ namespace CounselQuickPlatinum
 
             referencesTreeView.SelectedNode.BackColor = SystemColors.Highlight;
             referencesTreeView.SelectedNode.ForeColor = SystemColors.HighlightText;
+
+            TreeNode node = e.Node;
+            ReferenceTag tag = (ReferenceTag)node.Tag;
+
+            if (tag.isGroupNode)
+                return;
+            //it was failing to load prf files so I changed the way it builds the path because I couldn't why Chris had made the references directory
+            //a field in the settings table. now it looks up the application startup path and builds the path to the references directory from there. mdail 7-31-25
+            string appPath = Application.StartupPath;
+            string referencesDirectory = Path.Combine(appPath, "References");
+            string filepath = Path.Combine(referencesDirectory, tag.documentPath);
+            Logger.Trace("   ReferencesTabPage - TreeNodeClick - Opening Preview: " + filepath);
+
+
+            if (File.Exists(filepath))
+            {
+
+                string fullpath = new FileInfo(filepath).FullName;
+                Logger.Trace("   ReferencesTabPage - TreeNodeClick - Opening Preview (fullpath): " + fullpath);
+                selectedFilePath = fullpath;
+            }
         }
 
         private void splitContainer1_Paint(object sender, PaintEventArgs e)
