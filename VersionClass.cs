@@ -28,7 +28,7 @@ namespace CounselQuickPlatinum
             catch
             {
                 // Fallback version if assembly version fails
-                return "5.4.8.78";
+                return "5.4.8.88";
             }
         }
     }
@@ -36,7 +36,8 @@ namespace CounselQuickPlatinum
 
 /*
 * 
-* 
+ * v5.4.8.83 _ set referencedir back to the way it was origanally mdail 8-8-2025 
+ * v5.4.8.82 - Fixed a bug in the ReferencesTabPage dubble click reported an error trying to load preview on a group node mdail 8-7-2025
  * v5.4.8.81 - Updated it so if the selection in the tree view changes the Open button still works. as it still sets the
  *             selectedFilePath and makes sure it is a valid file. mdail 8-4-2025
  * v5.4.8.80 - Enabled the Open button and added a singel click to the tree view in the ReferencesTabPage to open the
