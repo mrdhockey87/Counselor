@@ -47,6 +47,33 @@ namespace CounselQuickPlatinum
         private void InitializeDateControls()
         {
             formattedAgeLabel.Text = "";
+            cqpDateOfRank.DateValueChanged += (sender, e) => {
+                // This only fires when user changes to a different valid date
+                // Won't fire for invalid/incomplete dates or if they select the same original date
+                ValueChanged(sender, e);
+            };
+            cqpDateOfBirth.DateValueChanged += (sender, e) => {
+                // This only fires when user changes to a different valid date
+                // Won't fire for invalid/incomplete dates or if they select the same original date
+                ValueChanged(sender, e);
+                string dateTimeString = cqpDateOfBirth.GetDate().ToString();// dateOfBirthTextBox.Text;
+                if (dateTimeString != "0000 00 00")
+                {
+                    dateOfBirthValid = true;
+                    dateOfBirthLabel.ForeColor = Color.Black;
+
+                    formattedAgeLabel.Text
+                        = "" + Utilities.CalculateAge(Convert.ToDateTime(dateTimeString), DateTime.Now);
+                }
+                else
+                {
+                    dateOfBirthValid = false;
+                    dateOfBirthLabel.ForeColor = Color.Red;
+                    formattedAgeLabel.Text = "?";
+                }
+            };
+            cqpDateOfRank.SetDateString("");
+            cqpDateOfBirth.SetDateString("");
         }
 
 
@@ -112,7 +139,8 @@ namespace CounselQuickPlatinum
 
         private void dateOfRankTextBox_Leave(object sender, EventArgs e)
         {
-            string dateTimeString = dateOfRankTextBox.Text;
+            string dateTimeString = cqpDateOfRank.GetDateString();
+
             if (DateTimeMaskedTextBoxValid(dateTimeString))
             {
                 dateOfRankValid = true;
@@ -128,15 +156,14 @@ namespace CounselQuickPlatinum
 
         private void dateOfBirthTextBox_Leave(object sender, EventArgs e)
         {
-            string dateTimeString = dateOfBirthTextBox.Text;
-            if (DateTimeMaskedTextBoxValid(dateTimeString))
+            string dateTimeString = cqpDateOfBirth.GetDate().ToString();// dateOfBirthTextBox.Text;
+            if (dateTimeString != "0000 00 00")
             {
                 dateOfBirthValid = true;
                 dateOfBirthLabel.ForeColor = Color.Black;
 
-                if(dateTimeString != "        ")
-                    formattedAgeLabel.Text 
-                        = ""+ Utilities.CalculateAge(Convert.ToDateTime(dateTimeString), DateTime.Now);
+                formattedAgeLabel.Text
+                    = "" + Utilities.CalculateAge(Convert.ToDateTime(dateTimeString), DateTime.Now);
             }
             else
             {
@@ -152,7 +179,7 @@ namespace CounselQuickPlatinum
             DateTime dateTime;
 
             // blank is okay
-            if (dateTimeString == "        ")
+            if (!string.IsNullOrEmpty(dateTimeString))
                 return true;
 
             // if something is there, validate it
@@ -201,8 +228,8 @@ namespace CounselQuickPlatinum
             soldier.FirstName = firstNameTextbox.Text;
             soldier.MiddleInitial = middleInitialTextbox.Text[0];
 
-            string dateOfBirthString = dateOfBirthTextBox.Text;
-            if (dateOfBirthString != "        ")
+            string dateOfBirthString = cqpDateOfBirth.GetDateString();
+            if (!string.IsNullOrEmpty(dateOfBirthString))
             {
                 soldier.DateOfBirth = DateTime.ParseExact(dateOfBirthString, "yyyy MM dd",
                                                             System.Globalization.CultureInfo.InvariantCulture);
@@ -212,8 +239,8 @@ namespace CounselQuickPlatinum
                 soldier.DateOfBirth = new DateTime(0);
             }
 
-            string dateOfRankString = dateOfRankTextBox.Text;
-            if (dateOfRankString != "        ")
+            string dateOfRankString = cqpDateOfRank.GetDateString();
+            if (!string.IsNullOrEmpty(dateOfRankString))
             {
                 soldier.DateOfRank = DateTime.ParseExact(dateOfRankString, "yyyy MM dd",
                                                             System.Globalization.CultureInfo.InvariantCulture);
@@ -463,7 +490,7 @@ namespace CounselQuickPlatinum
 
             ValueChanged(null, null);
         }
-
+        /*
         private void dateOfBirthTextBox_Enter(object sender, EventArgs e)
         {
             this.BeginInvoke((MethodInvoker)delegate()
@@ -479,7 +506,7 @@ namespace CounselQuickPlatinum
                 dateOfRankTextBox.Select(0, 0);
             });  
         }
-
+        */
         private void NewSoldierPage1Dialog_VisibleChanged(object sender, EventArgs e)
         {
 
@@ -530,6 +557,25 @@ namespace CounselQuickPlatinum
             if (!visible)
             {
                 Utilities.centerFormPrimary(this);
+            }
+        }
+
+        private void cqpDateOfBirth_Leave(object sender, EventArgs e)
+        {
+            string dateTimeString = cqpDateOfBirth.GetDate().ToString();// dateOfBirthTextBox.Text;
+            if (dateTimeString != "0000 00 00")
+            {
+                dateOfBirthValid = true;
+                dateOfBirthLabel.ForeColor = Color.Black;
+
+                formattedAgeLabel.Text
+                    = "" + Utilities.CalculateAge(Convert.ToDateTime(dateTimeString), DateTime.Now);
+            }
+            else
+            {
+                dateOfBirthValid = false;
+                dateOfBirthLabel.ForeColor = Color.Red;
+                formattedAgeLabel.Text = "?";
             }
         }
     }

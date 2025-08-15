@@ -40,6 +40,43 @@ namespace CounselQuickPlatinum
             rankingImages = RankingModel.GetRankingImages();
             PopulateRankingComboBox();
             PopulateUnitComboboxes();
+
+            cqpDateOfRank.DateValueChanged += (sender, e) => {
+                // This only fires when user changes to a different valid date
+                // Won't fire for invalid/incomplete dates or if they select the same original date
+                ValueChanged(sender, e);
+            };
+
+            cqpDateOfBirth.DateValueChanged += (sender, e) => {
+                // Won't fire for invalid/incomplete dates or if they select the same original date
+                ValueChanged(sender, e);
+                string dateTimeString = cqpDateOfBirth.GetDateString();// dateOfBirthTextBox.Text;
+                if (string.IsNullOrEmpty(dateTimeString))
+                    return;
+                bool isValidDateTime = dateTimeMaskedTextBoxValid(dateTimeString);
+
+                if (isValidDateTime)
+                {
+                    DateTime dt = Convert.ToDateTime(dateTimeString);
+                    formattedAgeLabel.Text = Utilities.CalculateAge(dt, DateTime.Now).ToString();
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(dateTimeString))
+                    {
+                        dateOfBirthValid = true;
+                        dateOfBirthLabel.ForeColor = Color.Black;
+                        formattedAgeLabel.Text = "";
+                    }
+                    else
+                    {
+                        dateOfBirthValid = false;
+                        dateOfBirthLabel.ForeColor = Color.Red;
+                        formattedAgeLabel.Text = "?";
+                    }
+                }
+            };
+
         }
 
         private void LoadSoldierValues()
@@ -61,7 +98,7 @@ namespace CounselQuickPlatinum
 
             if (soldier.DateOfBirth.Ticks != 0)
             {
-                dateOfBirthTextBox.Text = soldier.DateOfBirth.ToString("yyyy MM dd");
+                cqpDateOfBirth.SetDateString(soldier.DateOfBirth.ToString("yyyy MM dd"));
                 
                 int age = Utilities.CalculateAge(soldier.DateOfBirth, DateTime.Now);
                 formattedAgeLabel.Text = age.ToString();
@@ -73,10 +110,12 @@ namespace CounselQuickPlatinum
 
             if (soldier.DateOfRank.Ticks != 0)
             {
-                dateOfRankTextBox.Text = soldier.DateOfRank.ToString("yyyy MM dd");
+                cqpDateOfRank.SetDateString(soldier.DateOfRank.ToString("yyyy MM dd"));
             }
-
-            rankingCombobox.SelectedIndex = (int)soldier.Rank - 1;
+            else
+            {
+                cqpDateOfRank.SetDateString("");
+            }
 
             if (soldier.hasCustomImage)
                 soldierCustomImage = true;
@@ -197,22 +236,6 @@ namespace CounselQuickPlatinum
             ValueChanged(null, null);
         }
 
-        private void dateOfBirth_ValueChanged(object sender, EventArgs e)
-        {
-            if (!dateTimeMaskedTextBoxValid(dateOfBirthTextBox.Text))
-            {
-                ageLabel.Text = "";
-                formattedAgeLabel.Text = "";
-            }
-            else
-            {
-                ageLabel.Text = "Age";
-                DateTime dt = DateTime.ParseExact(dateOfBirthTextBox.Text, "yyyy MM dd", 
-                                                    System.Globalization.CultureInfo.InvariantCulture);
-
-                formattedAgeLabel.Text = Utilities.CalculateAge(dt, DateTime.Now).ToString();
-            }
-        }
 
         private void ValueChanged(object sender, EventArgs e)
         {
@@ -279,7 +302,7 @@ namespace CounselQuickPlatinum
             }
 
 
-            if (!dateOfBirthValid)
+            if (!string.IsNullOrEmpty(cqpDateOfBirth.GetDateString()))
             {
                 dateOfBirthLabel.ForeColor = Color.Red;
                 requiredFieldsMissing.Add("-  Date of Birth");
@@ -289,7 +312,7 @@ namespace CounselQuickPlatinum
                 dateOfBirthLabel.ForeColor = Color.Black;
             }
 
-            if (!dateOfRankValid)
+            if (!string.IsNullOrEmpty(cqpDateOfRank.GetDateString()))
             {
                 dateOfRankLabel.ForeColor = Color.Red;
                 requiredFieldsMissing.Add("-  Date of Rank");
@@ -360,24 +383,27 @@ namespace CounselQuickPlatinum
             soldier.FirstName = firstNameTextbox.Text;
             soldier.MiddleInitial = middleInitialTextbox.Text[0];
 
-            if (dateOfBirthValid)
+            string DateOfBirthString = cqpDateOfBirth.GetDateString();
+            if (!string.IsNullOrEmpty(DateOfBirthString))
             {
-                if(dateOfBirthTextBox.Text != "        ")
-                    soldier.DateOfBirth = DateTime.ParseExact(dateOfBirthTextBox.Text, "yyyy MM dd",
-                                               System.Globalization.CultureInfo.InvariantCulture);
-                else if (dateOfBirthTextBox.Text == "        ")
-                    soldier.DateOfBirth = new DateTime(0);
+                soldier.DateOfBirth = DateTime.ParseExact(DateOfBirthString, "yyyy MM dd",
+                                           System.Globalization.CultureInfo.InvariantCulture);
+            }
+            else
+            {
+                soldier.DateOfBirth = new DateTime(0);
             }
 
-            if (dateOfRankValid)
+            string DateOfRankString = cqpDateOfRank.GetDateString();
+            if (!string.IsNullOrEmpty(DateOfRankString))
             {
-                if (dateOfRankTextBox.Text != "        ")
-                    soldier.DateOfRank = DateTime.ParseExact(dateOfRankTextBox.Text, "yyyy MM dd",
-                                                System.Globalization.CultureInfo.InvariantCulture);
-                else if (dateOfRankTextBox.Text == "        ")
-                    soldier.DateOfRank = new DateTime(0);
+                soldier.DateOfRank = DateTime.ParseExact(DateOfRankString, "yyyy MM dd",
+                                            System.Globalization.CultureInfo.InvariantCulture);
             }
-
+            else
+            {
+                soldier.DateOfRank = new DateTime(0); 
+            }
             int battalionSelectedIndex = battalionCombobox.SelectedIndex;
             if (battalionSelectedIndex == -1)
                 soldier.UnitHierarchy.battalionID = -1;
@@ -538,62 +564,6 @@ namespace CounselQuickPlatinum
             return true;
         }
 
-        private void dateOfBirthTextBox1_Leave(object sender, EventArgs e)
-        {
-            string dateTimeString = dateOfBirthTextBox.Text;
-            bool isValidDateTime = dateTimeMaskedTextBoxValid(dateTimeString);
-
-            if (isValidDateTime)
-            {
-                dateOfBirthValid = true;
-                dateOfBirthLabel.ForeColor = Color.Black;
-
-                DateTime dt = Convert.ToDateTime(dateTimeString);
-                formattedAgeLabel.Text = Utilities.CalculateAge(dt, DateTime.Now).ToString();
-            }
-            else
-            {
-                if (dateTimeString == "        ")
-                {
-                    dateOfBirthValid = true;
-                    dateOfBirthLabel.ForeColor = Color.Black;
-                    formattedAgeLabel.Text = "";
-                }
-                else
-                {
-                    dateOfBirthValid = false;
-                    dateOfBirthLabel.ForeColor = Color.Red;
-                    formattedAgeLabel.Text = "?";
-                }
-            }
-        }
-
-        private void dateOfRankTextBox_Leave(object sender, EventArgs e)
-        {
-            string dateTimeString = dateOfRankTextBox.Text;
-            bool isValidDateTime = dateTimeMaskedTextBoxValid(dateTimeString);
-
-            if (isValidDateTime)
-            {
-                dateOfRankValid = true;
-                dateOfRankLabel.ForeColor = Color.Black;
-                ValueChanged(null, null);
-            }
-            else
-            {
-                if (dateTimeString == "        ")
-                {
-                    dateOfRankValid = true;
-                    dateOfRankLabel.ForeColor = Color.Black;
-                }
-                else
-                {
-                    dateOfRankValid = false;
-                    dateOfRankLabel.ForeColor = Color.Red;
-                }
-            }
-        }
-
         private void removeImageLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             string message = "Are you sure you want to remove the soldier's image?";
@@ -612,22 +582,6 @@ namespace CounselQuickPlatinum
             soldierImageChanged = true;
 
             rankingCombobox_SelectedIndexChanged(null, null);
-        }
-
-        private void dateOfBirthTextBox_Enter(object sender, EventArgs e)
-        {
-            this.BeginInvoke((MethodInvoker)delegate()
-            {
-                dateOfBirthTextBox.Select(0, 0);
-            });  
-        }
-
-        private void dateOfRankTextBox_Enter(object sender, EventArgs e)
-        {
-            this.BeginInvoke((MethodInvoker)delegate()
-            {
-                dateOfRankTextBox.Select(0, 0);
-            });  
         }
 
         private void EditSoldierDialog_Load(object sender, EventArgs e)

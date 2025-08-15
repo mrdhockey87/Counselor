@@ -117,7 +117,9 @@
     <Compile Include="CQPDatePicker.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CQPDatePicker.Designer.cs" />
+    <Compile Include="CQPDatePicker.Designer.cs">
+      <DependentUpon>CQPDatePicker.cs</DependentUpon>
+    </Compile>
     <Compile Include="CQPDateTimePicker.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -626,7 +628,9 @@
     <EmbeddedResource Include="AboutDialog.resx">
       <DependentUpon>AboutDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CQPDatePicker.resx" />
+    <EmbeddedResource Include="CQPDatePicker.resx">
+      <DependentUpon>CQPDatePicker.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CQPDateTimePicker.resx">
       <DependentUpon>CQPDateTimePicker.cs</DependentUpon>
     </EmbeddedResource>

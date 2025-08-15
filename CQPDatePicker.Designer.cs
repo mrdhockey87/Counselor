@@ -28,54 +28,52 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.yearCBO = new System.Windows.Forms.ComboBox();
-            this.monthCBO = new System.Windows.Forms.ComboBox();
-            this.dayCBO = new System.Windows.Forms.ComboBox();
+            this.cboYear = new System.Windows.Forms.ComboBox();
+            this.cboMonth = new System.Windows.Forms.ComboBox();
+            this.cboDay = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // yearCBO
+            // cboYear
             // 
-            this.yearCBO.FormattingEnabled = true;
-            this.yearCBO.Location = new System.Drawing.Point(0, 0);
-            this.yearCBO.MaxDropDownItems = 20;
-            this.yearCBO.Name = "yearCBO";
-            this.yearCBO.Size = new System.Drawing.Size(65, 21);
-            this.yearCBO.TabIndex = 0;
+            this.cboYear.FormattingEnabled = true;
+            this.cboYear.Location = new System.Drawing.Point(0, 0);
+            this.cboYear.Name = "cboYear";
+            this.cboYear.Size = new System.Drawing.Size(63, 21);
+            this.cboYear.TabIndex = 0;
             // 
-            // monthCBO
+            // cboMonth
             // 
-            this.monthCBO.FormattingEnabled = true;
-            this.monthCBO.Location = new System.Drawing.Point(66, 0);
-            this.monthCBO.MaxDropDownItems = 13;
-            this.monthCBO.Name = "monthCBO";
-            this.monthCBO.Size = new System.Drawing.Size(40, 21);
-            this.monthCBO.TabIndex = 1;
+            this.cboMonth.FormattingEnabled = true;
+            this.cboMonth.Location = new System.Drawing.Point(63, 0);
+            this.cboMonth.Name = "cboMonth";
+            this.cboMonth.Size = new System.Drawing.Size(49, 21);
+            this.cboMonth.TabIndex = 1;
             // 
-            // dayCBO
+            // cboDay
             // 
-            this.dayCBO.FormattingEnabled = true;
-            this.dayCBO.Location = new System.Drawing.Point(107, 0);
-            this.dayCBO.Name = "dayCBO";
-            this.dayCBO.Size = new System.Drawing.Size(40, 21);
-            this.dayCBO.TabIndex = 2;
+            this.cboDay.FormattingEnabled = true;
+            this.cboDay.Location = new System.Drawing.Point(112, 0);
+            this.cboDay.Name = "cboDay";
+            this.cboDay.Size = new System.Drawing.Size(46, 21);
+            this.cboDay.TabIndex = 2;
             // 
             // CQPDatePicker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.dayCBO);
-            this.Controls.Add(this.monthCBO);
-            this.Controls.Add(this.yearCBO);
+            this.Controls.Add(this.cboDay);
+            this.Controls.Add(this.cboMonth);
+            this.Controls.Add(this.cboYear);
             this.Name = "CQPDatePicker";
-            this.Size = new System.Drawing.Size(147, 21);
+            this.Size = new System.Drawing.Size(157, 21);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ComboBox yearCBO;
-        private System.Windows.Forms.ComboBox monthCBO;
-        private System.Windows.Forms.ComboBox dayCBO;
+        private System.Windows.Forms.ComboBox cboYear;
+        private System.Windows.Forms.ComboBox cboMonth;
+        private System.Windows.Forms.ComboBox cboDay;
     }
 }

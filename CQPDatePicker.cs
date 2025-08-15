@@ -13,9 +13,13 @@ namespace CounselQuickPlatinum
     public partial class CQPDatePicker : UserControl
     {
         private bool _suppressEvents = false;
-        
+        private DateTime _originalDate = new DateTime(0); // Track the original date value
+
         [Browsable(true)]
         public event EventHandler ValueChanged;
+
+        [Browsable(true)]
+        public event EventHandler DateValueChanged;
 
         public CQPDatePicker()
         {
@@ -26,15 +30,18 @@ namespace CounselQuickPlatinum
         /// <summary>
         /// Gets or sets the selected date. Returns DateTime.MinValue if no valid date is selected.
         /// Use SetDate() and GetDate() methods for more control over blank/null handling.
+        /// For string-based date handling, use GetDateString() and SetDateString() methods.
         /// 
         /// Example usage:
         /// // Setting dates from data
         /// datePicker.SetDateFromData(soldier.DateOfBirth);  // Handles DateTime, null, blank values
         /// datePicker.SetDate(new DateTime(2023, 5, 15));    // Set specific date
+        /// datePicker.SetDateString("2023 05 15");           // Set date from string
         /// datePicker.ClearDate();                           // Clear the control
         /// 
         /// // Getting dates
         /// DateTime selectedDate = datePicker.GetDate();     // Get selected date or special values
+        /// string dateString = datePicker.GetDateString();   // Get date as "YYYY MM DD" or empty string
         /// bool hasDate = datePicker.HasValidDate();         // Check if valid date selected
         /// bool isEmpty = datePicker.IsBlank();              // Check if control is empty
         /// 
@@ -42,6 +49,8 @@ namespace CounselQuickPlatinum
         /// if (datePicker.HasValidDate())
         /// {
         ///     soldier.DateOfBirth = datePicker.GetDate();
+        ///     // OR for string format
+        ///     dateStringForForm = datePicker.GetDateString();
         /// }
         /// else
         /// {
@@ -68,11 +77,11 @@ namespace CounselQuickPlatinum
         {
             try
             {
-                if (yearCBO.SelectedItem != null && monthCBO.SelectedItem != null && dayCBO.SelectedItem != null)
+                if (cboYear.SelectedItem != null && cboMonth.SelectedItem != null && cboDay.SelectedItem != null)
                 {
-                    int year = (int)yearCBO.SelectedItem;
-                    int month = int.Parse(monthCBO.SelectedItem.ToString());
-                    int day = int.Parse(dayCBO.SelectedItem.ToString());
+                    int year = (int)cboYear.SelectedItem;
+                    int month = int.Parse(cboMonth.SelectedItem.ToString());
+                    int day = int.Parse(cboDay.SelectedItem.ToString());
                     return new DateTime(year, month, day);
                 }
             }
@@ -80,14 +89,42 @@ namespace CounselQuickPlatinum
             {
                 // Invalid date combination
             }
-            
+
             // Check if any fields have values but not all (partial date)
-            if (yearCBO.SelectedItem != null || monthCBO.SelectedItem != null || dayCBO.SelectedItem != null)
+            if (cboYear.SelectedItem != null || cboMonth.SelectedItem != null || cboDay.SelectedItem != null)
             {
                 return DateTime.MinValue; // Invalid/incomplete date
             }
-            
+
             return new DateTime(0); // Blank/empty date (following codebase pattern)
+        }
+
+        /// <summary>
+        /// Gets the selected date as a string in "YYYY MM DD" format.
+        /// Returns empty string if no valid date is selected or if the control is blank.
+        /// </summary>
+        /// <returns>Date string in "YYYY MM DD" format or empty string</returns>
+        public string GetDateString()
+        {
+            try
+            {
+                if (cboYear.SelectedItem != null && cboMonth.SelectedItem != null && cboDay.SelectedItem != null)
+                {
+                    int year = (int)cboYear.SelectedItem;
+                    int month = int.Parse(cboMonth.SelectedItem.ToString());
+                    int day = int.Parse(cboDay.SelectedItem.ToString());
+                    
+                    // Validate the date is constructible
+                    DateTime testDate = new DateTime(year, month, day);
+                    return testDate.ToString("yyyy MM dd");
+                }
+            }
+            catch
+            {
+                // Invalid date combination
+            }
+
+            return string.Empty; // Return empty string for invalid or blank dates
         }
 
         /// <summary>
@@ -113,10 +150,55 @@ namespace CounselQuickPlatinum
                         return;
                     }
 
-                    yearCBO.SelectedItem = date.Year;
-                    monthCBO.SelectedItem = date.Month.ToString("00");
+                    cboYear.SelectedItem = date.Year;
+                    cboMonth.SelectedItem = date.Month.ToString("00");
                     PopulateDays(); // Refresh days for the selected year/month
-                    dayCBO.SelectedItem = date.Day.ToString("00");
+                    cboDay.SelectedItem = date.Day.ToString("00");
+                }
+            }
+            finally
+            {
+                _suppressEvents = false;
+            }
+        }
+
+        /// <summary>
+        /// Sets the date value from a string in "YYYY MM DD" format.
+        /// Pass null, empty string, or whitespace to clear the control.
+        /// </summary>
+        /// <param name="dateString">Date string in "YYYY MM DD" format or empty/null to clear</param>
+        public void SetDateString(string dateString)
+        {
+            _suppressEvents = true;
+            try
+            {
+                if (string.IsNullOrWhiteSpace(dateString) || dateString.Trim() == "")
+                {
+                    ClearDate();
+                    return;
+                }
+
+                // Try parsing the "yyyy MM dd" format
+                if (DateTime.TryParseExact(dateString.Trim(), "yyyy MM dd",
+                    System.Globalization.CultureInfo.InvariantCulture,
+                    System.Globalization.DateTimeStyles.None, out DateTime parsedDate))
+                {
+                    // Ensure the year is within our range
+                    if (parsedDate.Year < 1900 || parsedDate.Year > DateTime.Now.Year)
+                    {
+                        ClearDate();
+                        return;
+                    }
+
+                    cboYear.SelectedItem = parsedDate.Year;
+                    cboMonth.SelectedItem = parsedDate.Month.ToString("00");
+                    PopulateDays(); // Refresh days for the selected year/month
+                    cboDay.SelectedItem = parsedDate.Day.ToString("00");
+                }
+                else
+                {
+                    // If parsing fails, clear the control
+                    ClearDate();
                 }
             }
             finally
@@ -133,12 +215,12 @@ namespace CounselQuickPlatinum
             _suppressEvents = true;
             try
             {
-                yearCBO.SelectedIndex = -1;
-                monthCBO.SelectedIndex = -1;
-                dayCBO.SelectedIndex = -1;
-                yearCBO.Text = "";
-                monthCBO.Text = "";
-                dayCBO.Text = "";
+                cboYear.SelectedIndex = -1;
+                cboMonth.SelectedIndex = -1;
+                cboDay.SelectedIndex = -1;
+                cboYear.Text = "";
+                cboMonth.Text = "";
+                cboDay.Text = "";
             }
             finally
             {
@@ -160,17 +242,19 @@ namespace CounselQuickPlatinum
         /// </summary>
         public bool IsBlank()
         {
-            return yearCBO.SelectedIndex == -1 && 
-                   monthCBO.SelectedIndex == -1 && 
-                   dayCBO.SelectedIndex == -1 &&
-                   string.IsNullOrEmpty(yearCBO.Text) &&
-                   string.IsNullOrEmpty(monthCBO.Text) &&
-                   string.IsNullOrEmpty(dayCBO.Text);
+            return cboYear.SelectedIndex == -1 &&
+                   cboMonth.SelectedIndex == -1 &&
+                   cboDay.SelectedIndex == -1 &&
+                   string.IsNullOrEmpty(cboYear.Text) &&
+                   string.IsNullOrEmpty(cboMonth.Text) &&
+                   string.IsNullOrEmpty(cboDay.Text);
         }
 
         /// <summary>
         /// Sets the date from data passed to the control, handling common database date patterns.
         /// Accepts DateTime, DateTime?, string representations, or null/empty values.
+        /// This method also sets the original date value for tracking changes.
+        /// For string-specific operations, use SetDateString() method.
         /// </summary>
         /// <param name="data">The date data to set</param>
         public void SetDateFromData(object data)
@@ -178,12 +262,14 @@ namespace CounselQuickPlatinum
             if (data == null || data == DBNull.Value)
             {
                 ClearDate();
+                SetOriginalDate(new DateTime(0)); // Set original as blank
                 return;
             }
 
             if (data is DateTime dateTime)
             {
                 SetDate(dateTime);
+                SetOriginalDate(dateTime);
                 return;
             }
 
@@ -192,9 +278,15 @@ namespace CounselQuickPlatinum
             {
                 DateTime? nullableDateTime = (DateTime?)data;
                 if (nullableDateTime.HasValue)
+                {
                     SetDate(nullableDateTime.Value);
+                    SetOriginalDate(nullableDateTime.Value);
+                }
                 else
+                {
                     ClearDate();
+                    SetOriginalDate(new DateTime(0));
+                }
                 return;
             }
 
@@ -203,6 +295,7 @@ namespace CounselQuickPlatinum
                 if (string.IsNullOrWhiteSpace(dateString) || dateString.Trim() == "")
                 {
                     ClearDate();
+                    SetOriginalDate(new DateTime(0));
                     return;
                 }
 
@@ -210,20 +303,23 @@ namespace CounselQuickPlatinum
                 if (DateTime.TryParse(dateString, out DateTime parsedDate))
                 {
                     SetDate(parsedDate);
+                    SetOriginalDate(parsedDate);
                     return;
                 }
 
                 // Try parsing the format used in the codebase: "yyyy MM dd"
-                if (DateTime.TryParseExact(dateString, "yyyy MM dd", 
-                    System.Globalization.CultureInfo.InvariantCulture, 
+                if (DateTime.TryParseExact(dateString, "yyyy MM dd",
+                    System.Globalization.CultureInfo.InvariantCulture,
                     System.Globalization.DateTimeStyles.None, out parsedDate))
                 {
                     SetDate(parsedDate);
+                    SetOriginalDate(parsedDate);
                     return;
                 }
 
                 // If we can't parse it, clear the control
                 ClearDate();
+                SetOriginalDate(new DateTime(0));
                 return;
             }
 
@@ -232,69 +328,139 @@ namespace CounselQuickPlatinum
             {
                 DateTime convertedDate = Convert.ToDateTime(data);
                 SetDate(convertedDate);
+                SetOriginalDate(convertedDate);
             }
             catch
             {
                 ClearDate();
+                SetOriginalDate(new DateTime(0));
             }
+        }
+
+        /// <summary>
+        /// Sets the date from a string and establishes it as the original date for change tracking.
+        /// Accepts string in "YYYY MM DD" format or empty/null values to clear.
+        /// This is useful when initially loading string date data and you want to track changes from it.
+        /// </summary>
+        /// <param name="dateString">Date string in "YYYY MM DD" format or empty/null to clear</param>
+        public void SetDateStringFromData(string dateString)
+        {
+            SetDateString(dateString);
+            
+            // Set original date based on what was actually set
+            if (string.IsNullOrWhiteSpace(dateString) || dateString.Trim() == "")
+            {
+                SetOriginalDate(new DateTime(0));
+            }
+            else if (DateTime.TryParseExact(dateString.Trim(), "yyyy MM dd",
+                System.Globalization.CultureInfo.InvariantCulture,
+                System.Globalization.DateTimeStyles.None, out DateTime parsedDate))
+            {
+                SetOriginalDate(parsedDate);
+            }
+            else
+            {
+                SetOriginalDate(new DateTime(0)); // Invalid format, treat as blank
+            }
+        }
+        
+        /// <summary>
+        /// Sets the original date value used for change tracking.
+        /// This should be called when initially loading data from database or setting baseline values.
+        /// </summary>
+        /// <param name="date">The original date to track changes against</param>
+        public void SetOriginalDate(DateTime date)
+        {
+            _originalDate = date;
+        }
+
+        /// <summary>
+        /// Gets the original date value that was initially set.
+        /// </summary>
+        public DateTime GetOriginalDate()
+        {
+            return _originalDate;
+        }
+
+        /// <summary>
+        /// Returns true if the current valid date value is different from the original date value.
+        /// Only considers valid dates for comparison (not blank or invalid dates).
+        /// </summary>
+        public bool HasDateChanged()
+        {
+            DateTime currentDate = GetDate();
+            
+            // Only fire if we have a valid current date
+            if (!HasValidDate())
+                return false;
+                
+            // Compare with original date - consider DateTime(0) as equivalent to MinValue for blanks
+            if (_originalDate == new DateTime(0) || _originalDate == DateTime.MinValue)
+            {
+                // Original was blank/invalid, current is valid - this is a change
+                return true;
+            }
+            
+            // Both are valid dates, compare them
+            return currentDate != _originalDate;
         }
 
         private void InitializeComboBoxes()
         {
             // Initialize events
-            yearCBO.SelectedIndexChanged += ComboBox_SelectedIndexChanged;
-            monthCBO.SelectedIndexChanged += ComboBox_SelectedIndexChanged;
-            dayCBO.SelectedIndexChanged += ComboBox_SelectedIndexChanged;
-            
-            yearCBO.TextChanged += ComboBox_TextChanged;
-            monthCBO.TextChanged += ComboBox_TextChanged;
-            dayCBO.TextChanged += ComboBox_TextChanged;
+            cboYear.SelectedIndexChanged += ComboBox_SelectedIndexChanged;
+            cboMonth.SelectedIndexChanged += ComboBox_SelectedIndexChanged;
+            cboDay.SelectedIndexChanged += ComboBox_SelectedIndexChanged;
 
-            yearCBO.KeyPress += ComboBox_KeyPress;
-            monthCBO.KeyPress += ComboBox_KeyPress;
-            dayCBO.KeyPress += ComboBox_KeyPress;
+            cboYear.TextChanged += ComboBox_TextChanged;
+            cboMonth.TextChanged += ComboBox_TextChanged;
+            cboDay.TextChanged += ComboBox_TextChanged;
+
+            cboYear.KeyPress += ComboBox_KeyPress;
+            cboMonth.KeyPress += ComboBox_KeyPress;
+            cboDay.KeyPress += ComboBox_KeyPress;
 
             // Populate years (current year down to 1900)
             PopulateYears();
-            
+
             // Populate months (01-12)
             PopulateMonths();
-            
+
             // Initially populate days (will be updated based on year/month selection)
             PopulateDays();
         }
 
         private void PopulateYears()
         {
-            yearCBO.Items.Clear();
+            cboYear.Items.Clear();
             int currentYear = DateTime.Now.Year;
             for (int year = currentYear; year >= 1900; year--)
             {
-                yearCBO.Items.Add(year);
+                cboYear.Items.Add(year);
             }
         }
 
         private void PopulateMonths()
         {
-            monthCBO.Items.Clear();
+            cboMonth.Items.Clear();
             for (int month = 1; month <= 12; month++)
             {
-                monthCBO.Items.Add(month.ToString("00"));
+                cboMonth.Items.Add(month.ToString("00"));
             }
         }
 
         private void PopulateDays()
         {
-            dayCBO.Items.Clear();
-            
+            cboDay.Items.Clear();
+
             int daysInMonth = 31; // Default
-            
-            if (yearCBO.SelectedItem != null && monthCBO.SelectedItem != null)
+
+            if (cboYear.SelectedItem != null && cboMonth.SelectedItem != null)
             {
                 try
                 {
-                    int year = (int)yearCBO.SelectedItem;
-                    int month = int.Parse(monthCBO.SelectedItem.ToString());
+                    int year = (int)cboYear.SelectedItem;
+                    int month = int.Parse(cboMonth.SelectedItem.ToString());
                     daysInMonth = DateTime.DaysInMonth(year, month);
                 }
                 catch
@@ -302,10 +468,10 @@ namespace CounselQuickPlatinum
                     // If parsing fails, default to 31 days
                 }
             }
-            
+
             for (int day = 1; day <= daysInMonth; day++)
             {
-                dayCBO.Items.Add(day.ToString("00"));
+                cboDay.Items.Add(day.ToString("00"));
             }
         }
 
@@ -314,20 +480,20 @@ namespace CounselQuickPlatinum
             if (_suppressEvents) return;
 
             // If year or month changed, update the days
-            if (sender == yearCBO || sender == monthCBO)
+            if (sender == cboYear || sender == cboMonth)
             {
                 int selectedDay = -1;
-                if (dayCBO.SelectedItem != null)
+                if (cboDay.SelectedItem != null)
                 {
-                    int.TryParse(dayCBO.SelectedItem.ToString(), out selectedDay);
+                    int.TryParse(cboDay.SelectedItem.ToString(), out selectedDay);
                 }
 
                 PopulateDays();
 
                 // Try to maintain the selected day if it's still valid
-                if (selectedDay > 0 && selectedDay <= dayCBO.Items.Count)
+                if (selectedDay > 0 && selectedDay <= cboDay.Items.Count)
                 {
-                    dayCBO.SelectedItem = selectedDay.ToString("00");
+                    cboDay.SelectedItem = selectedDay.ToString("00");
                 }
             }
 
@@ -379,12 +545,12 @@ namespace CounselQuickPlatinum
             if (char.IsDigit(e.KeyChar))
             {
                 // Validate input based on the combobox
-                if (comboBox == yearCBO)
+                if (comboBox == cboYear)
                 {
                     // Allow any digits for year (will be validated against the list)
                     return;
                 }
-                else if (comboBox == monthCBO)
+                else if (comboBox == cboMonth)
                 {
                     // Only allow 0 or 1 as first digit, and appropriate second digits
                     string currentText = comboBox.Text;
@@ -420,7 +586,7 @@ namespace CounselQuickPlatinum
                         return;
                     }
                 }
-                else if (comboBox == dayCBO)
+                else if (comboBox == cboDay)
                 {
                     // Only allow valid day entries (01-31, but will be constrained by actual days in month)
                     string currentText = comboBox.Text;
@@ -471,7 +637,14 @@ namespace CounselQuickPlatinum
         private void OnValueChanged()
         {
             if (_suppressEvents) return;
+            
             ValueChanged?.Invoke(this, EventArgs.Empty);
+            
+            // Fire DateValueChanged only when we have a valid date that differs from original
+            if (HasDateChanged())
+            {
+                DateValueChanged?.Invoke(this, EventArgs.Empty);
+            }
         }
     }
 }

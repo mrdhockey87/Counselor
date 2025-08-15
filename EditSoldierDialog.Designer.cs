@@ -39,8 +39,6 @@
             this.ageLabel = new System.Windows.Forms.Label();
             this.formattedAgeLabel = new System.Windows.Forms.Label();
             this.rankingCombobox = new System.Windows.Forms.ComboBox();
-            this.dateOfBirthTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.dateOfRankTextBox = new System.Windows.Forms.MaskedTextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.firstNameTextbox = new CounselQuickPlatinum.CQPTextbox();
             this.middleInitialTextbox = new CounselQuickPlatinum.CQPTextbox();
@@ -78,6 +76,8 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.soldierPictureBox = new System.Windows.Forms.PictureBox();
             this.removeImageLink = new System.Windows.Forms.LinkLabel();
+            this.cqpDateOfRank = new CounselQuickPlatinum.CQPDatePicker();
+            this.cqpDateOfBirth = new CounselQuickPlatinum.CQPDatePicker();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -130,8 +130,6 @@
             this.tableLayoutPanel2.Controls.Add(this.ageLabel, 2, 4);
             this.tableLayoutPanel2.Controls.Add(this.formattedAgeLabel, 2, 5);
             this.tableLayoutPanel2.Controls.Add(this.rankingCombobox, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.dateOfBirthTextBox, 0, 5);
-            this.tableLayoutPanel2.Controls.Add(this.dateOfRankTextBox, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 2, 3);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel4, 2, 2);
             this.tableLayoutPanel2.Controls.Add(this.squadSectionNumberCombobox, 2, 9);
@@ -142,6 +140,8 @@
             this.tableLayoutPanel2.Controls.Add(this.unitLabel, 2, 6);
             this.tableLayoutPanel2.Controls.Add(this.battalionCombobox, 0, 7);
             this.tableLayoutPanel2.Controls.Add(this.battalionLabel, 0, 6);
+            this.tableLayoutPanel2.Controls.Add(this.cqpDateOfRank, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.cqpDateOfBirth, 0, 5);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(13, 101);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
@@ -157,7 +157,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(530, 232);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(530, 233);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // dateOfRankLabel
@@ -165,7 +165,7 @@
             this.dateOfRankLabel.AutoSize = true;
             this.dateOfRankLabel.Location = new System.Drawing.Point(278, 0);
             this.dateOfRankLabel.Name = "dateOfRankLabel";
-            this.dateOfRankLabel.Size = new System.Drawing.Size(71, 16);
+            this.dateOfRankLabel.Size = new System.Drawing.Size(70, 16);
             this.dateOfRankLabel.TabIndex = 1;
             this.dateOfRankLabel.Text = "Date of rank";
             // 
@@ -174,7 +174,7 @@
             this.rankLabel.AutoSize = true;
             this.rankLabel.Location = new System.Drawing.Point(3, 0);
             this.rankLabel.Name = "rankLabel";
-            this.rankLabel.Size = new System.Drawing.Size(39, 16);
+            this.rankLabel.Size = new System.Drawing.Size(38, 16);
             this.rankLabel.TabIndex = 0;
             this.rankLabel.Text = "* Rank";
             // 
@@ -184,7 +184,7 @@
             this.lastNameLabel.AutoSize = true;
             this.lastNameLabel.Location = new System.Drawing.Point(3, 48);
             this.lastNameLabel.Name = "lastNameLabel";
-            this.lastNameLabel.Size = new System.Drawing.Size(66, 16);
+            this.lastNameLabel.Size = new System.Drawing.Size(65, 16);
             this.lastNameLabel.TabIndex = 4;
             this.lastNameLabel.Text = "* Last name";
             // 
@@ -204,7 +204,7 @@
             this.dateOfBirthLabel.AutoSize = true;
             this.dateOfBirthLabel.Location = new System.Drawing.Point(3, 92);
             this.dateOfBirthLabel.Name = "dateOfBirthLabel";
-            this.dateOfBirthLabel.Size = new System.Drawing.Size(73, 16);
+            this.dateOfBirthLabel.Size = new System.Drawing.Size(72, 16);
             this.dateOfBirthLabel.TabIndex = 8;
             this.dateOfBirthLabel.Text = "Date of birth";
             // 
@@ -213,7 +213,7 @@
             this.ageLabel.AutoSize = true;
             this.ageLabel.Location = new System.Drawing.Point(278, 92);
             this.ageLabel.Name = "ageLabel";
-            this.ageLabel.Size = new System.Drawing.Size(26, 16);
+            this.ageLabel.Size = new System.Drawing.Size(25, 16);
             this.ageLabel.TabIndex = 10;
             this.ageLabel.Text = "Age";
             // 
@@ -222,7 +222,7 @@
             this.formattedAgeLabel.AutoSize = true;
             this.formattedAgeLabel.Location = new System.Drawing.Point(278, 108);
             this.formattedAgeLabel.Name = "formattedAgeLabel";
-            this.formattedAgeLabel.Size = new System.Drawing.Size(11, 16);
+            this.formattedAgeLabel.Size = new System.Drawing.Size(10, 16);
             this.formattedAgeLabel.TabIndex = 11;
             this.formattedAgeLabel.Text = " ";
             // 
@@ -236,31 +236,6 @@
             this.rankingCombobox.Size = new System.Drawing.Size(121, 24);
             this.rankingCombobox.TabIndex = 2;
             this.rankingCombobox.SelectedIndexChanged += new System.EventHandler(this.rankingCombobox_SelectedIndexChanged);
-            // 
-            // dateOfBirthTextBox
-            // 
-            this.dateOfBirthTextBox.Location = new System.Drawing.Point(3, 112);
-            this.dateOfBirthTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dateOfBirthTextBox.Mask = "0000 00 00";
-            this.dateOfBirthTextBox.Name = "dateOfBirthTextBox";
-            this.dateOfBirthTextBox.Size = new System.Drawing.Size(100, 20);
-            this.dateOfBirthTextBox.TabIndex = 9;
-            this.dateOfBirthTextBox.TextChanged += new System.EventHandler(this.ValueChanged);
-            this.dateOfBirthTextBox.Enter += new System.EventHandler(this.dateOfBirthTextBox_Enter);
-            this.dateOfBirthTextBox.Leave += new System.EventHandler(this.dateOfBirthTextBox1_Leave);
-            // 
-            // dateOfRankTextBox
-            // 
-            this.dateOfRankTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.dateOfRankTextBox.Location = new System.Drawing.Point(278, 22);
-            this.dateOfRankTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dateOfRankTextBox.Mask = "0000 00 00";
-            this.dateOfRankTextBox.Name = "dateOfRankTextBox";
-            this.dateOfRankTextBox.Size = new System.Drawing.Size(100, 20);
-            this.dateOfRankTextBox.TabIndex = 3;
-            this.dateOfRankTextBox.TextChanged += new System.EventHandler(this.ValueChanged);
-            this.dateOfRankTextBox.Enter += new System.EventHandler(this.dateOfRankTextBox_Enter);
-            this.dateOfRankTextBox.Leave += new System.EventHandler(this.dateOfRankTextBox_Leave);
             // 
             // tableLayoutPanel3
             // 
@@ -325,7 +300,7 @@
             this.firstNameLabel.AutoSize = true;
             this.firstNameLabel.Location = new System.Drawing.Point(3, 0);
             this.firstNameLabel.Name = "firstNameLabel";
-            this.firstNameLabel.Size = new System.Drawing.Size(68, 16);
+            this.firstNameLabel.Size = new System.Drawing.Size(67, 16);
             this.firstNameLabel.TabIndex = 0;
             this.firstNameLabel.Text = "* First name";
             // 
@@ -333,9 +308,9 @@
             // 
             this.middleInitialLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.middleInitialLabel.AutoSize = true;
-            this.middleInitialLabel.Location = new System.Drawing.Point(219, 0);
+            this.middleInitialLabel.Location = new System.Drawing.Point(220, 0);
             this.middleInitialLabel.Name = "middleInitialLabel";
-            this.middleInitialLabel.Size = new System.Drawing.Size(27, 16);
+            this.middleInitialLabel.Size = new System.Drawing.Size(26, 16);
             this.middleInitialLabel.TabIndex = 1;
             this.middleInitialLabel.Text = "* MI";
             // 
@@ -343,7 +318,7 @@
             // 
             this.squadSectionNumberCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.squadSectionNumberCombobox.FormattingEnabled = true;
-            this.squadSectionNumberCombobox.Location = new System.Drawing.Point(278, 204);
+            this.squadSectionNumberCombobox.Location = new System.Drawing.Point(278, 205);
             this.squadSectionNumberCombobox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.squadSectionNumberCombobox.Name = "squadSectionNumberCombobox";
             this.squadSectionNumberCombobox.Size = new System.Drawing.Size(207, 24);
@@ -353,9 +328,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(278, 184);
+            this.label2.Location = new System.Drawing.Point(278, 185);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 16);
+            this.label2.Size = new System.Drawing.Size(92, 16);
             this.label2.TabIndex = 18;
             this.label2.Text = "* Squad / Section";
             // 
@@ -363,7 +338,7 @@
             // 
             this.platoonNumberCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.platoonNumberCombobox.FormattingEnabled = true;
-            this.platoonNumberCombobox.Location = new System.Drawing.Point(3, 204);
+            this.platoonNumberCombobox.Location = new System.Drawing.Point(3, 205);
             this.platoonNumberCombobox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.platoonNumberCombobox.Name = "platoonNumberCombobox";
             this.platoonNumberCombobox.Size = new System.Drawing.Size(216, 24);
@@ -374,9 +349,9 @@
             // platoonLabel
             // 
             this.platoonLabel.AutoSize = true;
-            this.platoonLabel.Location = new System.Drawing.Point(3, 184);
+            this.platoonLabel.Location = new System.Drawing.Point(3, 185);
             this.platoonLabel.Name = "platoonLabel";
-            this.platoonLabel.Size = new System.Drawing.Size(52, 16);
+            this.platoonLabel.Size = new System.Drawing.Size(51, 16);
             this.platoonLabel.TabIndex = 16;
             this.platoonLabel.Text = "* Platoon";
             // 
@@ -390,7 +365,7 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel7.Controls.Add(this.unitNumberCombobox, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.unitDesignatorCombobox, 2, 0);
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(278, 152);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(278, 153);
             this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
@@ -423,9 +398,9 @@
             // unitLabel
             // 
             this.unitLabel.AutoSize = true;
-            this.unitLabel.Location = new System.Drawing.Point(278, 136);
+            this.unitLabel.Location = new System.Drawing.Point(278, 137);
             this.unitLabel.Name = "unitLabel";
-            this.unitLabel.Size = new System.Drawing.Size(36, 16);
+            this.unitLabel.Size = new System.Drawing.Size(35, 16);
             this.unitLabel.TabIndex = 14;
             this.unitLabel.Text = "* Unit";
             // 
@@ -444,9 +419,9 @@
             // battalionLabel
             // 
             this.battalionLabel.AutoSize = true;
-            this.battalionLabel.Location = new System.Drawing.Point(3, 136);
+            this.battalionLabel.Location = new System.Drawing.Point(3, 137);
             this.battalionLabel.Name = "battalionLabel";
-            this.battalionLabel.Size = new System.Drawing.Size(60, 16);
+            this.battalionLabel.Size = new System.Drawing.Size(59, 16);
             this.battalionLabel.TabIndex = 12;
             this.battalionLabel.Text = "* Battalion";
             // 
@@ -473,7 +448,7 @@
             this.statusCheckBoxesLayoutTable.Controls.Add(this.label3, 2, 6);
             this.statusCheckBoxesLayoutTable.Controls.Add(this.otherTextbox, 2, 5);
             this.statusCheckBoxesLayoutTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.statusCheckBoxesLayoutTable.Location = new System.Drawing.Point(13, 338);
+            this.statusCheckBoxesLayoutTable.Location = new System.Drawing.Point(13, 339);
             this.statusCheckBoxesLayoutTable.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.statusCheckBoxesLayoutTable.Name = "statusCheckBoxesLayoutTable";
             this.statusCheckBoxesLayoutTable.RowCount = 7;
@@ -484,7 +459,7 @@
             this.statusCheckBoxesLayoutTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.statusCheckBoxesLayoutTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.statusCheckBoxesLayoutTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.statusCheckBoxesLayoutTable.Size = new System.Drawing.Size(530, 154);
+            this.statusCheckBoxesLayoutTable.Size = new System.Drawing.Size(530, 153);
             this.statusCheckBoxesLayoutTable.TabIndex = 2;
             // 
             // flaggedCheckbox
@@ -493,7 +468,7 @@
             this.flaggedCheckbox.Location = new System.Drawing.Point(3, 1);
             this.flaggedCheckbox.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.flaggedCheckbox.Name = "flaggedCheckbox";
-            this.flaggedCheckbox.Size = new System.Drawing.Size(65, 20);
+            this.flaggedCheckbox.Size = new System.Drawing.Size(64, 20);
             this.flaggedCheckbox.TabIndex = 0;
             this.flaggedCheckbox.Text = "Flagged";
             this.flaggedCheckbox.UseVisualStyleBackColor = true;
@@ -505,7 +480,7 @@
             this.barredCheckbox.Location = new System.Drawing.Point(3, 23);
             this.barredCheckbox.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.barredCheckbox.Name = "barredCheckbox";
-            this.barredCheckbox.Size = new System.Drawing.Size(61, 20);
+            this.barredCheckbox.Size = new System.Drawing.Size(60, 20);
             this.barredCheckbox.TabIndex = 2;
             this.barredCheckbox.Text = "Barred";
             this.barredCheckbox.UseVisualStyleBackColor = true;
@@ -517,7 +492,7 @@
             this.overweightCheckbox.Location = new System.Drawing.Point(3, 45);
             this.overweightCheckbox.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.overweightCheckbox.Name = "overweightCheckbox";
-            this.overweightCheckbox.Size = new System.Drawing.Size(86, 20);
+            this.overweightCheckbox.Size = new System.Drawing.Size(85, 20);
             this.overweightCheckbox.TabIndex = 4;
             this.overweightCheckbox.Text = "Overweight";
             this.overweightCheckbox.UseVisualStyleBackColor = true;
@@ -529,7 +504,7 @@
             this.apftFailureCheckbox.Location = new System.Drawing.Point(3, 67);
             this.apftFailureCheckbox.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.apftFailureCheckbox.Name = "apftFailureCheckbox";
-            this.apftFailureCheckbox.Size = new System.Drawing.Size(88, 20);
+            this.apftFailureCheckbox.Size = new System.Drawing.Size(87, 20);
             this.apftFailureCheckbox.TabIndex = 6;
             this.apftFailureCheckbox.Text = "APFT Failure";
             this.apftFailureCheckbox.UseVisualStyleBackColor = true;
@@ -541,7 +516,7 @@
             this.awolCheckbox.Location = new System.Drawing.Point(3, 89);
             this.awolCheckbox.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.awolCheckbox.Name = "awolCheckbox";
-            this.awolCheckbox.Size = new System.Drawing.Size(56, 20);
+            this.awolCheckbox.Size = new System.Drawing.Size(55, 20);
             this.awolCheckbox.TabIndex = 8;
             this.awolCheckbox.Text = "AWOL";
             this.awolCheckbox.UseVisualStyleBackColor = true;
@@ -553,7 +528,7 @@
             this.clearanceRevokedCheckbox.Location = new System.Drawing.Point(3, 111);
             this.clearanceRevokedCheckbox.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.clearanceRevokedCheckbox.Name = "clearanceRevokedCheckbox";
-            this.clearanceRevokedCheckbox.Size = new System.Drawing.Size(122, 20);
+            this.clearanceRevokedCheckbox.Size = new System.Drawing.Size(121, 20);
             this.clearanceRevokedCheckbox.TabIndex = 10;
             this.clearanceRevokedCheckbox.Text = "Clearance Revoked";
             this.clearanceRevokedCheckbox.UseVisualStyleBackColor = true;
@@ -565,7 +540,7 @@
             this.clearanceSuspendedCheckbox.Location = new System.Drawing.Point(3, 133);
             this.clearanceSuspendedCheckbox.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.clearanceSuspendedCheckbox.Name = "clearanceSuspendedCheckbox";
-            this.clearanceSuspendedCheckbox.Size = new System.Drawing.Size(132, 20);
+            this.clearanceSuspendedCheckbox.Size = new System.Drawing.Size(131, 20);
             this.clearanceSuspendedCheckbox.TabIndex = 12;
             this.clearanceSuspendedCheckbox.Text = "Clearance Suspended";
             this.clearanceSuspendedCheckbox.UseVisualStyleBackColor = true;
@@ -577,7 +552,7 @@
             this.performanceCorrectiveTrainingCheckbox.Location = new System.Drawing.Point(278, 1);
             this.performanceCorrectiveTrainingCheckbox.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.performanceCorrectiveTrainingCheckbox.Name = "performanceCorrectiveTrainingCheckbox";
-            this.performanceCorrectiveTrainingCheckbox.Size = new System.Drawing.Size(191, 20);
+            this.performanceCorrectiveTrainingCheckbox.Size = new System.Drawing.Size(190, 20);
             this.performanceCorrectiveTrainingCheckbox.TabIndex = 1;
             this.performanceCorrectiveTrainingCheckbox.Text = "Performance Corrective Training";
             this.performanceCorrectiveTrainingCheckbox.UseVisualStyleBackColor = true;
@@ -589,7 +564,7 @@
             this.revokedPrivileges.Location = new System.Drawing.Point(278, 23);
             this.revokedPrivileges.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.revokedPrivileges.Name = "revokedPrivileges";
-            this.revokedPrivileges.Size = new System.Drawing.Size(119, 20);
+            this.revokedPrivileges.Size = new System.Drawing.Size(118, 20);
             this.revokedPrivileges.TabIndex = 3;
             this.revokedPrivileges.Text = "Revoked Privileges";
             this.revokedPrivileges.UseVisualStyleBackColor = true;
@@ -601,7 +576,7 @@
             this.pendingUCMJCheckbox.Location = new System.Drawing.Point(278, 45);
             this.pendingUCMJCheckbox.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.pendingUCMJCheckbox.Name = "pendingUCMJCheckbox";
-            this.pendingUCMJCheckbox.Size = new System.Drawing.Size(95, 20);
+            this.pendingUCMJCheckbox.Size = new System.Drawing.Size(94, 20);
             this.pendingUCMJCheckbox.TabIndex = 5;
             this.pendingUCMJCheckbox.Text = "Pending UCMJ";
             this.pendingUCMJCheckbox.UseVisualStyleBackColor = true;
@@ -613,7 +588,7 @@
             this.ucmjPunishmentPhaseCheckbox.Location = new System.Drawing.Point(278, 67);
             this.ucmjPunishmentPhaseCheckbox.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.ucmjPunishmentPhaseCheckbox.Name = "ucmjPunishmentPhaseCheckbox";
-            this.ucmjPunishmentPhaseCheckbox.Size = new System.Drawing.Size(145, 20);
+            this.ucmjPunishmentPhaseCheckbox.Size = new System.Drawing.Size(144, 20);
             this.ucmjPunishmentPhaseCheckbox.TabIndex = 7;
             this.ucmjPunishmentPhaseCheckbox.Text = "UCMJ Punishment Phase";
             this.ucmjPunishmentPhaseCheckbox.UseVisualStyleBackColor = true;
@@ -625,7 +600,7 @@
             this.otherLabel.Location = new System.Drawing.Point(295, 88);
             this.otherLabel.Margin = new System.Windows.Forms.Padding(20, 0, 3, 0);
             this.otherLabel.Name = "otherLabel";
-            this.otherLabel.Size = new System.Drawing.Size(42, 16);
+            this.otherLabel.Size = new System.Drawing.Size(41, 16);
             this.otherLabel.TabIndex = 9;
             this.otherLabel.Text = "Other:";
             // 
@@ -633,9 +608,9 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(445, 135);
+            this.label3.Location = new System.Drawing.Point(446, 135);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 16);
+            this.label3.Size = new System.Drawing.Size(81, 16);
             this.label3.TabIndex = 13;
             this.label3.Text = "* required field";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -750,11 +725,29 @@
             this.removeImageLink.AutoSize = true;
             this.removeImageLink.Location = new System.Drawing.Point(84, 67);
             this.removeImageLink.Name = "removeImageLink";
-            this.removeImageLink.Size = new System.Drawing.Size(79, 16);
+            this.removeImageLink.Size = new System.Drawing.Size(78, 16);
             this.removeImageLink.TabIndex = 0;
             this.removeImageLink.TabStop = true;
             this.removeImageLink.Text = "Remove Image";
             this.removeImageLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.removeImageLink_LinkClicked);
+            // 
+            // cqpDateOfRank
+            // 
+            this.cqpDateOfRank.Location = new System.Drawing.Point(278, 20);
+            this.cqpDateOfRank.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cqpDateOfRank.Name = "cqpDateOfRank";
+            this.cqpDateOfRank.Size = new System.Drawing.Size(157, 21);
+            this.cqpDateOfRank.TabIndex = 20;
+            this.cqpDateOfRank.Value = new System.DateTime(((long)(0)));
+            // 
+            // cqpDateOfBirth
+            // 
+            this.cqpDateOfBirth.Location = new System.Drawing.Point(3, 112);
+            this.cqpDateOfBirth.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cqpDateOfBirth.Name = "cqpDateOfBirth";
+            this.cqpDateOfBirth.Size = new System.Drawing.Size(157, 21);
+            this.cqpDateOfBirth.TabIndex = 21;
+            this.cqpDateOfBirth.Value = new System.DateTime(((long)(0)));
             // 
             // EditSoldierDialog
             // 
@@ -831,10 +824,6 @@
         private System.Windows.Forms.Label otherLabel;
         private CQPTextbox otherTextbox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        //private System.Windows.Forms.Button cancelButton;
-        //private System.Windows.Forms.Button saveButton;
-        private System.Windows.Forms.MaskedTextBox dateOfBirthTextBox;
-        private System.Windows.Forms.MaskedTextBox dateOfRankTextBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private CQPTextbox middleInitialTextbox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
@@ -847,5 +836,7 @@
         private System.Windows.Forms.Label battalionLabel;
         private CQPGrayRectangleButton cancelButton;
         private CQPGrayRectangleButton saveButton;
+        private CQPDatePicker cqpDateOfRank;
+        private CQPDatePicker cqpDateOfBirth;
     }
 }

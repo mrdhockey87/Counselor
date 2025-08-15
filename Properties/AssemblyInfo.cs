@@ -1,14 +1,18 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
+// Define version as a constant at the top level    
+[assembly: AssemblyVersion("5.4.8.89")]
+[assembly: AssemblyFileVersion("5.4.8.89")]
+[assembly: AssemblyInformationalVersion("5.4.9.89")]
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Counselor")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Mentor Enterprises")]
+[assembly: AssemblyCompany("Byrrd Enterprises, Inc")]
 [assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("Copyright © Mentor Enterprises 2019")]
+[assembly: AssemblyCopyright("Copyright © Byrrd Enterprises, Inc 2025")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -21,5 +25,3 @@ using System.Runtime.InteropServices;
 //      Major Version,  Minor Version , Build Number, Revision
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown: [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("4.3.7.52")]
-[assembly: AssemblyFileVersion("4.3.7.52")]

@@ -9,7 +9,7 @@ namespace CounselQuickPlatinum
     static class VersionClass
     {       
         static public string version_word = "Version:";
-        static public string version_string = "4.3.7.54";
+        static public string version_string = "5.4.8.89";
 
         static public string GetVersion()
         {
@@ -21,7 +21,8 @@ namespace CounselQuickPlatinum
 
 /*
 * 
-* 
+*  v5.4.8.89 - Fixed the missing date drop downs on the new & edit soldier dialogs that I had put in last time and made sure they wroked to save and 
+*              restore the DOB & DOR. Put back the changes to the Database updates to make sure the updates conatined the delete command mdail  8-15-25
 *  v5.4.8.56 - Update to .Net 4.8. Several pages in the application got messede up some how so I had to revert to an older verion to fix it. mdail 8-15-25
  * v4.3.7.55 - Fix crashing with null pointer exception when doing a search thru the documents(PDFs) list when doiing a soldier counseling.
  *             This also caused the search to return incorrect results as it would skip over node that should have been removed. mdail 4-11-2022
