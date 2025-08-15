@@ -28,7 +28,7 @@ namespace CounselQuickPlatinum
             catch
             {
                 // Fallback version if assembly version fails
-                return "5.4.8.88";
+                return "5.4.9.87";
             }
         }
     }
@@ -36,6 +36,11 @@ namespace CounselQuickPlatinum
 
 /*
 * 
+ * v5.4.9.87 - Set it so the drop down list on the new soldier start as blank to shopw the are editable and not just a drop down list mdail 8-11-2025
+ * v5.4.9.86 - Put back last change because it was correct as it only checked some tables, not all of them mdail 8-11-2025
+ * v5.4.9.85 - There was another place he check to see if the line contained delete prior to actually doing the unpdate. Fixed that mdail 8-11-2025
+ * v5.4.9.84 - The update routine for the database never expected to receive the delete statement so it saw it as an error, added
+ *             code to handle the delete statement properly in the database update routine mdail 8-11-2025
  * v5.4.8.83 _ set referencedir back to the way it was origanally mdail 8-8-2025 
  * v5.4.8.82 - Fixed a bug in the ReferencesTabPage dubble click reported an error trying to load preview on a group node mdail 8-7-2025
  * v5.4.8.81 - Updated it so if the selection in the tree view changes the Open button still works. as it still sets the

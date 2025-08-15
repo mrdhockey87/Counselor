@@ -32,16 +32,11 @@
             this.dateOfRankLabel = new System.Windows.Forms.Label();
             this.rankLabel = new System.Windows.Forms.Label();
             this.lastNameLabel = new System.Windows.Forms.Label();
-            this.lastNameTextbox = new CounselQuickPlatinum.CQPTextbox();
             this.dateOfBirthLabel = new System.Windows.Forms.Label();
             this.ageLabel = new System.Windows.Forms.Label();
             this.formattedAgeLabel = new System.Windows.Forms.Label();
             this.rankingCombobox = new System.Windows.Forms.ComboBox();
-            this.dateOfRankPicker = new CounselQuickPlatinum.CQPDatePicker();
-            this.dateOfBirthPicker = new CounselQuickPlatinum.CQPDatePicker();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.firstNameTextbox = new CounselQuickPlatinum.CQPTextbox();
-            this.middleInitialTextbox = new CounselQuickPlatinum.CQPTextbox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.firstNameLabel = new System.Windows.Forms.Label();
             this.middleInitialLabel = new System.Windows.Forms.Label();
@@ -61,17 +56,13 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.soldierPictureBox = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.cancelButton = new CounselQuickPlatinum.CQPGrayRectangleButton();
-            this.nextButton = new CounselQuickPlatinum.CQPGrayRectangleButton();
             this.tableLayoutPanel2.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.soldierPictureBox)).BeginInit();
-            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel2
@@ -85,13 +76,10 @@
             this.tableLayoutPanel2.Controls.Add(this.dateOfRankLabel, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.rankLabel, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.lastNameLabel, 0, 4);
-            this.tableLayoutPanel2.Controls.Add(this.lastNameTextbox, 0, 5);
             this.tableLayoutPanel2.Controls.Add(this.dateOfBirthLabel, 0, 7);
             this.tableLayoutPanel2.Controls.Add(this.ageLabel, 2, 7);
             this.tableLayoutPanel2.Controls.Add(this.formattedAgeLabel, 2, 8);
             this.tableLayoutPanel2.Controls.Add(this.rankingCombobox, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.dateOfRankPicker, 2, 2);
-            this.tableLayoutPanel2.Controls.Add(this.dateOfBirthPicker, 0, 8);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel5, 2, 5);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel6, 2, 4);
             this.tableLayoutPanel2.Controls.Add(this.squadSectionNumberCombobox, 2, 14);
@@ -113,16 +101,16 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 12F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 12F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 12F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 12F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(447, 360);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(447, 393);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // dateOfRankLabel
@@ -152,21 +140,10 @@
             this.lastNameLabel.TabIndex = 4;
             this.lastNameLabel.Text = "* Last name";
             // 
-            // lastNameTextbox
-            // 
-            this.lastNameTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lastNameTextbox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lastNameTextbox.Location = new System.Drawing.Point(3, 92);
-            this.lastNameTextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.lastNameTextbox.Name = "lastNameTextbox";
-            this.lastNameTextbox.Size = new System.Drawing.Size(207, 20);
-            this.lastNameTextbox.TabIndex = 5;
-            this.lastNameTextbox.TextChanged += new System.EventHandler(this.ValueChanged);
-            // 
             // dateOfBirthLabel
             // 
             this.dateOfBirthLabel.AutoSize = true;
-            this.dateOfBirthLabel.Location = new System.Drawing.Point(3, 128);
+            this.dateOfBirthLabel.Location = new System.Drawing.Point(3, 104);
             this.dateOfBirthLabel.Name = "dateOfBirthLabel";
             this.dateOfBirthLabel.Size = new System.Drawing.Size(149, 16);
             this.dateOfBirthLabel.TabIndex = 8;
@@ -175,7 +152,7 @@
             // ageLabel
             // 
             this.ageLabel.AutoSize = true;
-            this.ageLabel.Location = new System.Drawing.Point(236, 128);
+            this.ageLabel.Location = new System.Drawing.Point(236, 104);
             this.ageLabel.Name = "ageLabel";
             this.ageLabel.Size = new System.Drawing.Size(26, 16);
             this.ageLabel.TabIndex = 10;
@@ -184,7 +161,7 @@
             // formattedAgeLabel
             // 
             this.formattedAgeLabel.AutoSize = true;
-            this.formattedAgeLabel.Location = new System.Drawing.Point(236, 144);
+            this.formattedAgeLabel.Location = new System.Drawing.Point(236, 120);
             this.formattedAgeLabel.Name = "formattedAgeLabel";
             this.formattedAgeLabel.Size = new System.Drawing.Size(11, 16);
             this.formattedAgeLabel.TabIndex = 11;
@@ -201,62 +178,19 @@
             this.rankingCombobox.TabIndex = 1;
             this.rankingCombobox.SelectedIndexChanged += new System.EventHandler(this.rankingCombobox_SelectedIndexChanged);
             // 
-            // dateOfRankPicker
-            // 
-            this.dateOfRankPicker.Location = new System.Drawing.Point(236, 32);
-            this.dateOfRankPicker.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dateOfRankPicker.Name = "dateOfRankPicker";
-            this.dateOfRankPicker.Size = new System.Drawing.Size(147, 21);
-            this.dateOfRankPicker.TabIndex = 3;
-            this.dateOfRankPicker.Value = new System.DateTime(((long)(0)));
-            this.dateOfRankPicker.ValueChanged += new System.EventHandler(this.dateOfRankPicker_ValueChanged);
-            // 
-            // dateOfBirthPicker
-            // 
-            this.dateOfBirthPicker.Location = new System.Drawing.Point(3, 148);
-            this.dateOfBirthPicker.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dateOfBirthPicker.Name = "dateOfBirthPicker";
-            this.dateOfBirthPicker.Size = new System.Drawing.Size(147, 21);
-            this.dateOfBirthPicker.TabIndex = 9;
-            this.dateOfBirthPicker.Value = new System.DateTime(((long)(0)));
-            this.dateOfBirthPicker.ValueChanged += new System.EventHandler(this.dateOfBirthPicker_ValueChanged);
-            // 
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.AutoSize = true;
             this.tableLayoutPanel5.ColumnCount = 2;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel5.Controls.Add(this.firstNameTextbox, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.middleInitialTextbox, 1, 0);
             this.tableLayoutPanel5.Location = new System.Drawing.Point(236, 88);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(193, 28);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(0, 0);
             this.tableLayoutPanel5.TabIndex = 7;
-            // 
-            // firstNameTextbox
-            // 
-            this.firstNameTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.firstNameTextbox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.firstNameTextbox.Location = new System.Drawing.Point(3, 4);
-            this.firstNameTextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.firstNameTextbox.Name = "firstNameTextbox";
-            this.firstNameTextbox.Size = new System.Drawing.Size(161, 20);
-            this.firstNameTextbox.TabIndex = 0;
-            this.firstNameTextbox.TextChanged += new System.EventHandler(this.ValueChanged);
-            // 
-            // middleInitialTextbox
-            // 
-            this.middleInitialTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.middleInitialTextbox.Location = new System.Drawing.Point(170, 4);
-            this.middleInitialTextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.middleInitialTextbox.MaxLength = 1;
-            this.middleInitialTextbox.Name = "middleInitialTextbox";
-            this.middleInitialTextbox.Size = new System.Drawing.Size(20, 20);
-            this.middleInitialTextbox.TabIndex = 1;
             // 
             // tableLayoutPanel6
             // 
@@ -297,7 +231,7 @@
             // squadSectionNumberCombobox
             // 
             this.squadSectionNumberCombobox.FormattingEnabled = true;
-            this.squadSectionNumberCombobox.Location = new System.Drawing.Point(236, 265);
+            this.squadSectionNumberCombobox.Location = new System.Drawing.Point(236, 224);
             this.squadSectionNumberCombobox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.squadSectionNumberCombobox.Name = "squadSectionNumberCombobox";
             this.squadSectionNumberCombobox.Size = new System.Drawing.Size(193, 24);
@@ -308,7 +242,7 @@
             // squadSectionLabel
             // 
             this.squadSectionLabel.AutoSize = true;
-            this.squadSectionLabel.Location = new System.Drawing.Point(236, 245);
+            this.squadSectionLabel.Location = new System.Drawing.Point(236, 204);
             this.squadSectionLabel.Name = "squadSectionLabel";
             this.squadSectionLabel.Size = new System.Drawing.Size(47, 16);
             this.squadSectionLabel.TabIndex = 17;
@@ -317,7 +251,7 @@
             // platoonNumberCombobox
             // 
             this.platoonNumberCombobox.FormattingEnabled = true;
-            this.platoonNumberCombobox.Location = new System.Drawing.Point(3, 265);
+            this.platoonNumberCombobox.Location = new System.Drawing.Point(3, 224);
             this.platoonNumberCombobox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.platoonNumberCombobox.Name = "platoonNumberCombobox";
             this.platoonNumberCombobox.Size = new System.Drawing.Size(193, 24);
@@ -328,7 +262,7 @@
             // platoonLabel
             // 
             this.platoonLabel.AutoSize = true;
-            this.platoonLabel.Location = new System.Drawing.Point(3, 245);
+            this.platoonLabel.Location = new System.Drawing.Point(3, 204);
             this.platoonLabel.Name = "platoonLabel";
             this.platoonLabel.Size = new System.Drawing.Size(52, 16);
             this.platoonLabel.TabIndex = 15;
@@ -337,7 +271,7 @@
             // unitLabel
             // 
             this.unitLabel.AutoSize = true;
-            this.unitLabel.Location = new System.Drawing.Point(236, 185);
+            this.unitLabel.Location = new System.Drawing.Point(236, 144);
             this.unitLabel.Name = "unitLabel";
             this.unitLabel.Size = new System.Drawing.Size(36, 16);
             this.unitLabel.TabIndex = 13;
@@ -354,7 +288,7 @@
             this.tableLayoutPanel7.Controls.Add(this.unitNumberCombobox, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.unitDesignatorCombobox, 2, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(236, 201);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(236, 160);
             this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
@@ -386,7 +320,7 @@
             // battalionLabel
             // 
             this.battalionLabel.AutoSize = true;
-            this.battalionLabel.Location = new System.Drawing.Point(3, 185);
+            this.battalionLabel.Location = new System.Drawing.Point(3, 144);
             this.battalionLabel.Name = "battalionLabel";
             this.battalionLabel.Size = new System.Drawing.Size(60, 16);
             this.battalionLabel.TabIndex = 12;
@@ -398,7 +332,7 @@
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.battalionCombobox);
-            this.panel1.Location = new System.Drawing.Point(3, 204);
+            this.panel1.Location = new System.Drawing.Point(3, 163);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 3, 0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(122, 26);
@@ -417,7 +351,7 @@
             // 
             this.requiredFieldLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.requiredFieldLabel.AutoSize = true;
-            this.requiredFieldLabel.Location = new System.Drawing.Point(378, 475);
+            this.requiredFieldLabel.Location = new System.Drawing.Point(378, 508);
             this.requiredFieldLabel.Name = "requiredFieldLabel";
             this.requiredFieldLabel.Size = new System.Drawing.Size(82, 16);
             this.requiredFieldLabel.TabIndex = 2;
@@ -488,54 +422,14 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel3.Controls.Add(this.cancelButton, 4, 0);
-            this.tableLayoutPanel3.Controls.Add(this.nextButton, 2, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(298, 500);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(440, 533);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(162, 33);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(20, 1);
             this.tableLayoutPanel3.TabIndex = 3;
-            // 
-            // cancelButton
-            // 
-            this.cancelButton.BackgroundImage = global::CounselQuickPlatinum.Properties.Resources._65_up;
-            this.cancelButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.cancelButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.cancelButton.FlatAppearance.BorderSize = 0;
-            this.cancelButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-            this.cancelButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancelButton.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelButton.Location = new System.Drawing.Point(94, 4);
-            this.cancelButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(65, 25);
-            this.cancelButton.TabIndex = 0;
-            this.cancelButton.Text = "Cancel";
-            this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
-            // 
-            // nextButton
-            // 
-            this.nextButton.BackgroundImage = global::CounselQuickPlatinum.Properties.Resources._65_up;
-            this.nextButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.nextButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.nextButton.FlatAppearance.BorderSize = 0;
-            this.nextButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-            this.nextButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            this.nextButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.nextButton.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nextButton.Location = new System.Drawing.Point(13, 4);
-            this.nextButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.nextButton.Name = "nextButton";
-            this.nextButton.Size = new System.Drawing.Size(65, 25);
-            this.nextButton.TabIndex = 1;
-            this.nextButton.Text = "Next";
-            this.nextButton.UseVisualStyleBackColor = true;
-            this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
             // 
             // NewSoldierPage1Dialog
             // 
@@ -558,8 +452,6 @@
             this.VisibleChanged += new System.EventHandler(this.NewSoldierPage1Dialog_VisibleChanged);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
             this.tableLayoutPanel7.ResumeLayout(false);
@@ -568,7 +460,6 @@
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.soldierPictureBox)).EndInit();
-            this.tableLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

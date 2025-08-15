@@ -135,22 +135,27 @@ namespace CounselQuickPlatinum
             battalionCombobox.DataSource = unitInformation.Tables["battalions"];
             battalionCombobox.ValueMember = "battalionid";
             battalionCombobox.DisplayMember = "battalionname";
+            battalionCombobox.SelectedIndex = -1; // Start with blank display
 
             unitNumberCombobox.DataSource = unitInformation.Tables["units"];
             unitNumberCombobox.ValueMember = "unitid";
             unitNumberCombobox.DisplayMember = "unitname";
+            unitNumberCombobox.SelectedIndex = -1; // Start with blank display
 
             unitDesignatorCombobox.DataSource = unitInformation.Tables["unitdesignators"];
             unitDesignatorCombobox.ValueMember = "unitdesignatorid";
             unitDesignatorCombobox.DisplayMember = "unitdesignatorname";
+            unitDesignatorCombobox.SelectedIndex = -1; // Start with blank display
 
             platoonNumberCombobox.DataSource = unitInformation.Tables["platoons"];
             platoonNumberCombobox.ValueMember = "platoonid";
             platoonNumberCombobox.DisplayMember = "platoonname";
+            platoonNumberCombobox.SelectedIndex = -1; // Start with blank display
 
             squadSectionNumberCombobox.DataSource = unitInformation.Tables["squadsections"];
             squadSectionNumberCombobox.ValueMember = "squadsectionid";
             squadSectionNumberCombobox.DisplayMember = "squadsectionname";
+            squadSectionNumberCombobox.SelectedIndex = -1; // Start with blank display
         }
 
 
@@ -758,6 +763,67 @@ namespace CounselQuickPlatinum
         {
             // Date is valid if it's either blank (allowed) or contains a valid date
             return datePicker.IsBlank() || datePicker.HasValidDate();
+        }
+        /// <summary>
+        /// Alternative method using ComboBox's built-in FindStringExact
+        /// </summary>
+        private void SetComboBoxTextAndIndexSimple(ComboBox comboBox, string text)
+        {
+            // Format the text first
+            string formattedText = FormatUnitHierarchyText(text);
+
+            // Use ComboBox's built-in method to find exact match
+            int matchingIndex = comboBox.FindStringExact(formattedText);
+
+            if (matchingIndex >= 0)
+            {
+                // Found exact match
+                comboBox.SelectedIndex = matchingIndex;
+                comboBox.Text = comboBox.Text;
+                //comboBox.BackColor = SystemColors.Window;
+            }
+            else
+            {
+                // No exact match - custom entry
+                comboBox.SelectedIndex = -1;
+                comboBox.Text = formattedText;
+                //comboBox.BackColor = Color.LightYellow; // Visual indication
+            }
+        }
+
+        private void battalionCombobox_Validating(object sender, CancelEventArgs e)
+        {
+            if (!(sender is ComboBox comboBox)) return;
+
+            SetComboBoxTextAndIndexSimple(comboBox, comboBox.Text);
+        }
+
+        private void unitNumberCombobox_Validating(object sender, CancelEventArgs e)
+        {
+            if (!(sender is ComboBox comboBox)) return;
+
+            SetComboBoxTextAndIndexSimple(comboBox, comboBox.Text);
+        }
+
+        private void unitDesignatorCombobox_Validating(object sender, CancelEventArgs e)
+        {
+            if (!(sender is ComboBox comboBox)) return;
+
+            SetComboBoxTextAndIndexSimple(comboBox, comboBox.Text);
+        }
+
+        private void platoonNumberCombobox_Validating(object sender, CancelEventArgs e)
+        {
+            if (!(sender is ComboBox comboBox)) return;
+
+            SetComboBoxTextAndIndexSimple(comboBox, comboBox.Text);
+        }
+
+        private void squadSectionNumberCombobox_Validating(object sender, CancelEventArgs e)
+        {
+            if (!(sender is ComboBox comboBox)) return;
+
+            SetComboBoxTextAndIndexSimple(comboBox, comboBox.Text);
         }
     }
 }

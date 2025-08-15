@@ -28,8 +28,8 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>83</ApplicationRevision>
-    <ApplicationVersion>5.4.8.%2a</ApplicationVersion>
+    <ApplicationRevision>87</ApplicationRevision>
+    <ApplicationVersion>5.4.9.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -901,6 +901,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Counselor.ico" />
+    <Content Include="CounselorDotfuscator.xml" />
     <Content Include="Dotfuscator.xml" />
     <Content Include="Resources\ACO.PNG" />
     <None Include="Resources\Images\splash.png" />

@@ -996,6 +996,8 @@ namespace CounselQuickPlatinum
                 Update(line);
             else if (line.StartsWith("insert", true, System.Globalization.CultureInfo.CurrentCulture))
                 Insert(line, null);
+            else if (line.StartsWith("delete", true, System.Globalization.CultureInfo.CurrentCulture))
+                Delete(line);
             else
                 throw new Exception("RunSQLLine: Not update or insert");
         }
