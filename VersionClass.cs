@@ -22,7 +22,7 @@ namespace CounselQuickPlatinum
 /*
 * 
 * 
-* 
+*  v5.4.8.56 - Update to .Net 4.8. Several pages in the application got messede up some how so I had to revert to an older verion to fix it. mdail 8-15-25
  * v4.3.7.55 - Fix crashing with null pointer exception when doing a search thru the documents(PDFs) list when doiing a soldier counseling.
  *             This also caused the search to return incorrect results as it would skip over node that should have been removed. mdail 4-11-2022
  * v4.3.7.54 - Finally found and set the extracts button tab to be not visible as requested mdail 4-7-2022
