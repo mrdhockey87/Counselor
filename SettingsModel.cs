@@ -20,6 +20,10 @@ namespace CounselQuickPlatinum
                 try
                 {
                     DataTable table = DatabaseConnection.Query("select settingvalue from settings where settingname='referencesdirectory'");
+                    //Query(string tableName, List<string> columnsToRetrieve, List<Condition> conditions)
+
+                    //Dictionary<string, string> paramValuePairs = new Dictionary<string, string>() { {"@settingName", "referencesDirectory" } };
+                    //DataTable table = DatabaseConnection.Query("select settingvalue from settings where settingname='@settingName'", paramValuePairs);
 
                     string directoryName = table.Rows[0]["settingvalue"].ToString();
                     return directoryName;

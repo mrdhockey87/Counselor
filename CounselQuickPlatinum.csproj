@@ -16,8 +16,6 @@
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -28,8 +26,8 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>87</ApplicationRevision>
-    <ApplicationVersion>5.4.9.%2a</ApplicationVersion>
+    <ApplicationRevision>55</ApplicationRevision>
+    <ApplicationVersion>4.3.7.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -43,7 +41,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
-    <UseWinFormsOutOfProcDesigner>True</UseWinFormsOutOfProcDesigner>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -54,7 +51,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
-    <UseWinFormsOutOfProcDesigner>True</UseWinFormsOutOfProcDesigner>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Counselor.ico</ApplicationIcon>
@@ -118,12 +114,6 @@
     <Compile Include="Authenticator.cs" />
     <Compile Include="ContinuationOfCounselingFormFiller.cs" />
     <Compile Include="ContinuationOfCounselingPDFForm.cs" />
-    <Compile Include="CQPDatePicker.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CQPDatePicker.Designer.cs">
-      <DependentUpon>CQPDatePicker.cs</DependentUpon>
-    </Compile>
     <Compile Include="CQPDateTimePicker.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -632,9 +622,6 @@
     <EmbeddedResource Include="AboutDialog.resx">
       <DependentUpon>AboutDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CQPDatePicker.resx">
-      <DependentUpon>CQPDatePicker.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="CQPDateTimePicker.resx">
       <DependentUpon>CQPDateTimePicker.cs</DependentUpon>
     </EmbeddedResource>
@@ -779,7 +766,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DocumentPropertiesDialog.resx">
       <DependentUpon>DocumentPropertiesDialog.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="EditNoteDialog.resx">
       <DependentUpon>EditNoteDialog.cs</DependentUpon>
@@ -901,8 +887,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Counselor.ico" />
-    <Content Include="CounselorDotfuscator.xml" />
-    <Content Include="Dotfuscator.xml" />
     <Content Include="Resources\ACO.PNG" />
     <None Include="Resources\Images\splash.png" />
     <None Include="Resources\Images\rank icons\WO1.png" />
@@ -1146,11 +1130,9 @@
   <PropertyGroup>
     <PostBuildEvent>copy $(TargetDir)Counselor.exe $(TargetDir)CounselorObf.exe</PostBuildEvent>
   </PropertyGroup>
-  <Import Project="packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+  <Import Project="packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
   </Target>
 </Project>

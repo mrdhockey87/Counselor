@@ -131,6 +131,9 @@ namespace CounselQuickPlatinum
 
                 if (groupNode.Nodes.Count != 0)
                     groups.Add(groupNode);
+
+                //groupNode.Collapse();
+                //referencesTreeView.Nodes.Add(groupNode);
             }
         }
 
@@ -162,12 +165,21 @@ namespace CounselQuickPlatinum
         private TreeNode GetDocumentNode(DataRow document)
         {
             TreeNode documentNode = new TreeNode();
+            //ReferenceTag documentTag = new ReferenceTag();
 
+            //string filepath = document["referencedocumentfilename"].ToString();
             string name = document["documentnametext"].ToString();
             int id = Convert.ToInt32(document["tempateid"]);
+            //int id = Convert.ToInt32(document["templateid"]);
 
             documentNode.Text = name;
             documentNode.Tag = id;
+
+            /*documentTag.id = id;
+            documentTag.isGroupNode = false;
+            documentTag.documentPath = filepath;*/
+
+            //documentNode.Tag = documentTag;
 
             return documentNode;
         }
@@ -212,6 +224,7 @@ namespace CounselQuickPlatinum
             foreach (DataRow template in templates.Rows)
             {
                 int templateID = Convert.ToInt32(template["tempateid"]);
+                //int templateID = Convert.ToInt32(template["templateid"]);
 
                 string documentDescription = template["documentdescription"].ToString();
 
@@ -375,6 +388,7 @@ namespace CounselQuickPlatinum
             int documentID = -1;
             DocumentFormIDs form = template.FormID;
 
+            //if (form == DocumentFormIDs.DA4856 || form == DocumentFormIDs.DA4856PDF )
             if (form == DocumentFormIDs.DA4856PDF)
             {
                 documentID = HandleCounseling(template);

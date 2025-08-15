@@ -12,6 +12,16 @@ namespace CounselQuickPlatinum
 {
     class Authenticator
     {
+        /*private enum ResultValue : int
+        {
+            DatabaseCorrupt = -2, // should never happen!!
+            AuthenticationAttemptFailed = -1,
+            SerialNotFound = 0,
+            SerialDisabled = 1,
+            HardDriveSerialMismatch = 2,
+            ResultValueUnknown = 3,
+            Enabled = 4
+        }*/
 
         private enum ResultValue : int
         {

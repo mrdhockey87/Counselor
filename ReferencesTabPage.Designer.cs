@@ -54,7 +54,6 @@
             this.tableLayoutPanel5.SuspendLayout();
             this.adobePanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -109,7 +108,6 @@
             this.cqpPrintButton1.TabIndex = 3;
             this.cqpPrintButton1.Text = " ";
             this.cqpPrintButton1.UseVisualStyleBackColor = false;
-            this.cqpPrintButton1.Visible = false;
             this.cqpPrintButton1.Click += new System.EventHandler(this.OnPrintButtonClicked);
             // 
             // cqpGrayRectangleButton1
@@ -118,6 +116,7 @@
             this.cqpGrayRectangleButton1.BackColor = System.Drawing.SystemColors.Control;
             this.cqpGrayRectangleButton1.BackgroundImage = global::CounselQuickPlatinum.Properties.Resources._65_up;
             this.cqpGrayRectangleButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.cqpGrayRectangleButton1.Enabled = false;
             this.cqpGrayRectangleButton1.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.cqpGrayRectangleButton1.FlatAppearance.BorderSize = 0;
             this.cqpGrayRectangleButton1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
@@ -177,7 +176,6 @@
             this.referencesTreeView.Size = new System.Drawing.Size(319, 374);
             this.referencesTreeView.TabIndex = 1;
             this.referencesTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.referencesTreeView_AfterSelect);
-            this.referencesTreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.referencesTreeView_NodeMouseClick_1);
             this.referencesTreeView.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.TreeNodeDoubleClick);
             // 
             // referencesLabel
@@ -361,7 +359,6 @@
             this.tableLayoutPanel1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
 

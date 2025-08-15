@@ -8,7 +8,6 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
-using System.Diagnostics;
 
 namespace CounselQuickPlatinum
 {
@@ -47,6 +46,7 @@ namespace CounselQuickPlatinum
 
             LoadAdobeReader();
             InitializeDocumentTreeViewLists();
+            //LoadFullGroupedTree();
             RefreshTreeView();
 
             webBrowser1.DocumentText = CounselQuickPlatinum.Properties.Resources.blank;
@@ -55,9 +55,6 @@ namespace CounselQuickPlatinum
         void ReferencesTabPage_Load(object sender, EventArgs e)
         {
             referencesDirectory = SettingsModel.ReferencesDirectory;
-            //not required if the reference directory is in the application directory, If there is an way to change the references directory
-            //and update the settings table then this needs to be uncommented. mdail 7-31-25
-            //referencesDirectory = SettingsModel.ReferencesDirectory;
         }
 
 
@@ -112,8 +109,7 @@ namespace CounselQuickPlatinum
 
             groupNode.Tag = groupTag;
             groupNode.Text = name;
-            ////If updating the refernces this prints out referenceGroup list in the database.
-             Debug.WriteLine("ReferencesTabPage - GetGroupNode - Group: " + name + " (id: " + id + ")");
+
             DataRow[] documentRows = referenceDocuments.Select("referencegroupid = " + id);
 
             foreach (DataRow document in documentRows)
@@ -136,8 +132,7 @@ namespace CounselQuickPlatinum
             string filepath = document["referencedocumentfilename"].ToString();
             string name = document["referencedocumentname"].ToString();
             int id = Convert.ToInt32(document["referencedocumentid"]);
-            //If updating the references this prints out document list in the database.
-            //Debug.WriteLine("ReferencesTabPage - GetDocumentNode - filepath: " + filepath + " Document: " + name + " (id: " + id + ")");
+
             documentNode.Text = name;
 
             documentTag.id = id;
@@ -157,19 +152,13 @@ namespace CounselQuickPlatinum
 
             if (tag.isGroupNode)
                 return;
-            //it was failing to load prf files so I changed the way it builds the path because I couldn't why Chris had made the references directory
-            //a field in the settings table. now it looks up the application startup path and builds the path to the references directory from there. mdail 7-31-25
-            string appPath = Application.StartupPath;
-            //string referencesDirectory = Path.Combine(appPath, "References");
-            string filepath = Path.Combine(referencesDirectory, tag.documentPath);
+
+            string filepath = referencesDirectory + tag.documentPath;
 
             Logger.Trace("   ReferencesTabPage - TreeNodeDoubleClick - Opening Preview: " + filepath);
 
             if (!File.Exists(filepath))
             {
-                //I don't know how it got this far when the tag is a group node but it was when I ran from the installed directory mdail 8-7-25
-                if (tag.isGroupNode)
-                    return;
                 Logger.Error("   ReferencesTabPage - TreeNodeDoubleClick - Opening Preview FAILED " + filepath + " - failed File.Exists check");
 
                 CQPMessageBox.Show("An error occurred trying to load the preview!", "Error!", 
@@ -184,11 +173,11 @@ namespace CounselQuickPlatinum
                 string fullpath = new FileInfo(filepath).FullName;
                 Logger.Trace("   ReferencesTabPage - TreeNodeDoubleClick - Opening Preview (fullpath): " + fullpath);
                 selectedFilePath = fullpath;
-                System.Diagnostics.Process.Start(fullpath);
-               // webBrowser1.Url = new Uri(fullpath);
 
-                //cqpGrayRectangleButton1.Enabled = true;
-                //cqpPrintButton1.Enabled = true;
+                webBrowser1.Url = new Uri(fullpath);
+
+                cqpGrayRectangleButton1.Enabled = true;
+                cqpPrintButton1.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -312,23 +301,46 @@ namespace CounselQuickPlatinum
         {
             Logger.Trace("ReferencesTabPage OpenButtonClicked ");
 
-            if(selectedFilePath != null && selectedFilePath != "" && File.Exists(selectedFilePath)) {
+            //string filename = webBrowser1.Url.AbsolutePath;
+            string filename = selectedFilePath;
 
-                string filename = selectedFilePath;
+            Logger.Trace("    ReferencesTabPage - opening: " + filename);
 
-                Logger.Trace("    ReferencesTabPage - opening: " + filename);
-                System.Diagnostics.Process.Start(filename);
-            }
-            else
+            if (filename == "" || filename == null)
+                return;
+
+            if (!File.Exists(filename))
             {
-                CQPMessageBox.Show("Please select a document from the list first!", "Error!", 
+                Logger.Error("    ReferencesTabPage -  " + filename + " does not exist.");
+
+                CQPMessageBox.Show("An error occured trying to print the file!", "Error!", 
                     CQPMessageBox.CQPMessageBoxButtons.OK, CQPMessageBox.CQPMessageBoxIcon.Error);
+
+                return;
             }
+
+            System.Diagnostics.Process.Start(filename);
         }
 
         private void OnPrintButtonClicked(object sender, EventArgs e)
         {
-            //Print button is not used because it was not working correctly with the web browser control. mdail 8-4-25
+            //if (!adobePresent)
+            //    return;
+
+            //AxAcroPDFLib.AxAcroPDF adobe = (AxAcroPDFLib.AxAcroPDF)adobePanel.Controls[0];
+            //string filename = adobe.src;
+
+            //string filename = webBrowser1.Url.AbsolutePath;
+
+            //if (filename == "" || filename == null)
+            //    return;
+            //if (!File.Exists(filename))
+            //{
+            //    CQPMessageBox.Show("An error occured trying to print the file!", "Error!", CQPMessageBox.CQPMessageBoxButtons.OK, CQPMessageBox.CQPMessageBoxIcon.Error);
+            //}
+
+            //adobe.Print();
+
             webBrowser1.ShowPrintDialog();
         }
 
@@ -374,27 +386,6 @@ namespace CounselQuickPlatinum
 
             referencesTreeView.SelectedNode.BackColor = SystemColors.Highlight;
             referencesTreeView.SelectedNode.ForeColor = SystemColors.HighlightText;
-
-            TreeNode node = e.Node;
-            ReferenceTag tag = (ReferenceTag)node.Tag;
-
-            if (tag.isGroupNode)
-                return;
-            //it was failing to load prf files so I changed the way it builds the path because I couldn't why Chris had made the references directory
-            //a field in the settings table. now it looks up the application startup path and builds the path to the references directory from there. mdail 7-31-25
-            string appPath = Application.StartupPath;
-            //string referencesDirectory = Path.Combine(appPath, "References");
-            string filepath = Path.Combine(referencesDirectory, tag.documentPath);
-            Logger.Trace("   ReferencesTabPage - TreeNodeClick - Opening Preview: " + filepath);
-
-
-            if (File.Exists(filepath))
-            {
-
-                string fullpath = new FileInfo(filepath).FullName;
-                Logger.Trace("   ReferencesTabPage - TreeNodeClick - Opening Preview (fullpath): " + fullpath);
-                selectedFilePath = fullpath;
-            }
         }
 
         private void splitContainer1_Paint(object sender, PaintEventArgs e)
@@ -412,29 +403,6 @@ namespace CounselQuickPlatinum
             e.Graphics.DrawLine(splitterPen, p1, p2);
         }
 
-        private void referencesTreeView_NodeMouseClick_1(object sender, TreeNodeMouseClickEventArgs e)
-        {
-            TreeNode node = e.Node;
-            ReferenceTag tag = (ReferenceTag)node.Tag;
 
-            if (tag.isGroupNode)
-                return;
-            //it was failing to load prf files so I changed the way it builds the path because I couldn't why Chris had made the references directory
-            //a field in the settings table. now it looks up the application startup path and builds the path to the references directory from there. mdail 7-31-25
-            string appPath = Application.StartupPath;
-            //string referencesDirectory = Path.Combine(appPath, "References");
-            string filepath = Path.Combine(referencesDirectory, tag.documentPath);
-            Logger.Trace("   ReferencesTabPage - TreeNodeClick - Opening Preview: " + filepath);
-
-
-            if (File.Exists(filepath))
-            {
-
-                string fullpath = new FileInfo(filepath).FullName;
-                Logger.Trace("   ReferencesTabPage - TreeNodeClick - Opening Preview (fullpath): " + fullpath);
-                selectedFilePath = fullpath;
-            }
-
-        }
     }
 }
