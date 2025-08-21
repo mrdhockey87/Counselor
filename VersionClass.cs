@@ -1,26 +1,60 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace CounselQuickPlatinum
 {
-    
     static class VersionClass
-    {       
+    {
         static public string version_word = "Version:";
-        static public string version_string = "5.4.8.89";
+
+        // Get version from assembly - this will always match AssemblyInfo.cs
+        static public string version_string = GetAssemblyVersion();
 
         static public string GetVersion()
         {
             return string.Format("{0} {1}", VersionClass.version_word, VersionClass.version_string);
         }
 
+        static private string GetAssemblyVersion()
+        {
+            try
+            {
+                Assembly assembly = Assembly.GetExecutingAssembly();
+                return assembly.GetName().Version.ToString();
+            }
+            catch
+            {
+                // Fallback version if assembly version fails
+                return "5.4.9.95";
+            }
+        }
     }
 }
-
 /*
-* 
+ * 
+*  v5.4.9.95 - Set the squad create method to alway set the platoonid to 2 as it does not appear to be used for anything and it gives an 
+*              exception and crashes if it is set to be entered as it is not null field in the database. mdail 8-19-25
+*  v5.4.9.94 - Fix the unit combo box from being set to the first item in the list when the user enters a custom battlion entry 
+*              and then clicks tab. And fix some of the Unit Hierarchy ComboBoxs being preselected mdail 8-19-25
+*  v5.4.9.93 - Added a way to clear the Unit Hierarchy ComboBoxs on Leave, also trim all whitespace from the text entered before
+*              checking if whther it is a new entry or not. This is to prevent the user from entering a value with leading or trailing whitespace mdail 8-19-25
+*  v5.4.9.92 - Fix ToSelectiveTitleCase to inclue the first char to upper as well as the rest of the part mdail 8-19-25 
+*  v5.4.9.91 - Fixed a potential bug in the NewSoldierPage1Dialog where if you entered a custom entry for Unit, Unit Designator, Platoon, or Squad/Section
+ *             and then clicked Next without clicking elsewhere first, the custom entry could be save more than once. Added event handlers for the 
+ *             Leave event of each ComboBox to ensure that any custom text is processed and saved when the user navigates away from the 
+ *             ComboBox. Combinged the leave event to use a custom private class the check the text to see if it is a new entry, then ask to and if
+ *             yes add the custom entery. It also check to see if the user type a different value into the text box of the comboboxes to see if it macth
+ *             any entry in the list or nor anh hanedle accordingly. If the entry is not in the list and the user chooses not to save it set the 
+ *             selecte4d index to -1 which leaves it blank. So this should mdail 8-19-25* 
+*  v5.4.8.90 - Enhanced UnitHierarchyModel to support editable ComboBoxes for unit hierarchy elements. Users can now type custom 
+ *             entries for Units, Unit Designators, Platoons, and Squad/Sections in both EditSoldierDialog and NewSoldierPage1Dialog.
+ *             Added creation methods: CreateUnit, CreateUnitDesignator, CreatePlatoon, CreateSquadSection and corresponding 
+ *             existence checking and ID retrieval methods. Added CreateUnitHierarchyWithCustomEntries method to handle custom 
+ *             text entries when creating unit hierarchies. Updated ComboBox DropDownStyle from DropDownList to DropDown to 
+ *             enable text editing. Enhanced validation logic to accept both selected items and custom text entries. mdail 8-19-25
 *  v5.4.8.89 - Fixed the missing date drop downs on the new & edit soldier dialogs that I had put in last time and made sure they wroked to save and 
 *              restore the DOB & DOR. Put back the changes to the Database updates to make sure the updates conatined the delete command mdail  8-15-25
 *  v5.4.8.56 - Update to .Net 4.8. Several pages in the application got messede up some how so I had to revert to an older verion to fix it. mdail 8-15-25

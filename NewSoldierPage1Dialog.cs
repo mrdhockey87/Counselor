@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CounselQuickPlatinum.CustomExtensions;
+using CounselQuickPlatinum.UnitHierarchyHelpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace CounselQuickPlatinum
 {
@@ -106,22 +109,27 @@ namespace CounselQuickPlatinum
             battalionCombobox.DataSource = unitInformation.Tables["battalions"];
             battalionCombobox.ValueMember = "battalionid";
             battalionCombobox.DisplayMember = "battalionname";
+            battalionCombobox.SelectedIndex = -1;
 
             unitNumberCombobox.DataSource = unitInformation.Tables["units"];
             unitNumberCombobox.ValueMember = "unitid";
             unitNumberCombobox.DisplayMember = "unitname";
+            unitNumberCombobox.SelectedIndex = -1;
 
             unitDesignatorCombobox.DataSource = unitInformation.Tables["unitdesignators"];
             unitDesignatorCombobox.ValueMember = "unitdesignatorid";
             unitDesignatorCombobox.DisplayMember = "unitdesignatorname";
+            unitDesignatorCombobox.SelectedIndex = -1;
 
             platoonNumberCombobox.DataSource = unitInformation.Tables["platoons"];
             platoonNumberCombobox.ValueMember = "platoonid";
             platoonNumberCombobox.DisplayMember = "platoonname";
+            platoonNumberCombobox.SelectedIndex = -1;
 
             squadSectionNumberCombobox.DataSource = unitInformation.Tables["squadsections"];
             squadSectionNumberCombobox.ValueMember = "squadsectionid";
             squadSectionNumberCombobox.DisplayMember = "squadsectionname";
+            squadSectionNumberCombobox.SelectedIndex = -1;
         }
 
 
@@ -135,71 +143,6 @@ namespace CounselQuickPlatinum
         {
             ValueChanged(null, null);
         }
-
-
-        private void dateOfRankTextBox_Leave(object sender, EventArgs e)
-        {
-            string dateTimeString = cqpDateOfRank.GetDateString();
-
-            if (DateTimeMaskedTextBoxValid(dateTimeString))
-            {
-                dateOfRankValid = true;
-                dateOfRankLabel.ForeColor = Color.Black;
-            }
-            else
-            {
-                dateOfRankValid = false;
-                dateOfRankLabel.ForeColor = Color.Red;
-            }
-        }
-
-
-        private void dateOfBirthTextBox_Leave(object sender, EventArgs e)
-        {
-            string dateTimeString = cqpDateOfBirth.GetDate().ToString();// dateOfBirthTextBox.Text;
-            if (dateTimeString != "0000 00 00")
-            {
-                dateOfBirthValid = true;
-                dateOfBirthLabel.ForeColor = Color.Black;
-
-                formattedAgeLabel.Text
-                    = "" + Utilities.CalculateAge(Convert.ToDateTime(dateTimeString), DateTime.Now);
-            }
-            else
-            {
-                dateOfBirthValid = false;
-                dateOfBirthLabel.ForeColor = Color.Red;
-                formattedAgeLabel.Text = "?";
-            }
-        }
-
-
-        private bool DateTimeMaskedTextBoxValid(string dateTimeString)
-        {
-            DateTime dateTime;
-
-            // blank is okay
-            if (!string.IsNullOrEmpty(dateTimeString))
-                return true;
-
-            // if something is there, validate it
-            try
-            {
-                dateTime = DateTime.ParseExact(dateTimeString, "yyyy MM dd",
-                                    System.Globalization.CultureInfo.InvariantCulture);
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-
-            // make sure it's in the past
-            if (dateTime.Date - TimeSpan.FromSeconds(1) >= DateTime.Now.Date)
-                return false;
-
-            return true;
-        }
-
 
         private DialogResult PromptToSaveChanges()
         {
@@ -282,13 +225,8 @@ namespace CounselQuickPlatinum
             {
                 DialogResult result = PromptToSaveChanges();
 
-                // TODO:  ?? SAVE?
                 if (result == DialogResult.Cancel)
                     return;
-                //else if (result == DialogResult.No)
-
-                //DialogResult = DialogResult.Cancel;
-                //this.Dispose();
             }
 
             DialogResult = DialogResult.Cancel;
@@ -490,23 +428,7 @@ namespace CounselQuickPlatinum
 
             ValueChanged(null, null);
         }
-        /*
-        private void dateOfBirthTextBox_Enter(object sender, EventArgs e)
-        {
-            this.BeginInvoke((MethodInvoker)delegate()
-            {
-                dateOfBirthTextBox.Select(0, 0);
-            });  
-        }
 
-        private void dateOfRankTextBox_Enter(object sender, EventArgs e)
-        {
-            this.BeginInvoke((MethodInvoker)delegate()
-            {
-                dateOfRankTextBox.Select(0, 0);
-            });  
-        }
-        */
         private void NewSoldierPage1Dialog_VisibleChanged(object sender, EventArgs e)
         {
 
@@ -578,5 +500,132 @@ namespace CounselQuickPlatinum
                 formattedAgeLabel.Text = "?";
             }
         }
+
+        private void unitDesignatorCombobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ValueChanged(null, null);
+        }
+
+        private void battalionCombobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ValueChanged(null, null);
+        }
+        /// Refreshes all unit ComboBoxes by reloading data from UnitHierarchyModel.
+        /// Call this after creating new unit hierarchy items to update the ComboBox lists. mdail 8-19-19
+        /// </summary>
+        private void RefreshUnitComboboxes()
+        {
+            // Store current selections
+            int battalionSelected = battalionCombobox.SelectedIndex;
+            int unitSelected = unitNumberCombobox.SelectedIndex;
+            int unitDesignatorSelected = unitDesignatorCombobox.SelectedIndex;
+            int platoonSelected = platoonNumberCombobox.SelectedIndex;
+            int squadSectionSelected = squadSectionNumberCombobox.SelectedIndex;
+
+            // Reload the data
+            DataSet unitInformation;
+            try
+            {
+                unitInformation = UnitHierarchyModel.GetAllUnitInfo();
+            }
+            catch (DataLoadFailedException ex)
+            {
+                CQPMessageBox.Show(ex.Message, "Error", CQPMessageBox.CQPMessageBoxButtons.OK, CQPMessageBox.CQPMessageBoxIcon.Error);
+                return;
+            }
+
+            // Rebind the ComboBoxes
+            battalionCombobox.DataSource = unitInformation.Tables["battalions"];
+            unitNumberCombobox.DataSource = unitInformation.Tables["units"];
+            unitDesignatorCombobox.DataSource = unitInformation.Tables["unitdesignators"];
+            platoonNumberCombobox.DataSource = unitInformation.Tables["platoons"];
+            squadSectionNumberCombobox.DataSource = unitInformation.Tables["squadsections"];
+
+            // Always restore selections, even if they were -1 (no selection)
+            battalionCombobox.SelectedIndex = battalionSelected;
+            unitNumberCombobox.SelectedIndex = unitSelected;           // Now -1 will be restored properly
+            unitDesignatorCombobox.SelectedIndex = unitDesignatorSelected;
+            platoonNumberCombobox.SelectedIndex = platoonSelected;
+            squadSectionNumberCombobox.SelectedIndex = squadSectionSelected;
+        }
+
+        #region Refactored ComboBox Leave Event Handlers
+        private void battalionCombobox_Leave(object sender, EventArgs e)
+        {
+            string CurrentText = battalionCombobox.Text.Trim() ?? string.Empty;
+            CurrentText = CurrentText.ToSelectiveTitleCase();
+            battalionCombobox.Text = CurrentText;
+            var config = new UnitHierarchyComboBoxConfig(
+                "Battalion",
+                UnitHierarchyModel.BattalionNameExists,
+                UnitHierarchyModel.CreateBattalion,
+                battalionCombobox
+            );
+
+            UnitHierarchyComboBoxHelper.HandleUnitHierarchyComboBoxLeave(config, RefreshUnitComboboxes);
+        }
+        private void unitNumberCombobox_Leave(object sender, EventArgs e)
+        {
+            string CurrentText = unitNumberCombobox.Text.Trim() ?? string.Empty;
+            CurrentText = CurrentText.ToSelectiveTitleCase();
+            unitNumberCombobox.Text = CurrentText;
+            var config = new UnitHierarchyComboBoxConfig(
+                "Unit",
+                UnitHierarchyModel.UnitNameExists,
+                UnitHierarchyModel.CreateUnit,
+                unitNumberCombobox
+            );
+
+            UnitHierarchyComboBoxHelper.HandleUnitHierarchyComboBoxLeave(config, RefreshUnitComboboxes);
+        }
+
+        private void unitDesignatorCombobox_Leave(object sender, EventArgs e)
+        {
+            string CurrentText = unitNumberCombobox.Text.Trim() ?? string.Empty;
+            CurrentText = CurrentText.ToSelectiveTitleCase();
+            unitNumberCombobox.Text = CurrentText;
+            var config = new UnitHierarchyComboBoxConfig(
+                "Unit Designator",
+                UnitHierarchyModel.UnitDesignatorNameExists,
+                UnitHierarchyModel.CreateUnitDesignator,
+                unitDesignatorCombobox
+            );
+
+            UnitHierarchyComboBoxHelper.HandleUnitHierarchyComboBoxLeave(config, RefreshUnitComboboxes);
+        }
+
+        private void platoonNumberCombobox_Leave(object sender, EventArgs e)
+        {
+            string CurrentText = platoonNumberCombobox.Text.Trim() ?? string.Empty;
+            CurrentText = CurrentText.ToSelectiveTitleCase();
+            platoonNumberCombobox.Text = CurrentText;
+            var config = new UnitHierarchyComboBoxConfig(
+                "Platoon",
+                UnitHierarchyModel.PlatoonNameExists,
+                UnitHierarchyModel.CreatePlatoon,
+                platoonNumberCombobox
+            );
+
+            UnitHierarchyComboBoxHelper.HandleUnitHierarchyComboBoxLeave(config, RefreshUnitComboboxes);
+        }
+
+        private void squadSectionNumberCombobox_Leave(object sender, EventArgs e)
+        {
+            //Problem: The squad sections is connected to the platoon, so if the platoon is not selected, it will not work.
+            //so it always sets the platoomID to 2 as I can for the life of me see where the platoonID in the squadscetons table is
+            //ever used. and in the table it is 1 for the first half and 2 for the second half. mdail 8-19-25
+            string CurrentText = squadSectionNumberCombobox.Text.Trim() ?? string.Empty;
+            CurrentText = CurrentText.ToSelectiveTitleCase();
+            squadSectionNumberCombobox.Text = CurrentText;
+            var config = new UnitHierarchyComboBoxConfig(
+                "Squad/Section",
+                UnitHierarchyModel.SquadSectionNameExists,
+                UnitHierarchyModel.CreateSquadSection,
+                squadSectionNumberCombobox
+            );
+
+            UnitHierarchyComboBoxHelper.HandleUnitHierarchyComboBoxLeave(config, RefreshUnitComboboxes);
+        }
+        #endregion        
     }
 }

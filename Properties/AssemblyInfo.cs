@@ -1,9 +1,9 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
 // Define version as a constant at the top level    
-[assembly: AssemblyVersion("5.4.8.89")]
-[assembly: AssemblyFileVersion("5.4.8.89")]
-[assembly: AssemblyInformationalVersion("5.4.9.89")]
+[assembly: AssemblyVersion("5.4.9.95")]
+[assembly: AssemblyFileVersion("5.4.9.95")]
+[assembly: AssemblyInformationalVersion("5.4.9.95")]
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.

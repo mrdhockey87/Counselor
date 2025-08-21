@@ -30,13 +30,18 @@
         {
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.dateOfRankLabel = new System.Windows.Forms.Label();
+            this.cqpDateOfBirth = new CounselQuickPlatinum.CQPDatePicker();
+            this.cqpDateOfRank = new CounselQuickPlatinum.CQPDatePicker();
             this.rankLabel = new System.Windows.Forms.Label();
             this.lastNameLabel = new System.Windows.Forms.Label();
+            this.lastNameTextbox = new CounselQuickPlatinum.CQPTextbox();
             this.dateOfBirthLabel = new System.Windows.Forms.Label();
             this.ageLabel = new System.Windows.Forms.Label();
             this.formattedAgeLabel = new System.Windows.Forms.Label();
             this.rankingCombobox = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.firstNameTextbox = new CounselQuickPlatinum.CQPTextbox();
+            this.middleInitialTextbox = new CounselQuickPlatinum.CQPTextbox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.firstNameLabel = new System.Windows.Forms.Label();
             this.middleInitialLabel = new System.Windows.Forms.Label();
@@ -56,14 +61,9 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.soldierPictureBox = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cqpDateOfBirth = new CounselQuickPlatinum.CQPDatePicker();
-            this.cqpDateOfRank = new CounselQuickPlatinum.CQPDatePicker();
-            this.lastNameTextbox = new CounselQuickPlatinum.CQPTextbox();
-            this.firstNameTextbox = new CounselQuickPlatinum.CQPTextbox();
-            this.middleInitialTextbox = new CounselQuickPlatinum.CQPTextbox();
             this.cancelButton = new CounselQuickPlatinum.CQPGrayRectangleButton();
             this.nextButton = new CounselQuickPlatinum.CQPGrayRectangleButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -135,6 +135,25 @@
             this.dateOfRankLabel.TabIndex = 2;
             this.dateOfRankLabel.Text = "Date of rank - (yyyy mm dd)";
             // 
+            // cqpDateOfBirth
+            // 
+            this.cqpDateOfBirth.Location = new System.Drawing.Point(3, 148);
+            this.cqpDateOfBirth.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cqpDateOfBirth.Name = "cqpDateOfBirth";
+            this.cqpDateOfBirth.Size = new System.Drawing.Size(157, 21);
+            this.cqpDateOfBirth.TabIndex = 2;
+            this.cqpDateOfBirth.Value = new System.DateTime(((long)(0)));
+            this.cqpDateOfBirth.Leave += new System.EventHandler(this.cqpDateOfBirth_Leave);
+            // 
+            // cqpDateOfRank
+            // 
+            this.cqpDateOfRank.Location = new System.Drawing.Point(236, 32);
+            this.cqpDateOfRank.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cqpDateOfRank.Name = "cqpDateOfRank";
+            this.cqpDateOfRank.Size = new System.Drawing.Size(152, 20);
+            this.cqpDateOfRank.TabIndex = 2;
+            this.cqpDateOfRank.Value = new System.DateTime(((long)(0)));
+            // 
             // rankLabel
             // 
             this.rankLabel.AutoSize = true;
@@ -152,6 +171,17 @@
             this.lastNameLabel.Size = new System.Drawing.Size(65, 16);
             this.lastNameLabel.TabIndex = 4;
             this.lastNameLabel.Text = "* Last name";
+            // 
+            // lastNameTextbox
+            // 
+            this.lastNameTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lastNameTextbox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lastNameTextbox.Location = new System.Drawing.Point(3, 92);
+            this.lastNameTextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lastNameTextbox.Name = "lastNameTextbox";
+            this.lastNameTextbox.Size = new System.Drawing.Size(207, 20);
+            this.lastNameTextbox.TabIndex = 5;
+            this.lastNameTextbox.TextChanged += new System.EventHandler(this.ValueChanged);
             // 
             // dateOfBirthLabel
             // 
@@ -207,6 +237,27 @@
             this.tableLayoutPanel5.Size = new System.Drawing.Size(193, 28);
             this.tableLayoutPanel5.TabIndex = 7;
             // 
+            // firstNameTextbox
+            // 
+            this.firstNameTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.firstNameTextbox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.firstNameTextbox.Location = new System.Drawing.Point(3, 4);
+            this.firstNameTextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.firstNameTextbox.Name = "firstNameTextbox";
+            this.firstNameTextbox.Size = new System.Drawing.Size(161, 20);
+            this.firstNameTextbox.TabIndex = 0;
+            this.firstNameTextbox.TextChanged += new System.EventHandler(this.ValueChanged);
+            // 
+            // middleInitialTextbox
+            // 
+            this.middleInitialTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.middleInitialTextbox.Location = new System.Drawing.Point(170, 4);
+            this.middleInitialTextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.middleInitialTextbox.MaxLength = 1;
+            this.middleInitialTextbox.Name = "middleInitialTextbox";
+            this.middleInitialTextbox.Size = new System.Drawing.Size(20, 20);
+            this.middleInitialTextbox.TabIndex = 1;
+            // 
             // tableLayoutPanel6
             // 
             this.tableLayoutPanel6.AutoSize = true;
@@ -245,7 +296,6 @@
             // 
             // squadSectionNumberCombobox
             // 
-            this.squadSectionNumberCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.squadSectionNumberCombobox.FormattingEnabled = true;
             this.squadSectionNumberCombobox.Location = new System.Drawing.Point(236, 265);
             this.squadSectionNumberCombobox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -253,6 +303,7 @@
             this.squadSectionNumberCombobox.Size = new System.Drawing.Size(193, 24);
             this.squadSectionNumberCombobox.TabIndex = 20;
             this.squadSectionNumberCombobox.SelectedIndexChanged += new System.EventHandler(this.ValueChanged);
+            this.squadSectionNumberCombobox.Leave += new System.EventHandler(this.squadSectionNumberCombobox_Leave);
             // 
             // squadSectionLabel
             // 
@@ -265,7 +316,6 @@
             // 
             // platoonNumberCombobox
             // 
-            this.platoonNumberCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.platoonNumberCombobox.FormattingEnabled = true;
             this.platoonNumberCombobox.Location = new System.Drawing.Point(3, 265);
             this.platoonNumberCombobox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -273,6 +323,7 @@
             this.platoonNumberCombobox.Size = new System.Drawing.Size(193, 24);
             this.platoonNumberCombobox.TabIndex = 18;
             this.platoonNumberCombobox.SelectedIndexChanged += new System.EventHandler(this.platoonNumberCombobox_SelectedIndexChanged);
+            this.platoonNumberCombobox.Leave += new System.EventHandler(this.platoonNumberCombobox_Leave);
             // 
             // platoonLabel
             // 
@@ -313,7 +364,6 @@
             // 
             // unitNumberCombobox
             // 
-            this.unitNumberCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.unitNumberCombobox.FormattingEnabled = true;
             this.unitNumberCombobox.Location = new System.Drawing.Point(3, 4);
             this.unitNumberCombobox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -321,16 +371,18 @@
             this.unitNumberCombobox.Size = new System.Drawing.Size(88, 24);
             this.unitNumberCombobox.TabIndex = 0;
             this.unitNumberCombobox.SelectedIndexChanged += new System.EventHandler(this.unitNumberCombobox_SelectedIndexChanged);
+            this.unitNumberCombobox.Leave += new System.EventHandler(this.unitNumberCombobox_Leave);
             // 
             // unitDesignatorCombobox
             // 
-            this.unitDesignatorCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.unitDesignatorCombobox.FormattingEnabled = true;
             this.unitDesignatorCombobox.Location = new System.Drawing.Point(109, 4);
             this.unitDesignatorCombobox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.unitDesignatorCombobox.Name = "unitDesignatorCombobox";
             this.unitDesignatorCombobox.Size = new System.Drawing.Size(88, 24);
             this.unitDesignatorCombobox.TabIndex = 1;
+            this.unitDesignatorCombobox.SelectedIndexChanged += new System.EventHandler(this.unitDesignatorCombobox_SelectedIndexChanged);
+            this.unitDesignatorCombobox.Leave += new System.EventHandler(this.unitDesignatorCombobox_Leave);
             // 
             // battalionLabel
             // 
@@ -361,6 +413,8 @@
             this.battalionCombobox.Name = "battalionCombobox";
             this.battalionCombobox.Size = new System.Drawing.Size(121, 24);
             this.battalionCombobox.TabIndex = 0;
+            this.battalionCombobox.SelectedIndexChanged += new System.EventHandler(this.battalionCombobox_SelectedIndexChanged);
+            this.battalionCombobox.Leave += new System.EventHandler(this.battalionCombobox_Leave);
             // 
             // requiredFieldLabel
             // 
@@ -449,66 +503,6 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(162, 33);
             this.tableLayoutPanel3.TabIndex = 3;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(466, 103);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(4, 96);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "label1";
-            // 
-            // cqpDateOfBirth
-            // 
-            this.cqpDateOfBirth.Location = new System.Drawing.Point(3, 148);
-            this.cqpDateOfBirth.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cqpDateOfBirth.Name = "cqpDateOfBirth";
-            this.cqpDateOfBirth.Size = new System.Drawing.Size(157, 21);
-            this.cqpDateOfBirth.TabIndex = 2;
-            this.cqpDateOfBirth.Value = new System.DateTime(((long)(0)));
-            this.cqpDateOfBirth.Leave += new System.EventHandler(this.cqpDateOfBirth_Leave);
-            // 
-            // cqpDateOfRank
-            // 
-            this.cqpDateOfRank.Location = new System.Drawing.Point(236, 32);
-            this.cqpDateOfRank.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cqpDateOfRank.Name = "cqpDateOfRank";
-            this.cqpDateOfRank.Size = new System.Drawing.Size(152, 20);
-            this.cqpDateOfRank.TabIndex = 2;
-            this.cqpDateOfRank.Value = new System.DateTime(((long)(0)));
-            // 
-            // lastNameTextbox
-            // 
-            this.lastNameTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lastNameTextbox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lastNameTextbox.Location = new System.Drawing.Point(3, 92);
-            this.lastNameTextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.lastNameTextbox.Name = "lastNameTextbox";
-            this.lastNameTextbox.Size = new System.Drawing.Size(207, 20);
-            this.lastNameTextbox.TabIndex = 5;
-            this.lastNameTextbox.TextChanged += new System.EventHandler(this.ValueChanged);
-            // 
-            // firstNameTextbox
-            // 
-            this.firstNameTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.firstNameTextbox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.firstNameTextbox.Location = new System.Drawing.Point(3, 4);
-            this.firstNameTextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.firstNameTextbox.Name = "firstNameTextbox";
-            this.firstNameTextbox.Size = new System.Drawing.Size(161, 20);
-            this.firstNameTextbox.TabIndex = 0;
-            this.firstNameTextbox.TextChanged += new System.EventHandler(this.ValueChanged);
-            // 
-            // middleInitialTextbox
-            // 
-            this.middleInitialTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.middleInitialTextbox.Location = new System.Drawing.Point(170, 4);
-            this.middleInitialTextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.middleInitialTextbox.MaxLength = 1;
-            this.middleInitialTextbox.Name = "middleInitialTextbox";
-            this.middleInitialTextbox.Size = new System.Drawing.Size(20, 20);
-            this.middleInitialTextbox.TabIndex = 1;
-            // 
             // cancelButton
             // 
             this.cancelButton.BackgroundImage = global::CounselQuickPlatinum.Properties.Resources._65_up;
@@ -546,6 +540,15 @@
             this.nextButton.Text = "Next";
             this.nextButton.UseVisualStyleBackColor = true;
             this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(466, 103);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(4, 96);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "label1";
             // 
             // NewSoldierPage1Dialog
             // 
