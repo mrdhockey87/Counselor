@@ -141,7 +141,7 @@
             this.cqpDateOfBirth.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cqpDateOfBirth.Name = "cqpDateOfBirth";
             this.cqpDateOfBirth.Size = new System.Drawing.Size(157, 21);
-            this.cqpDateOfBirth.TabIndex = 2;
+            this.cqpDateOfBirth.TabIndex = 4;
             this.cqpDateOfBirth.Value = new System.DateTime(((long)(0)));
             this.cqpDateOfBirth.Leave += new System.EventHandler(this.cqpDateOfBirth_Leave);
             // 
@@ -151,7 +151,7 @@
             this.cqpDateOfRank.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cqpDateOfRank.Name = "cqpDateOfRank";
             this.cqpDateOfRank.Size = new System.Drawing.Size(152, 20);
-            this.cqpDateOfRank.TabIndex = 2;
+            this.cqpDateOfRank.TabIndex = 1;
             this.cqpDateOfRank.Value = new System.DateTime(((long)(0)));
             // 
             // rankLabel
@@ -180,7 +180,7 @@
             this.lastNameTextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lastNameTextbox.Name = "lastNameTextbox";
             this.lastNameTextbox.Size = new System.Drawing.Size(207, 20);
-            this.lastNameTextbox.TabIndex = 5;
+            this.lastNameTextbox.TabIndex = 2;
             this.lastNameTextbox.TextChanged += new System.EventHandler(this.ValueChanged);
             // 
             // dateOfBirthLabel
@@ -207,7 +207,7 @@
             this.formattedAgeLabel.Location = new System.Drawing.Point(236, 144);
             this.formattedAgeLabel.Name = "formattedAgeLabel";
             this.formattedAgeLabel.Size = new System.Drawing.Size(10, 16);
-            this.formattedAgeLabel.TabIndex = 11;
+            this.formattedAgeLabel.TabIndex = 5;
             this.formattedAgeLabel.Text = " ";
             // 
             // rankingCombobox
@@ -218,7 +218,7 @@
             this.rankingCombobox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rankingCombobox.Name = "rankingCombobox";
             this.rankingCombobox.Size = new System.Drawing.Size(121, 24);
-            this.rankingCombobox.TabIndex = 1;
+            this.rankingCombobox.TabIndex = 0;
             this.rankingCombobox.SelectedIndexChanged += new System.EventHandler(this.rankingCombobox_SelectedIndexChanged);
             // 
             // tableLayoutPanel5
@@ -235,7 +235,7 @@
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(193, 28);
-            this.tableLayoutPanel5.TabIndex = 7;
+            this.tableLayoutPanel5.TabIndex = 3;
             // 
             // firstNameTextbox
             // 
@@ -301,7 +301,7 @@
             this.squadSectionNumberCombobox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.squadSectionNumberCombobox.Name = "squadSectionNumberCombobox";
             this.squadSectionNumberCombobox.Size = new System.Drawing.Size(193, 24);
-            this.squadSectionNumberCombobox.TabIndex = 20;
+            this.squadSectionNumberCombobox.TabIndex = 19;
             this.squadSectionNumberCombobox.SelectedIndexChanged += new System.EventHandler(this.ValueChanged);
             this.squadSectionNumberCombobox.Leave += new System.EventHandler(this.squadSectionNumberCombobox_Leave);
             // 
@@ -331,7 +331,7 @@
             this.platoonLabel.Location = new System.Drawing.Point(3, 245);
             this.platoonLabel.Name = "platoonLabel";
             this.platoonLabel.Size = new System.Drawing.Size(51, 16);
-            this.platoonLabel.TabIndex = 15;
+            this.platoonLabel.TabIndex = 17;
             this.platoonLabel.Text = "* Platoon";
             // 
             // unitLabel
@@ -423,7 +423,7 @@
             this.requiredFieldLabel.Location = new System.Drawing.Point(379, 475);
             this.requiredFieldLabel.Name = "requiredFieldLabel";
             this.requiredFieldLabel.Size = new System.Drawing.Size(81, 16);
-            this.requiredFieldLabel.TabIndex = 2;
+            this.requiredFieldLabel.TabIndex = 3;
             this.requiredFieldLabel.Text = "* required field";
             this.requiredFieldLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -517,7 +517,7 @@
             this.cancelButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(65, 25);
-            this.cancelButton.TabIndex = 0;
+            this.cancelButton.TabIndex = 1;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
@@ -536,7 +536,7 @@
             this.nextButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nextButton.Name = "nextButton";
             this.nextButton.Size = new System.Drawing.Size(65, 25);
-            this.nextButton.TabIndex = 1;
+            this.nextButton.TabIndex = 0;
             this.nextButton.Text = "Next";
             this.nextButton.UseVisualStyleBackColor = true;
             this.nextButton.Click += new System.EventHandler(this.nextButton_Click);

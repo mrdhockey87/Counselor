@@ -28,13 +28,18 @@ namespace CounselQuickPlatinum
             catch
             {
                 // Fallback version if assembly version fails
-                return "5.4.9.95";
+                return "5.4.9.97";
             }
         }
     }
 }
 /*
  * 
+*  v5.4.9.97 - After several tries I finally got the Tab order the way it should be, Tab Order Mide is strainge, It fixed it so if the
+*              user has selected a custom entry and chosses no to not save it, it sets the selected index to -1 and clears the text boxes
+*              on both forms. mdial 8/21
+*  v5.4.9.96 - Rest the tab order indexes for the NewSoldierPage1Dialog & EditSoldierPageDialog to match the order of the controls on 
+*              the screen. At least I think I did mdail 8-21-25
 *  v5.4.9.95 - Set the squad create method to alway set the platoonid to 2 as it does not appear to be used for anything and it gives an 
 *              exception and crashes if it is set to be entered as it is not null field in the database. mdail 8-19-25
 *  v5.4.9.94 - Fix the unit combo box from being set to the first item in the list when the user enters a custom battlion entry 

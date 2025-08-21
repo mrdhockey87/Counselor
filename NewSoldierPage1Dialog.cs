@@ -552,9 +552,6 @@ namespace CounselQuickPlatinum
         #region Refactored ComboBox Leave Event Handlers
         private void battalionCombobox_Leave(object sender, EventArgs e)
         {
-            string CurrentText = battalionCombobox.Text.Trim() ?? string.Empty;
-            CurrentText = CurrentText.ToSelectiveTitleCase();
-            battalionCombobox.Text = CurrentText;
             var config = new UnitHierarchyComboBoxConfig(
                 "Battalion",
                 UnitHierarchyModel.BattalionNameExists,
@@ -566,9 +563,6 @@ namespace CounselQuickPlatinum
         }
         private void unitNumberCombobox_Leave(object sender, EventArgs e)
         {
-            string CurrentText = unitNumberCombobox.Text.Trim() ?? string.Empty;
-            CurrentText = CurrentText.ToSelectiveTitleCase();
-            unitNumberCombobox.Text = CurrentText;
             var config = new UnitHierarchyComboBoxConfig(
                 "Unit",
                 UnitHierarchyModel.UnitNameExists,
@@ -581,9 +575,6 @@ namespace CounselQuickPlatinum
 
         private void unitDesignatorCombobox_Leave(object sender, EventArgs e)
         {
-            string CurrentText = unitNumberCombobox.Text.Trim() ?? string.Empty;
-            CurrentText = CurrentText.ToSelectiveTitleCase();
-            unitNumberCombobox.Text = CurrentText;
             var config = new UnitHierarchyComboBoxConfig(
                 "Unit Designator",
                 UnitHierarchyModel.UnitDesignatorNameExists,
@@ -596,9 +587,6 @@ namespace CounselQuickPlatinum
 
         private void platoonNumberCombobox_Leave(object sender, EventArgs e)
         {
-            string CurrentText = platoonNumberCombobox.Text.Trim() ?? string.Empty;
-            CurrentText = CurrentText.ToSelectiveTitleCase();
-            platoonNumberCombobox.Text = CurrentText;
             var config = new UnitHierarchyComboBoxConfig(
                 "Platoon",
                 UnitHierarchyModel.PlatoonNameExists,
@@ -611,12 +599,6 @@ namespace CounselQuickPlatinum
 
         private void squadSectionNumberCombobox_Leave(object sender, EventArgs e)
         {
-            //Problem: The squad sections is connected to the platoon, so if the platoon is not selected, it will not work.
-            //so it always sets the platoomID to 2 as I can for the life of me see where the platoonID in the squadscetons table is
-            //ever used. and in the table it is 1 for the first half and 2 for the second half. mdail 8-19-25
-            string CurrentText = squadSectionNumberCombobox.Text.Trim() ?? string.Empty;
-            CurrentText = CurrentText.ToSelectiveTitleCase();
-            squadSectionNumberCombobox.Text = CurrentText;
             var config = new UnitHierarchyComboBoxConfig(
                 "Squad/Section",
                 UnitHierarchyModel.SquadSectionNameExists,

@@ -34,14 +34,11 @@
             this.dateOfRankLabel = new System.Windows.Forms.Label();
             this.rankLabel = new System.Windows.Forms.Label();
             this.lastNameLabel = new System.Windows.Forms.Label();
-            this.lastNameTextbox = new CounselQuickPlatinum.CQPTextbox();
             this.dateOfBirthLabel = new System.Windows.Forms.Label();
             this.ageLabel = new System.Windows.Forms.Label();
             this.formattedAgeLabel = new System.Windows.Forms.Label();
             this.rankingCombobox = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.firstNameTextbox = new CounselQuickPlatinum.CQPTextbox();
-            this.middleInitialTextbox = new CounselQuickPlatinum.CQPTextbox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.firstNameLabel = new System.Windows.Forms.Label();
             this.middleInitialLabel = new System.Windows.Forms.Label();
@@ -69,15 +66,18 @@
             this.ucmjPunishmentPhaseCheckbox = new System.Windows.Forms.CheckBox();
             this.otherLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.otherTextbox = new CounselQuickPlatinum.CQPTextbox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.cancelButton = new CounselQuickPlatinum.CQPGrayRectangleButton();
-            this.saveButton = new CounselQuickPlatinum.CQPGrayRectangleButton();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.soldierPictureBox = new System.Windows.Forms.PictureBox();
             this.removeImageLink = new System.Windows.Forms.LinkLabel();
+            this.lastNameTextbox = new CounselQuickPlatinum.CQPTextbox();
+            this.firstNameTextbox = new CounselQuickPlatinum.CQPTextbox();
+            this.middleInitialTextbox = new CounselQuickPlatinum.CQPTextbox();
             this.cqpDateOfRank = new CounselQuickPlatinum.CQPDatePicker();
             this.cqpDateOfBirth = new CounselQuickPlatinum.CQPDatePicker();
+            this.otherTextbox = new CounselQuickPlatinum.CQPTextbox();
+            this.cancelButton = new CounselQuickPlatinum.CQPGrayRectangleButton();
+            this.saveButton = new CounselQuickPlatinum.CQPGrayRectangleButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -188,17 +188,6 @@
             this.lastNameLabel.TabIndex = 4;
             this.lastNameLabel.Text = "* Last name";
             // 
-            // lastNameTextbox
-            // 
-            this.lastNameTextbox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lastNameTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lastNameTextbox.Location = new System.Drawing.Point(3, 68);
-            this.lastNameTextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.lastNameTextbox.Name = "lastNameTextbox";
-            this.lastNameTextbox.Size = new System.Drawing.Size(239, 20);
-            this.lastNameTextbox.TabIndex = 5;
-            this.lastNameTextbox.TextChanged += new System.EventHandler(this.ValueChanged);
-            // 
             // dateOfBirthLabel
             // 
             this.dateOfBirthLabel.AutoSize = true;
@@ -234,7 +223,7 @@
             this.rankingCombobox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rankingCombobox.Name = "rankingCombobox";
             this.rankingCombobox.Size = new System.Drawing.Size(121, 24);
-            this.rankingCombobox.TabIndex = 2;
+            this.rankingCombobox.TabIndex = 0;
             this.rankingCombobox.SelectedIndexChanged += new System.EventHandler(this.rankingCombobox_SelectedIndexChanged);
             // 
             // tableLayoutPanel3
@@ -253,29 +242,7 @@
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(249, 28);
-            this.tableLayoutPanel3.TabIndex = 7;
-            // 
-            // firstNameTextbox
-            // 
-            this.firstNameTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.firstNameTextbox.Location = new System.Drawing.Point(3, 4);
-            this.firstNameTextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.firstNameTextbox.Name = "firstNameTextbox";
-            this.firstNameTextbox.Size = new System.Drawing.Size(184, 20);
-            this.firstNameTextbox.TabIndex = 0;
-            this.firstNameTextbox.TextChanged += new System.EventHandler(this.ValueChanged);
-            // 
-            // middleInitialTextbox
-            // 
-            this.middleInitialTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.middleInitialTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.middleInitialTextbox.Location = new System.Drawing.Point(226, 4);
-            this.middleInitialTextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.middleInitialTextbox.MaxLength = 1;
-            this.middleInitialTextbox.Name = "middleInitialTextbox";
-            this.middleInitialTextbox.Size = new System.Drawing.Size(20, 20);
-            this.middleInitialTextbox.TabIndex = 1;
-            this.middleInitialTextbox.TextChanged += new System.EventHandler(this.ValueChanged);
+            this.tableLayoutPanel3.TabIndex = 3;
             // 
             // tableLayoutPanel4
             // 
@@ -316,14 +283,14 @@
             // 
             // squadSectionNumberCombobox
             // 
-            this.squadSectionNumberCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.squadSectionNumberCombobox.FormattingEnabled = true;
             this.squadSectionNumberCombobox.Location = new System.Drawing.Point(278, 205);
             this.squadSectionNumberCombobox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.squadSectionNumberCombobox.Name = "squadSectionNumberCombobox";
             this.squadSectionNumberCombobox.Size = new System.Drawing.Size(207, 24);
-            this.squadSectionNumberCombobox.TabIndex = 19;
+            this.squadSectionNumberCombobox.TabIndex = 8;
             this.squadSectionNumberCombobox.SelectedIndexChanged += new System.EventHandler(this.ValueChanged);
+            this.squadSectionNumberCombobox.Leave += new System.EventHandler(this.squadSectionNumberCombobox_Leave);
             // 
             // label2
             // 
@@ -336,15 +303,15 @@
             // 
             // platoonNumberCombobox
             // 
-            this.platoonNumberCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.platoonNumberCombobox.FormattingEnabled = true;
             this.platoonNumberCombobox.Location = new System.Drawing.Point(3, 205);
             this.platoonNumberCombobox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.platoonNumberCombobox.Name = "platoonNumberCombobox";
             this.platoonNumberCombobox.Size = new System.Drawing.Size(216, 24);
-            this.platoonNumberCombobox.TabIndex = 17;
+            this.platoonNumberCombobox.TabIndex = 7;
             this.platoonNumberCombobox.SelectedIndexChanged += new System.EventHandler(this.ValueChanged);
             this.platoonNumberCombobox.SelectedValueChanged += new System.EventHandler(this.platoonNumberCombobox_SelectedIndexChanged);
+            this.platoonNumberCombobox.Leave += new System.EventHandler(this.platoonNumberCombobox_Leave);
             // 
             // platoonLabel
             // 
@@ -371,11 +338,10 @@
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(203, 32);
-            this.tableLayoutPanel7.TabIndex = 15;
+            this.tableLayoutPanel7.TabIndex = 6;
             // 
             // unitNumberCombobox
             // 
-            this.unitNumberCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.unitNumberCombobox.FormattingEnabled = true;
             this.unitNumberCombobox.Location = new System.Drawing.Point(3, 4);
             this.unitNumberCombobox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -383,10 +349,10 @@
             this.unitNumberCombobox.Size = new System.Drawing.Size(65, 24);
             this.unitNumberCombobox.TabIndex = 0;
             this.unitNumberCombobox.SelectedIndexChanged += new System.EventHandler(this.ValueChanged);
+            this.unitNumberCombobox.Leave += new System.EventHandler(this.unitNumberCombobox_Leave);
             // 
             // unitDesignatorCombobox
             // 
-            this.unitDesignatorCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.unitDesignatorCombobox.FormattingEnabled = true;
             this.unitDesignatorCombobox.Location = new System.Drawing.Point(79, 4);
             this.unitDesignatorCombobox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -394,6 +360,7 @@
             this.unitDesignatorCombobox.Size = new System.Drawing.Size(121, 24);
             this.unitDesignatorCombobox.TabIndex = 1;
             this.unitDesignatorCombobox.SelectedIndexChanged += new System.EventHandler(this.ValueChanged);
+            this.unitDesignatorCombobox.Leave += new System.EventHandler(this.unitDesignatorCombobox_Leave);
             // 
             // unitLabel
             // 
@@ -412,9 +379,10 @@
             this.battalionCombobox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.battalionCombobox.Name = "battalionCombobox";
             this.battalionCombobox.Size = new System.Drawing.Size(121, 24);
-            this.battalionCombobox.TabIndex = 13;
+            this.battalionCombobox.TabIndex = 5;
             this.battalionCombobox.SelectedIndexChanged += new System.EventHandler(this.ValueChanged);
             this.battalionCombobox.TextChanged += new System.EventHandler(this.ValueChanged);
+            this.battalionCombobox.Leave += new System.EventHandler(this.battalionCombobox_Leave);
             // 
             // battalionLabel
             // 
@@ -481,7 +449,7 @@
             this.barredCheckbox.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.barredCheckbox.Name = "barredCheckbox";
             this.barredCheckbox.Size = new System.Drawing.Size(60, 20);
-            this.barredCheckbox.TabIndex = 2;
+            this.barredCheckbox.TabIndex = 1;
             this.barredCheckbox.Text = "Barred";
             this.barredCheckbox.UseVisualStyleBackColor = true;
             this.barredCheckbox.CheckStateChanged += new System.EventHandler(this.ValueChanged);
@@ -493,7 +461,7 @@
             this.overweightCheckbox.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.overweightCheckbox.Name = "overweightCheckbox";
             this.overweightCheckbox.Size = new System.Drawing.Size(85, 20);
-            this.overweightCheckbox.TabIndex = 4;
+            this.overweightCheckbox.TabIndex = 2;
             this.overweightCheckbox.Text = "Overweight";
             this.overweightCheckbox.UseVisualStyleBackColor = true;
             this.overweightCheckbox.CheckStateChanged += new System.EventHandler(this.ValueChanged);
@@ -505,7 +473,7 @@
             this.apftFailureCheckbox.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.apftFailureCheckbox.Name = "apftFailureCheckbox";
             this.apftFailureCheckbox.Size = new System.Drawing.Size(87, 20);
-            this.apftFailureCheckbox.TabIndex = 6;
+            this.apftFailureCheckbox.TabIndex = 3;
             this.apftFailureCheckbox.Text = "APFT Failure";
             this.apftFailureCheckbox.UseVisualStyleBackColor = true;
             this.apftFailureCheckbox.CheckStateChanged += new System.EventHandler(this.ValueChanged);
@@ -517,7 +485,7 @@
             this.awolCheckbox.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.awolCheckbox.Name = "awolCheckbox";
             this.awolCheckbox.Size = new System.Drawing.Size(55, 20);
-            this.awolCheckbox.TabIndex = 8;
+            this.awolCheckbox.TabIndex = 4;
             this.awolCheckbox.Text = "AWOL";
             this.awolCheckbox.UseVisualStyleBackColor = true;
             this.awolCheckbox.CheckStateChanged += new System.EventHandler(this.ValueChanged);
@@ -529,7 +497,7 @@
             this.clearanceRevokedCheckbox.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.clearanceRevokedCheckbox.Name = "clearanceRevokedCheckbox";
             this.clearanceRevokedCheckbox.Size = new System.Drawing.Size(121, 20);
-            this.clearanceRevokedCheckbox.TabIndex = 10;
+            this.clearanceRevokedCheckbox.TabIndex = 5;
             this.clearanceRevokedCheckbox.Text = "Clearance Revoked";
             this.clearanceRevokedCheckbox.UseVisualStyleBackColor = true;
             this.clearanceRevokedCheckbox.CheckStateChanged += new System.EventHandler(this.ValueChanged);
@@ -541,7 +509,7 @@
             this.clearanceSuspendedCheckbox.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.clearanceSuspendedCheckbox.Name = "clearanceSuspendedCheckbox";
             this.clearanceSuspendedCheckbox.Size = new System.Drawing.Size(131, 20);
-            this.clearanceSuspendedCheckbox.TabIndex = 12;
+            this.clearanceSuspendedCheckbox.TabIndex = 6;
             this.clearanceSuspendedCheckbox.Text = "Clearance Suspended";
             this.clearanceSuspendedCheckbox.UseVisualStyleBackColor = true;
             this.clearanceSuspendedCheckbox.CheckStateChanged += new System.EventHandler(this.ValueChanged);
@@ -553,7 +521,7 @@
             this.performanceCorrectiveTrainingCheckbox.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.performanceCorrectiveTrainingCheckbox.Name = "performanceCorrectiveTrainingCheckbox";
             this.performanceCorrectiveTrainingCheckbox.Size = new System.Drawing.Size(190, 20);
-            this.performanceCorrectiveTrainingCheckbox.TabIndex = 1;
+            this.performanceCorrectiveTrainingCheckbox.TabIndex = 7;
             this.performanceCorrectiveTrainingCheckbox.Text = "Performance Corrective Training";
             this.performanceCorrectiveTrainingCheckbox.UseVisualStyleBackColor = true;
             this.performanceCorrectiveTrainingCheckbox.CheckStateChanged += new System.EventHandler(this.ValueChanged);
@@ -565,7 +533,7 @@
             this.revokedPrivileges.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.revokedPrivileges.Name = "revokedPrivileges";
             this.revokedPrivileges.Size = new System.Drawing.Size(118, 20);
-            this.revokedPrivileges.TabIndex = 3;
+            this.revokedPrivileges.TabIndex = 8;
             this.revokedPrivileges.Text = "Revoked Privileges";
             this.revokedPrivileges.UseVisualStyleBackColor = true;
             this.revokedPrivileges.CheckStateChanged += new System.EventHandler(this.ValueChanged);
@@ -577,7 +545,7 @@
             this.pendingUCMJCheckbox.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.pendingUCMJCheckbox.Name = "pendingUCMJCheckbox";
             this.pendingUCMJCheckbox.Size = new System.Drawing.Size(94, 20);
-            this.pendingUCMJCheckbox.TabIndex = 5;
+            this.pendingUCMJCheckbox.TabIndex = 9;
             this.pendingUCMJCheckbox.Text = "Pending UCMJ";
             this.pendingUCMJCheckbox.UseVisualStyleBackColor = true;
             this.pendingUCMJCheckbox.CheckStateChanged += new System.EventHandler(this.ValueChanged);
@@ -589,7 +557,7 @@
             this.ucmjPunishmentPhaseCheckbox.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.ucmjPunishmentPhaseCheckbox.Name = "ucmjPunishmentPhaseCheckbox";
             this.ucmjPunishmentPhaseCheckbox.Size = new System.Drawing.Size(144, 20);
-            this.ucmjPunishmentPhaseCheckbox.TabIndex = 7;
+            this.ucmjPunishmentPhaseCheckbox.TabIndex = 10;
             this.ucmjPunishmentPhaseCheckbox.Text = "UCMJ Punishment Phase";
             this.ucmjPunishmentPhaseCheckbox.UseVisualStyleBackColor = true;
             this.ucmjPunishmentPhaseCheckbox.CheckStateChanged += new System.EventHandler(this.ValueChanged);
@@ -601,7 +569,7 @@
             this.otherLabel.Margin = new System.Windows.Forms.Padding(20, 0, 3, 0);
             this.otherLabel.Name = "otherLabel";
             this.otherLabel.Size = new System.Drawing.Size(41, 16);
-            this.otherLabel.TabIndex = 9;
+            this.otherLabel.TabIndex = 11;
             this.otherLabel.Text = "Other:";
             // 
             // label3
@@ -614,17 +582,6 @@
             this.label3.TabIndex = 13;
             this.label3.Text = "* required field";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // otherTextbox
-            // 
-            this.otherTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.otherTextbox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.otherTextbox.Location = new System.Drawing.Point(295, 110);
-            this.otherTextbox.Margin = new System.Windows.Forms.Padding(20, 0, 3, 0);
-            this.otherTextbox.Name = "otherTextbox";
-            this.otherTextbox.Size = new System.Drawing.Size(232, 20);
-            this.otherTextbox.TabIndex = 11;
-            this.otherTextbox.TextChanged += new System.EventHandler(this.ValueChanged);
             // 
             // tableLayoutPanel6
             // 
@@ -644,48 +601,6 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel6.Size = new System.Drawing.Size(212, 33);
             this.tableLayoutPanel6.TabIndex = 3;
-            // 
-            // cancelButton
-            // 
-            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cancelButton.BackgroundImage")));
-            this.cancelButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.cancelButton.FlatAppearance.BorderSize = 0;
-            this.cancelButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-            this.cancelButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancelButton.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelButton.GreyRectSize = CounselQuickPlatinum.CQPGrayRectangleButton.CQPGreyRectButtonSize.w90;
-            this.cancelButton.Location = new System.Drawing.Point(119, 4);
-            this.cancelButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(90, 25);
-            this.cancelButton.TabIndex = 0;
-            this.cancelButton.Text = "Cancel";
-            this.cancelButton.UseVisualStyleBackColor = true;
-            // 
-            // saveButton
-            // 
-            this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.saveButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("saveButton.BackgroundImage")));
-            this.saveButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.saveButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.saveButton.FlatAppearance.BorderSize = 0;
-            this.saveButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-            this.saveButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            this.saveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.saveButton.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveButton.GreyRectSize = CounselQuickPlatinum.CQPGrayRectangleButton.CQPGreyRectButtonSize.w90;
-            this.saveButton.Location = new System.Drawing.Point(3, 4);
-            this.saveButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(90, 25);
-            this.saveButton.TabIndex = 1;
-            this.saveButton.Text = "Save and Close";
-            this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // tableLayoutPanel5
             // 
@@ -731,13 +646,46 @@
             this.removeImageLink.Text = "Remove Image";
             this.removeImageLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.removeImageLink_LinkClicked);
             // 
+            // lastNameTextbox
+            // 
+            this.lastNameTextbox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lastNameTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lastNameTextbox.Location = new System.Drawing.Point(3, 68);
+            this.lastNameTextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lastNameTextbox.Name = "lastNameTextbox";
+            this.lastNameTextbox.Size = new System.Drawing.Size(239, 20);
+            this.lastNameTextbox.TabIndex = 2;
+            this.lastNameTextbox.TextChanged += new System.EventHandler(this.ValueChanged);
+            // 
+            // firstNameTextbox
+            // 
+            this.firstNameTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.firstNameTextbox.Location = new System.Drawing.Point(3, 4);
+            this.firstNameTextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.firstNameTextbox.Name = "firstNameTextbox";
+            this.firstNameTextbox.Size = new System.Drawing.Size(184, 20);
+            this.firstNameTextbox.TabIndex = 0;
+            this.firstNameTextbox.TextChanged += new System.EventHandler(this.ValueChanged);
+            // 
+            // middleInitialTextbox
+            // 
+            this.middleInitialTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.middleInitialTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.middleInitialTextbox.Location = new System.Drawing.Point(226, 4);
+            this.middleInitialTextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.middleInitialTextbox.MaxLength = 1;
+            this.middleInitialTextbox.Name = "middleInitialTextbox";
+            this.middleInitialTextbox.Size = new System.Drawing.Size(20, 20);
+            this.middleInitialTextbox.TabIndex = 1;
+            this.middleInitialTextbox.TextChanged += new System.EventHandler(this.ValueChanged);
+            // 
             // cqpDateOfRank
             // 
             this.cqpDateOfRank.Location = new System.Drawing.Point(278, 20);
             this.cqpDateOfRank.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cqpDateOfRank.Name = "cqpDateOfRank";
             this.cqpDateOfRank.Size = new System.Drawing.Size(157, 21);
-            this.cqpDateOfRank.TabIndex = 20;
+            this.cqpDateOfRank.TabIndex = 1;
             this.cqpDateOfRank.Value = new System.DateTime(((long)(0)));
             // 
             // cqpDateOfBirth
@@ -746,8 +694,61 @@
             this.cqpDateOfBirth.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cqpDateOfBirth.Name = "cqpDateOfBirth";
             this.cqpDateOfBirth.Size = new System.Drawing.Size(157, 21);
-            this.cqpDateOfBirth.TabIndex = 21;
+            this.cqpDateOfBirth.TabIndex = 4;
             this.cqpDateOfBirth.Value = new System.DateTime(((long)(0)));
+            // 
+            // otherTextbox
+            // 
+            this.otherTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.otherTextbox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.otherTextbox.Location = new System.Drawing.Point(295, 110);
+            this.otherTextbox.Margin = new System.Windows.Forms.Padding(20, 0, 3, 0);
+            this.otherTextbox.Name = "otherTextbox";
+            this.otherTextbox.Size = new System.Drawing.Size(232, 20);
+            this.otherTextbox.TabIndex = 12;
+            this.otherTextbox.TextChanged += new System.EventHandler(this.ValueChanged);
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cancelButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cancelButton.BackgroundImage")));
+            this.cancelButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancelButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.cancelButton.FlatAppearance.BorderSize = 0;
+            this.cancelButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.cancelButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancelButton.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelButton.GreyRectSize = CounselQuickPlatinum.CQPGrayRectangleButton.CQPGreyRectButtonSize.w90;
+            this.cancelButton.Location = new System.Drawing.Point(119, 4);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(90, 25);
+            this.cancelButton.TabIndex = 1;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            // 
+            // saveButton
+            // 
+            this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.saveButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("saveButton.BackgroundImage")));
+            this.saveButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.saveButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.saveButton.FlatAppearance.BorderSize = 0;
+            this.saveButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.saveButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.saveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.saveButton.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveButton.GreyRectSize = CounselQuickPlatinum.CQPGrayRectangleButton.CQPGreyRectButtonSize.w90;
+            this.saveButton.Location = new System.Drawing.Point(3, 4);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(90, 25);
+            this.saveButton.TabIndex = 0;
+            this.saveButton.Text = "Save and Close";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // EditSoldierDialog
             // 

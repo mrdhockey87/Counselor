@@ -1,5 +1,7 @@
 ﻿using CounselQuickPlatinum.CustomExtensions;
 using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace CounselQuickPlatinum.UnitHierarchyHelpers
@@ -40,10 +42,14 @@ namespace CounselQuickPlatinum.UnitHierarchyHelpers
             if (!entityExists)
             {
                 // Prompt to create new entity
-                DialogResult result = MessageBox.Show(
-                    $"Do you want to make a new {config.EntityTypeName}?",
-                    "Confirmation",
-                    MessageBoxButtons.YesNo);
+                string message = $"Do you want to make a new {config.EntityTypeName}?";
+                string caption = "Confirmation";
+                CQPMessageBox.CQPMessageBoxButtons buttons = CQPMessageBox.CQPMessageBoxButtons.YesNo;
+                CQPMessageBox.CQPMessageBoxIcon icon = CQPMessageBox.CQPMessageBoxIcon.Question;
+                string yesButtonText = $"Create New {config.EntityTypeName}?";
+                List<string> buttonText = new List<string> { yesButtonText, "Cancel" };
+                DialogResult result = CQPMessageBox.ShowDialog(message, caption, buttons, buttonText, icon);
+                
 
                 if (result == DialogResult.Yes)
                 {
@@ -59,6 +65,7 @@ namespace CounselQuickPlatinum.UnitHierarchyHelpers
                 else
                 {
                     config.TargetComboBox.SelectedIndex = -1;
+                    config.TargetComboBox.Text = "";
                 }
             }
             else
