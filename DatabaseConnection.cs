@@ -1046,7 +1046,7 @@ namespace CounselQuickPlatinum
             if (line.StartsWith("update", true, System.Globalization.CultureInfo.CurrentCulture))
                 Update(line);
             else if (line.StartsWith("insert", true, System.Globalization.CultureInfo.CurrentCulture))
-                Insert(line, null);
+                Insert(line);
             else if (line.StartsWith("delete", true, System.Globalization.CultureInfo.CurrentCulture))
                 Delete(line);
             else

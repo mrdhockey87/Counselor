@@ -28,13 +28,16 @@ namespace CounselQuickPlatinum
             catch
             {
                 // Fallback version if assembly version fails
-                return "5.4.9.97";
+                return "5.4.9.98";
             }
         }
     }
 }
 /*
  * 
+*  v5.4.9.98 - Checked the Delete in the update database routeen to make sure it would work with Matt's new file and found that for some reason 
+*              Chris had use the Inset(sql,null) method instead of the Inset(sql) method so I removed the null from the insert command as it is not
+*              needed and looks more correct with all update commands calling the same overload of the methods mdail 8-22-25
 *  v5.4.9.97 - After several tries I finally got the Tab order the way it should be, Tab Order Mide is strainge, It fixed it so if the
 *              user has selected a custom entry and chosses no to not save it, it sets the selected index to -1 and clears the text boxes
 *              on both forms. mdial 8/21
